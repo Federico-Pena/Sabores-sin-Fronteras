@@ -1,12 +1,57 @@
+:root {
+	--bgColor1: #643843;
+	--bgColor2: #99627a;
+	--fontColor1: #c88ea7;
+	--fontColor2: #e7cbcb;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+}
+body,
+html {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+::-webkit-scrollbar {
+	display: none;
+}
+body {
+	position: relative;
+	overflow-x: hidden;
+}
+body::after {
+	content: '';
+	min-width: 100%;
+	min-height: 100%;
+	position: fixed;
+	bottom: 0;
+	background-image: url('./assets/backgroundPortrail.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	z-index: -1;
+	overflow: hidden;
+}
+
 #root {
 	box-sizing: border-box;
 	color: #e6dcdc;
 	overflow: auto;
 	text-align: center;
 	font-family: Cascadia Code, sans-serif;
-	background-color: transparent;
 }
 @font-face {
 	font-family: Cascadia Code;
 	src: url('./assets/CascadiaFuente.woff2');
+}
+
+@media (orientation: landscape) {
+	body::after {
+		background-image: url('./assets/backgroundLandscape.png');
+	}
 }

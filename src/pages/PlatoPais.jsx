@@ -15,17 +15,19 @@ function PlatoPais() {
 	const [filtroIngrediente, setFiltroIngrediente] = useState()
 	const [filtrosInputIngredientes, setFiltrosInputIngredientes] = useState()
 	const [filtrosInputRegiones, setFiltrosInputRegiones] = useState()
-	useEffect(() => {
-		window.addEventListener('scroll', (e) => {
-			const h2 = document.querySelector('.divRecetasNombreH2')
-			if (h2.getBoundingClientRect().top <= 10) {
-				h2.classList.add('divRecetasNombreTop')
-			} else if (window.scrollY <= 900) {
-				h2.classList.remove('divRecetasNombreTop')
-			}
-		})
+	function scorlltop() {
+		const h2 = document.querySelector('.divRecetasNombreH2')
+		if (h2?.getBoundingClientRect().top <= 10) {
+			h2?.classList.add('divRecetasNombreTop')
+		}
+		if (window.scrollY <= 900) {
+			h2?.classList.remove('divRecetasNombreTop')
+		}
+	}
 
-		return window.removeEventListener('scroll', () => {})
+	useEffect(() => {
+		window.addEventListener('scroll', () => scorlltop())
+		return window.removeEventListener('scroll', () => scorlltop())
 	}, [])
 	useEffect(() => {
 		fetchIngredinetes()

@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
 	plugins: [
 		react(),
-		VitePWA({
+		/* VitePWA({
 			manifest: {
 				name: 'Sabores sin Fronteras',
 				short_name: 'Sabores sin Fronteras',
@@ -26,6 +26,6 @@ export default defineConfig({
 					},
 				],
 			},
-		}),
+		}), */
 	],
 })

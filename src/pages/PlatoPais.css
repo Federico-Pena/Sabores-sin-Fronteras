@@ -20,9 +20,10 @@ h2 {
 .divPlatoPais .divRecetasNombre .divRecetasNombreTop {
 	position: fixed;
 	top: 0;
-	left: 0;
+	left: 0%;
 	width: 100%;
-	background-color: #46464644;
+	margin: 0 auto;
+	background-color: #464646ab;
 	z-index: 2;
 	animation: fadeIn 0.5s ease;
 }
