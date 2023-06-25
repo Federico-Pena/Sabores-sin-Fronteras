@@ -1,0 +1,140 @@
+.divPlatoPais {
+	min-height: 100vh;
+	padding-bottom: 5rem;
+	position: relative;
+}
+.divPlatoPais h1,
+h2 {
+	margin: 3rem 0;
+	padding: 0 1rem;
+	cursor: default;
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+}
+.divPlatoPais .divInputSearch {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.divPlatoPais .divRecetasNombre .divRecetasNombreTop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #46464644;
+	z-index: 2;
+	animation: fadeIn 0.5s ease;
+}
+.divPlatoPais .divInputSearch .divMsjError {
+	background-color: rgba(255, 0, 0, 0.425);
+	animation: fadeIn 1s ease;
+	border-radius: 0.5rem;
+}
+.divPlatoPais .divInputSearch .divMsjError img {
+	width: 2rem;
+	height: 2rem;
+}
+.divPlatoPais .divInputSearch input {
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	width: 90%;
+	max-width: 500px;
+	margin: 1rem 0;
+	outline: none;
+	border: 1px solid rgba(0, 0, 255, 0);
+}
+.divPlatoPais .divInputSearch input:focus {
+	outline: 2px solid rgb(47, 187, 47);
+}
+.divPlatoPais .divSugerencias {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 1rem 0.5rem;
+	box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.719);
+	background-color: rgba(0, 0, 0, 0.137);
+	border-radius: 3rem;
+}
+.divPlatoPais .divSugerencias .ingredientes,
+.paises {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	max-height: 320px;
+	transition: all 0.5s ease;
+	animation: fadeIn 1s ease;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.divPlatoPais .divSugerencias .ingredientes {
+	border-radius: 3rem;
+	padding: 0.5rem;
+}
+.divPlatoPais .divSugerencias .ingredientes ul {
+	width: 100px;
+}
+.divPlatoPais .divSugerencias .ingredientes li {
+	display: flex;
+	justify-content: center;
+	background-color: #fffefe;
+	border-radius: 100%;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+	width: 100px;
+	transition: all 0.2s ease;
+	position: relative;
+}
+.divPlatoPais .divSugerencias .ingredientes li span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+}
+.divPlatoPais .divSugerencias .ingredientes li:hover {
+	background-color: #9191918f;
+}
+.divPlatoPais .divSugerencias .ingredientes li:hover span {
+	color: #000000;
+	text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px rgb(255, 255, 255),
+		0px 0px 10px rgb(255, 255, 255);
+}
+.divPlatoPais .divSugerencias .ingredientes li img {
+	width: 80px;
+	height: 80px;
+}
+.divPlatoPais .divSugerencias .paises {
+	border-radius: 5rem;
+}
+.divPlatoPais .divSugerencias .paises li:hover {
+	background-color: #9191916c;
+	text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px rgb(255, 255, 255),
+		0px 0px 10px rgb(255, 255, 255);
+}
+.divPlatoPais .divSugerencias .paises ul {
+	border-radius: 5rem;
+}
+
+.divPlatoPais .divSugerencias .paises ul li {
+	display: flex;
+	justify-content: center;
+	padding: 0.5rem;
+	background-color: #ffffff;
+	border-radius: 100%;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+	width: fit-content;
+	position: relative;
+	transition: all 0.2s ease;
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black;
+}
+.divPlatoPais .divSugerencias .paises ul li img {
+	width: 2rem;
+	border-radius: 5rem;
+	transition: all 0.5s ease;
+	object-fit: cover;
+}
+.divPlatoPais .divSugerencias .paises ul li:hover img {
+	transform: rotate(180deg);
+}

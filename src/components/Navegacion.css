@@ -1,0 +1,17 @@
+nav ul {
+	display: flex;
+	justify-content: space-evenly;
+	background-color: rgba(247, 247, 247, 0.603);
+	padding: 1rem 0;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.linkNav svg {
+	display: flex;
+	width: 2rem;
+	height: 2rem;
+	margin: auto;
+	color: black;
+}

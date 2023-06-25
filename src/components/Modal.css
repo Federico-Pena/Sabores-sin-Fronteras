@@ -1,0 +1,159 @@
+.modalContainer {
+	display: flex;
+	place-items: center;
+	transition: all 0.5s ease;
+	animation: fadeIn 1s ease;
+	color: #eeeeee;
+
+	z-index: 9;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	background-color: rgba(12, 12, 12, 0.774);
+	cursor: default;
+}
+.modalContainer .loaderContainer {
+	width: 90%;
+	max-width: 500px;
+	height: 50%;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.5rem;
+}
+.modalContainer .loaderContainer .loader {
+	border: 12px solid #f3f3f3;
+	border-top: 12px solid #3498db;
+	border-radius: 100%;
+	width: 90px;
+	height: 90px;
+	animation: spin 2s linear infinite;
+}
+
+.modalContainer .exitoContainer {
+	width: 90%;
+	max-width: 500px;
+	padding: 1rem 0;
+	height: auto;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #ffffff88;
+	border-radius: 0.5rem;
+	box-shadow: 0px 0px 10px solid black;
+}
+
+.modalContainer .exitoContainer img {
+	width: 5rem;
+	background-color: none;
+	animation: spin 1s ease;
+	margin: 1rem 0;
+}
+.modalContainer .exitoContainer div {
+	width: 100%;
+	margin: 1rem 0;
+}
+.modalContainer .exitoContainer div img {
+	width: 100%;
+}
+.modalContainer .exitoContainer p {
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+
+	margin: 1rem 0;
+}
+.modalContainer .exitoContainer button {
+	width: 90%;
+	padding: 1rem 0;
+	background-color: #15ff00c0;
+	border-radius: 0.5rem;
+	border: none;
+	outline: none;
+	box-shadow: 0px 0px 5px solid black;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+	color: var(--bgColor1);
+}
+
+.popUp {
+	background-color: #35353591;
+	position: fixed;
+	top: 10%;
+	left: 0%;
+	width: auto;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	cursor: default;
+	backdrop-filter: blur(5px);
+	z-index: 9;
+	border: 1px solid #eee;
+	animation: fadeIn 1s ease;
+}
+.popUp:hover img {
+	transform: scale(3) translateY(2rem);
+}
+.popUp h2 {
+	margin: 0;
+	padding: 0;
+}
+.popUp p {
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+}
+.popUp button {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 0.5rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	color: var(--bgColor1);
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	background-color: #ff0000c0;
+}
+.popUp button svg {
+	color: #f3f3f3;
+	zoom: 2;
+}
+
+.popUp div img {
+	width: 100px;
+	object-fit: cover;
+	transition: all 0.5s ease;
+}
+.zoom div h2 {
+	display: none;
+}
+.zoom {
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	bottom: 0;
+	right: 0;
+}
+.zoom div img {
+	width: 100%;
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

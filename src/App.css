@@ -1,0 +1,12 @@
+#root {
+	box-sizing: border-box;
+	color: #e6dcdc;
+	overflow: auto;
+	text-align: center;
+	font-family: Cascadia Code, sans-serif;
+	background-color: transparent;
+}
+@font-face {
+	font-family: Cascadia Code;
+	src: url('./assets/CascadiaFuente.woff2');
+}
