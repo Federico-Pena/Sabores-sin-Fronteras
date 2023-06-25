@@ -21,29 +21,31 @@ html {
 	display: none;
 }
 body {
-	position: relative;
 	overflow-x: hidden;
 }
-body::after {
-	content: '';
-	min-width: 100%;
-	min-height: 100%;
-	position: fixed;
-	bottom: 0;
-	background-image: url('./assets/backgroundPortrail.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-	z-index: -1;
-	overflow: hidden;
-}
-
-#root {
-	box-sizing: border-box;
+.divApp {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	width: 100%;
 	color: #e6dcdc;
 	overflow: auto;
+	overflow-x: hidden;
 	text-align: center;
 	font-family: Cascadia Code, sans-serif;
+}
+
+.bg {
+	background-image: url('./assets/backgroundPortrail.png');
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: -1;
+}
+#root {
+	position: relative;
 }
 @font-face {
 	font-family: Cascadia Code;
@@ -51,7 +53,7 @@ body::after {
 }
 
 @media (orientation: landscape) {
-	body::after {
+	.bg {
 		background-image: url('./assets/backgroundLandscape.png');
 	}
 }

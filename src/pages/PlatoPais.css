@@ -1,7 +1,6 @@
 .divPlatoPais {
 	min-height: 100vh;
 	padding-bottom: 5rem;
-	position: relative;
 }
 .divPlatoPais h1,
 h2 {
@@ -17,16 +16,6 @@ h2 {
 	flex-direction: column;
 }
 
-.divPlatoPais .divRecetasNombre .divRecetasNombreTop {
-	position: fixed;
-	top: 0;
-	left: 0%;
-	width: 100%;
-	margin: 0 auto;
-	background-color: #464646ab;
-	z-index: 2;
-	animation: fadeIn 0.5s ease;
-}
 .divPlatoPais .divInputSearch .divMsjError {
 	background-color: rgba(255, 0, 0, 0.425);
 	animation: fadeIn 1s ease;
@@ -51,10 +40,11 @@ h2 {
 .divPlatoPais .divSugerencias {
 	display: flex;
 	justify-content: space-evenly;
-	margin: 1rem 0.5rem;
+	margin: 1rem auto;
 	box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.719);
 	background-color: rgba(0, 0, 0, 0.137);
 	border-radius: 3rem;
+	max-width: 600px;
 }
 .divPlatoPais .divSugerencias .ingredientes,
 .paises {
