@@ -1,3 +1,62 @@
+import eeuu from '../../public/assets/images/eeuu.png'
+import england from '../../public/assets/images/england.png'
+import canada from '../../public/assets/images/canada.png'
+import china from '../../public/assets/images/china.png'
+import croacia from '../../public/assets/images/croacia.png'
+import holanda from '../../public/assets/images/holanda.png'
+import egipto from '../../public/assets/images/egipto.png'
+import filipinas from '../../public/assets/images/filipinas.png'
+import francia from '../../public/assets/images/francia.png'
+import grecia from '../../public/assets/images/grecia.png'
+import india from '../../public/assets/images/india.png'
+import irlanda from '../../public/assets/images/irlanda.png'
+import italia from '../../public/assets/images/italia.png'
+import jamaica from '../../public/assets/images/jamaica.png'
+import japon from '../../public/assets/images/japon.png'
+import kenia from '../../public/assets/images/kenia.png'
+import malasia from '../../public/assets/images/malasia.png'
+import mexico from '../../public/assets/images/mexico.png'
+import marruecos from '../../public/assets/images/marruecos.png'
+import polonia from '../../public/assets/images/polonia.png'
+import portugal from '../../public/assets/images/portugal.png'
+import rusia from '../../public/assets/images/rusia.png'
+import españa from '../../public/assets/images/españa.png'
+import tailandia from '../../public/assets/images/tailandia.png'
+import tunez from '../../public/assets/images/tunez.png'
+import turquia from '../../public/assets/images/turquia.png'
+import desconocida from '../../public/assets/images/desconocida.png'
+import vietnam from '../../public/assets/images/vietnam.png'
+let arrayFotos = [
+	eeuu,
+	england,
+	canada,
+	china,
+	croacia,
+	holanda,
+	egipto,
+	filipinas,
+	francia,
+	grecia,
+	india,
+	irlanda,
+	italia,
+	jamaica,
+	japon,
+	kenia,
+	malasia,
+	mexico,
+	marruecos,
+	polonia,
+	portugal,
+	rusia,
+	españa,
+	tailandia,
+	tunez,
+	turquia,
+	desconocida,
+	vietnam,
+]
+
 export const fetchRecetas = async () => {
 	const ingredientList = []
 	const datafetch = []
@@ -27,70 +86,53 @@ export const fetchRecetas = async () => {
 	return { data: datafetch, ingredientes: ingredientList }
 }
 
-export const fetchIngredinetes = async () => {
-	let nombreEspañol = []
+export const fetchIngredinetes = async (pagina, ingredientesPorPagina) => {
 	try {
 		const responseEN = await fetch('../../datosIngredientes.json')
 		const responseES = await fetch('../../datosIngredientesEspañol.json')
-		const dateEN = await responseEN.json()
-		const dateES = await responseES.json()
-		const Promesas = await Promise.allSettled([dateEN, dateES])
-		Promesas.forEach((Promesa) => {
-			if (Promesa.status === 'fulfilled') {
-				nombreEspañol.length > 0
-					? null
-					: nombreEspañol.push({
-							en: Promesas[0].value.meals,
-							es: Promesas[1].value.meals,
-					  })
-			}
-		})
-		for (let i = 0; i < Promesas[0].value.meals.length; i++) {
-			nombreEspañol[0].en[
-				i
-			].foto = `https://www.themealdb.com/images/ingredients/${nombreEspañol[0].en[i].strIngredient}-Small.png`
-			nombreEspañol[0].en[i].nombreEspañol =
-				Promesas[1].value.meals[i].strIngredient
+		const dataEN = await responseEN.json()
+		const dataES = await responseES.json()
+		const ingredientes = {
+			en: dataEN.meals || [],
+			es: dataES.meals || [],
 		}
+		const ingredientesPorPaginaEN = ingredientes.en.slice(
+			(pagina - 1) * ingredientesPorPagina,
+			pagina * ingredientesPorPagina
+		)
+		const ingredientesPorPaginaES = ingredientes.es.slice(
+			(pagina - 1) * ingredientesPorPagina,
+			pagina * ingredientesPorPagina
+		)
+
+		const imagenesPromesas = ingredientesPorPaginaEN.map(
+			async (ingredienteEN) => {
+				const url = `https://www.themealdb.com/images/ingredients/${ingredienteEN.strIngredient}.png`
+				const response = await fetch(url)
+				const blob = await response.blob()
+				return URL.createObjectURL(blob)
+			}
+		)
+
+		const imagenes = await Promise.all(imagenesPromesas)
+
+		const ingredientesConImagenes = ingredientesPorPaginaEN.map(
+			(ingredienteEN, index) => ({
+				...ingredienteEN,
+				foto: imagenes[index],
+				nombreEspañol: ingredientesPorPaginaES[index]?.strIngredient,
+			})
+		)
+
+		return ingredientesConImagenes
 	} catch (error) {
-		return error
+		console.error(error)
+		throw new Error('Hubo un error al obtener los ingredientes.')
 	}
-	return nombreEspañol
 }
 
 export const fetchRegiones = async () => {
 	let regionesEspañol = []
-
-	let arrayFotos = [
-		'../../assets/images/eeuu.png',
-		'../../assets/images/england.png',
-		'../../assets/images/canada.png',
-		'../../assets/images/china.png',
-		'../../assets/images/croacia.png',
-		'../../assets/images/holanda.png',
-		'../../assets/images/egipto.png',
-		'../../assets/images/filipinas.png',
-		'../../assets/images/francia.png',
-		'../../assets/images/grecia.png',
-		'../../assets/images/india.png',
-		'../../assets/images/irlanda.png',
-		'../../assets/images/italia.png',
-		'../../assets/images/jamaica.png',
-		'../../assets/images/japon.png',
-		'../../assets/images/kenia.png',
-		'../../assets/images/malasia.png',
-		'../../assets/images/mexico.png',
-		'../../assets/images/marruecos.png',
-		'../../assets/images/polonia.png',
-		'../../assets/images/portugal.png',
-		'../../assets/images/rusia.png',
-		'../../assets/images/españa.png',
-		'../../assets/images/tailandia.png',
-		'../../assets/images/tunez.png',
-		'../../assets/images/turquia.png',
-		'../../assets/images/desconocida.png',
-		'../../assets/images/vietnam.png',
-	]
 	try {
 		const responseEN = await fetch('./datosRegiones.json')
 		const dataEN = await responseEN.json()

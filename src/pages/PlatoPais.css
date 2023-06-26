@@ -75,7 +75,7 @@ h2 {
 	max-width: 600px;
 }
 .divPlatoPais .divSugerencias .ingredientes,
-.paises {
+.regiones {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -123,19 +123,19 @@ h2 {
 	width: 80px;
 	height: 80px;
 }
-.divPlatoPais .divSugerencias .paises {
+.divPlatoPais .divSugerencias .regiones {
 	border-radius: 5rem;
 }
-.divPlatoPais .divSugerencias .paises li:hover {
+.divPlatoPais .divSugerencias .regiones li:hover {
 	background-color: #9191916c;
 	text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px rgb(255, 255, 255),
 		0px 0px 10px rgb(255, 255, 255);
 }
-.divPlatoPais .divSugerencias .paises ul {
+.divPlatoPais .divSugerencias .regiones ul {
 	border-radius: 5rem;
 }
 
-.divPlatoPais .divSugerencias .paises ul li {
+.divPlatoPais .divSugerencias .regiones ul li {
 	display: flex;
 	justify-content: center;
 	padding: 0.5rem;
@@ -148,12 +148,12 @@ h2 {
 	transition: all 0.2s ease;
 	text-shadow: 0px 0px 10px black, 0px 0px 10px black;
 }
-.divPlatoPais .divSugerencias .paises ul li img {
+.divPlatoPais .divSugerencias .regiones ul li img {
 	width: 2rem;
 	border-radius: 5rem;
 	transition: all 0.5s ease;
 	object-fit: cover;
 }
-.divPlatoPais .divSugerencias .paises ul li:hover img {
+.divPlatoPais .divSugerencias .regiones ul li:hover img {
 	transform: rotate(180deg);
 }
