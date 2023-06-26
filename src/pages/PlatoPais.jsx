@@ -148,6 +148,7 @@ function PlatoPais() {
 		const regionesFiltradas = regiones?.filter((e) => {
 			let item1 = e.es?.toLowerCase()
 			let item2 = filtroIngrediente?.toLowerCase()
+			console.log(item1)
 			if (item1.includes(item2)) {
 				return e
 			}
@@ -266,11 +267,7 @@ function PlatoPais() {
 													}}
 													key={i}
 													title={region.es}>
-													<img
-														src={region.foto}
-														alt={region.es}
-														loading='lazy'
-													/>
+													<img src={region.foto} alt={region.es} />
 												</li>
 											)
 									  })
@@ -283,11 +280,7 @@ function PlatoPais() {
 													}}
 													key={i}
 													title={region.es}>
-													<img
-														src={region.foto}
-														alt={region.es}
-														loading='lazy'
-													/>
+													<img src={region.foto} alt={region.es} />
 												</li>
 											)
 									  })}

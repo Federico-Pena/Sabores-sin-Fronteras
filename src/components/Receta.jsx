@@ -30,6 +30,7 @@ function Receta({
 }) {
 	const [flip, setFlip] = useState(false)
 	const ulInstruccionesRef = useRef()
+	const smallNombreFotoRef = useRef()
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
@@ -38,9 +39,9 @@ function Receta({
 			window.removeEventListener('scroll', handleScroll)
 		}
 	})
+
 	const handleScroll = () => {
 		const instucciones = ulInstruccionesRef.current?.childNodes
-
 		instucciones?.forEach((element) => {
 			if (element.getBoundingClientRect().y < 100 + window.innerHeight / 2) {
 				element.classList.add('liAnimacion')
@@ -54,6 +55,9 @@ function Receta({
 		setFlip(!flip)
 	}
 
+	function irAId() {
+		smallNombreFotoRef.current?.scrollIntoView({ behavior: 'smooth' })
+	}
 	const obtenerReceta = async () => {
 		try {
 			const response = await fetch(
@@ -69,7 +73,10 @@ function Receta({
 	return (
 		<div
 			className='recetasContainer'
-			onClick={ingredientes ? null : obtenerReceta}>
+			onClick={() => {
+				ingredientes ? null : obtenerReceta()
+				irAId()
+			}}>
 			{cerrarReceta && (
 				<button
 					className='btnCerrarReceta'
@@ -83,13 +90,18 @@ function Receta({
 				{receta.strMealThumb && (
 					<img src={receta.strMealThumb} alt={receta.strMeal} />
 				)}
-				{receta.idMeal && <small>Receta N° {receta.idMeal}</small>}
+				{receta.idMeal && (
+					<small ref={smallNombreFotoRef}>Receta N° {receta.idMeal}</small>
+				)}
 				{receta.strMeal && <h2>{receta.strMeal}</h2>}
 			</div>
 			{flip ? (
 				<div className='divInstrucciones'>
 					<h3>Instructiones</h3>
-					<ul className='ulInstructions' ref={ulInstruccionesRef}>
+					<ul
+						id='ulInstructiones'
+						className='ulInstructions'
+						ref={ulInstruccionesRef}>
 						{receta?.strInstructions.split('.').map((e, i) => {
 							return e.trim() && e.trim().length >= 2 ? (
 								<li key={e}>
@@ -104,7 +116,10 @@ function Receta({
 					<button
 						className='btnVerIngredientes'
 						title='Ver Ingredientes'
-						onClick={fliping}>
+						onClick={() => {
+							irAId()
+							fliping()
+						}}>
 						<strong>Volver</strong>
 						<MdOutlineArrowBack />
 					</button>
@@ -167,7 +182,10 @@ function Receta({
 							<button
 								className='btnVerIngredientes'
 								title='Ver Ingredientes'
-								onClick={fliping}>
+								onClick={() => {
+									irAId()
+									fliping()
+								}}>
 								<strong>Ver Receta</strong> <MdReadMore />
 							</button>
 						</>

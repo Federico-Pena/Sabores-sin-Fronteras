@@ -28,8 +28,7 @@ body {
 
 	width: 100%;
 	color: #e6dcdc;
-	overflow: auto;
-	overflow-x: hidden;
+	overflow: hidden;
 	text-align: center;
 	font-family: Cascadia Code, sans-serif;
 }

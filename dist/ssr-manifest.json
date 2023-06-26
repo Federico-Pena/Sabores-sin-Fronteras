@@ -1,0 +1,90 @@
+{
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/react-dom/cjs/react-dom.production.min.js?commonjs-exports": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/react-dom/client.js?commonjs-exports": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/react-dom/index.js?commonjs-module": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/react/cjs/react-jsx-runtime.production.min.js?commonjs-exports": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/react/cjs/react.production.min.js?commonjs-exports": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/react/index.js?commonjs-module": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/react/jsx-runtime.js?commonjs-module": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/scheduler/cjs/scheduler.production.min.js?commonjs-exports": [
+  ],
+  "\u0000C:/Users/feder/Desktop/Comidas/node_modules/scheduler/index.js?commonjs-module": [
+  ],
+  "\u0000commonjsHelpers.js": [
+  ],
+  "\u0000vite/modulepreload-polyfill": [
+  ],
+  "index.html": [
+  ],
+  "node_modules/@remix-run/router/dist/router.js": [
+  ],
+  "node_modules/react-dom/cjs/react-dom.production.min.js": [
+  ],
+  "node_modules/react-dom/client.js": [
+  ],
+  "node_modules/react-dom/index.js": [
+  ],
+  "node_modules/react-icons/io5/index.esm.js": [
+  ],
+  "node_modules/react-icons/lib/esm/iconBase.js": [
+  ],
+  "node_modules/react-icons/lib/esm/iconContext.js": [
+  ],
+  "node_modules/react-icons/md/index.esm.js": [
+  ],
+  "node_modules/react-icons/tfi/index.esm.js": [
+  ],
+  "node_modules/react-router-dom/dist/index.js": [
+  ],
+  "node_modules/react-router/dist/index.js": [
+  ],
+  "node_modules/react/cjs/react-jsx-runtime.production.min.js": [
+  ],
+  "node_modules/react/cjs/react.production.min.js": [
+  ],
+  "node_modules/react/index.js": [
+  ],
+  "node_modules/react/jsx-runtime.js": [
+  ],
+  "node_modules/scheduler/cjs/scheduler.production.min.js": [
+  ],
+  "node_modules/scheduler/index.js": [
+  ],
+  "src/App.css": [
+  ],
+  "src/App.jsx": [
+  ],
+  "src/components/Modal.css": [
+  ],
+  "src/components/Modal.jsx": [
+  ],
+  "src/components/Navegacion.css": [
+  ],
+  "src/components/Navegacion.jsx": [
+  ],
+  "src/components/Receta.css": [
+  ],
+  "src/components/Receta.jsx": [
+  ],
+  "src/helpers/fetchRecetas.js": [
+  ],
+  "src/index.css": [
+  ],
+  "src/main.jsx": [
+  ],
+  "src/pages/PlatoPais.css": [
+  ],
+  "src/pages/PlatoPais.jsx": [
+  ],
+  "src/pages/PlatoRandom.css": [
+  ],
+  "src/pages/PlatoRandom.jsx": [
+  ]
+}
