@@ -127,8 +127,13 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	opacity: 0;
 }
-
+.recetasContainer .divInstrucciones .ulInstructions .liAnimacion {
+	transition: all 0.3s ease;
+	animation: fadeInLeft 2s;
+	opacity: 1;
+}
 .recetasContainer .divInstrucciones .ulInstructions li span {
 	background-color: #eeeeee;
 	padding: 0.5rem;

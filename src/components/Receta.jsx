@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Fade, Slide, Zoom } from 'react-awesome-reveal'
+import { useEffect, useRef, useState } from 'react'
 import {
 	MdOutlinePublic,
 	MdOutlineCategory,
@@ -30,7 +29,27 @@ function Receta({
 	manejoError,
 }) {
 	const [flip, setFlip] = useState(false)
+	const ulInstruccionesRef = useRef()
 
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	})
+	const handleScroll = () => {
+		const instucciones = ulInstruccionesRef.current?.childNodes
+
+		instucciones?.forEach((element) => {
+			if (element.getBoundingClientRect().y < 100 + window.innerHeight / 2) {
+				element.classList.add('liAnimacion')
+			}
+			if (element.getBoundingClientRect().y > 100 + window.innerHeight) {
+				element.classList.remove('liAnimacion')
+			}
+		})
+	}
 	function fliping() {
 		setFlip(!flip)
 	}
@@ -70,20 +89,18 @@ function Receta({
 			{flip ? (
 				<div className='divInstrucciones'>
 					<h3>Instructiones</h3>
-					<Fade cascade direction='left' damping={0.1}>
-						<ul className='ulInstructions'>
-							{receta.strInstructions.split('.').map((e, i) => {
-								return e.trim() && e.trim().length >= 2 ? (
-									<li key={e}>
-										<span className='spanInstructionsNumero'>
-											{'# ' + (i + 1)}
-										</span>
-										<span>{e}</span>
-									</li>
-								) : null
-							})}
-						</ul>
-					</Fade>
+					<ul className='ulInstructions' ref={ulInstruccionesRef}>
+						{receta?.strInstructions.split('.').map((e, i) => {
+							return e.trim() && e.trim().length >= 2 ? (
+								<li key={e}>
+									<span className='spanInstructionsNumero'>
+										{'# ' + (i + 1)}
+									</span>
+									<span>{e}</span>
+								</li>
+							) : null
+						})}
+					</ul>
 					<button
 						className='btnVerIngredientes'
 						title='Ver Ingredientes'

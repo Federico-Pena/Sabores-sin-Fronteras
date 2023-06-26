@@ -24,9 +24,8 @@ body {
 	overflow-x: hidden;
 }
 .divApp {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%);
+	position: relative;
+
 	width: 100%;
 	color: #e6dcdc;
 	overflow: auto;
@@ -36,7 +35,7 @@ body {
 }
 
 .bg {
-	background-image: url('./assets/backgroundPortrail.png');
+	background-image: url('../assets/backgroundPortrail.png');
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
@@ -46,14 +45,16 @@ body {
 }
 #root {
 	position: relative;
+	width: 100vw;
+	height: 100vh;
 }
 @font-face {
 	font-family: Cascadia Code;
-	src: url('./assets/CascadiaFuente.woff2');
+	src: url('../assets/CascadiaFuente.woff2');
 }
 
 @media (orientation: landscape) {
 	.bg {
-		background-image: url('./assets/backgroundLandscape.png');
+		background-image: url('../assets/backgroundLandscape.png');
 	}
 }

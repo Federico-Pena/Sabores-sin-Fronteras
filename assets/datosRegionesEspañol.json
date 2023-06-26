@@ -1,0 +1,88 @@
+{
+	"meals": [
+		{
+			"strArea": "Estadounidense"
+		},
+		{
+			"strArea": "Británica"
+		},
+		{
+			"strArea": "Canadiense"
+		},
+		{
+			"strArea": "China"
+		},
+		{
+			"strArea": "Croata"
+		},
+		{
+			"strArea": "Holandesa"
+		},
+		{
+			"strArea": "Egipcia"
+		},
+		{
+			"strArea": "Filipina"
+		},
+		{
+			"strArea": "Francesa"
+		},
+		{
+			"strArea": "Griega"
+		},
+		{
+			"strArea": "India"
+		},
+		{
+			"strArea": "Irlandesa"
+		},
+		{
+			"strArea": "Italiana"
+		},
+		{
+			"strArea": "Jamaicana"
+		},
+		{
+			"strArea": "Japonesa"
+		},
+		{
+			"strArea": "Keniana"
+		},
+		{
+			"strArea": "Malasia"
+		},
+		{
+			"strArea": "Mexicana"
+		},
+		{
+			"strArea": "Marroquí"
+		},
+		{
+			"strArea": "Polaca"
+		},
+		{
+			"strArea": "Portuguesa"
+		},
+		{
+			"strArea": "Rusa"
+		},
+		{
+			"strArea": "Española"
+		},
+		{
+			"strArea": "Tailandesa"
+		},
+		{
+			"strArea": "Tunecina"
+		},
+		{
+			"strArea": "Turca"
+		},
+		{
+			"strArea": "Desconocida"
+		},
+		{
+			"strArea": "Vietnamita"
+		}
+	]
+}
