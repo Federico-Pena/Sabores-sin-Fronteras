@@ -27,6 +27,7 @@ function Receta({
 	ingredientes,
 	mostrarReceta,
 	manejoError,
+	irArriba,
 }) {
 	const [flip, setFlip] = useState(false)
 	const ulInstruccionesRef = useRef()
@@ -74,13 +75,20 @@ function Receta({
 		<div
 			className='recetasContainer'
 			onClick={() => {
-				ingredientes ? null : obtenerReceta()
-				irAId()
+				if (ingredientes) {
+					return
+				} else {
+					irArriba ? irArriba() : null
+					obtenerReceta()
+				}
 			}}>
 			{cerrarReceta && (
 				<button
 					className='btnCerrarReceta'
-					onClick={cerrarReceta}
+					onClick={() => {
+						irArriba()
+						cerrarReceta()
+					}}
 					title='Cerrar Receta'>
 					<MdClose />
 				</button>
@@ -88,7 +96,7 @@ function Receta({
 			{ingredientes && <h1>No Sabes Que Cocinar?</h1>}
 			<div className='divNombreFoto'>
 				{receta.strMealThumb && (
-					<img src={receta.strMealThumb} alt={receta.strMeal} />
+					<img src={`${receta.strMealThumb}`} alt={receta.strMeal} />
 				)}
 				{receta.idMeal && (
 					<small ref={smallNombreFotoRef}>Receta N° {receta.idMeal}</small>

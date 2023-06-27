@@ -1,6 +1,4 @@
-import { MdClose } from 'react-icons/md'
 import './Modal.css'
-import { Fade } from 'react-awesome-reveal'
 /**
  *
  * @param {*} loading

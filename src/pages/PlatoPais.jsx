@@ -1,81 +1,41 @@
 import { useEffect, useRef, useState } from 'react'
 import Receta from '../components/Receta'
 import Modal from '../components/Modal'
-import { fetchIngredinetes, fetchRegiones } from '../helpers/fetchRecetas'
+import { fetchRegiones } from '../helpers/fetchRecetas'
 import './PlatoPais.css'
+import IngredientesComponent from '../components/IngredientesComponent'
+import BuscadorPalabras from '../components/BuscadorDePalabras'
 function PlatoPais() {
 	const [region, setPais] = useState('')
 	const [regiones, setRegiones] = useState()
-	const [ingrediente, setIngrediente] = useState('')
-	const [ingredientes, setIngredientes] = useState()
 	const [ingredientList, setIngredientList] = useState('')
-	const [filtroIngrediente, setFiltroIngrediente] = useState('')
-	const [filtrosInputIngredientes, setFiltrosInputIngredientes] = useState()
-	const [filtrosInputRegiones, setFiltrosInputRegiones] = useState()
 	const [receta, setReceta] = useState()
 	const [recetas, setRecetas] = useState()
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState()
-
-	const h2Filtroref = useRef()
-	const divRecetas = useRef()
+	const divSugerenciasRef = useRef(null)
 
 	useEffect(() => {
-		window.addEventListener('scroll', aparecerNombre)
-		return () => {
-			window.removeEventListener('scroll', aparecerNombre)
-		}
-	})
-	const aparecerNombre = () => {
-		if (divRecetas.current.getBoundingClientRect().top <= -350) {
-			h2Filtroref.current.classList.add('NombreH2')
-			h2Filtroref.current.classList.remove('hidden')
-		}
-		if (divRecetas.current.getBoundingClientRect().top >= -350) {
-			h2Filtroref.current.classList.remove('NombreH2')
-			h2Filtroref.current.classList.add('hidden')
-		}
-	}
-	useEffect(() => {
-		fetchIngredientes()
 		fetchRegions()
 	}, [])
 	useEffect(() => {
-		if (ingrediente) {
-			fetchIngrediente()
-		}
 		if (region) {
 			fetchRegion()
 		}
-	}, [ingrediente, region])
-
-	useEffect(() => {
-		inputFiltrar()
-	}, [filtroIngrediente])
+	}, [region])
 
 	//todas las regiones
 	const fetchRegions = async () => {
+		setLoading(true)
 		try {
 			const data = await fetchRegiones()
 			setRegiones(data.sort((a, b) => (a.es > b.es ? 1 : -1)))
 		} catch (error) {
 			setError(error)
 		}
-	}
-	//de a 40 ingredientes
-	const fetchIngredientes = async () => {
-		setLoading(true)
-		try {
-			const data = await fetchIngredinetes(1, 574)
-
-			setIngredientes(
-				data.sort((a, b) => (a.nombreEspañol > b.nombreEspañol ? 1 : -1))
-			)
-		} catch (error) {
-			setError(error)
-		}
 		setLoading(false)
 	}
+
 	//buscar recetas por una region
 	const fetchRegion = async () => {
 		setLoading(true)
@@ -90,12 +50,11 @@ function PlatoPais() {
 		}
 		setLoading(false)
 	}
-	//buscar recetas por un ingrediente
-	const fetchIngrediente = async () => {
+	const buscarRecetaPorIngrediente = async (e) => {
 		setLoading(true)
 		try {
 			const response = await fetch(
-				`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`
+				`https://www.themealdb.com/api/json/v1/1/filter.php?i=${e}`
 			)
 			const data = await response.json()
 			setRecetas(data.meals)
@@ -104,6 +63,7 @@ function PlatoPais() {
 		}
 		setLoading(false)
 	}
+
 	//mostrar Receta al hacerle click a la foto
 
 	const mostrarReceta = (e) => {
@@ -126,46 +86,28 @@ function PlatoPais() {
 		setLoading(false)
 		setIngredientList(ingredientList)
 	}
-	//funcion del filtro del input
-	function inputFiltrar() {
-		setIngrediente()
-		setPais()
-		const ingredientesFiltrados = ingredientes?.filter((e) => {
-			let item1 = e.nombreEspañol?.toLowerCase()
-			let item2 = filtroIngrediente?.toLowerCase()
-			if (item1.includes(item2)) {
-				return e
-			}
-		})
-		const regionesFiltradas = regiones?.filter((e) => {
-			let item1 = e.es?.toLowerCase()
-			let item2 = filtroIngrediente?.toLowerCase()
-			if (item1.includes(item2)) {
-				return e
-			}
-		})
-		setFiltrosInputIngredientes(ingredientesFiltrados)
-		setFiltrosInputRegiones(regionesFiltradas)
-	}
+
 	//mostrar resultados del filtro Pais
 	const elegirFiltroPais = (e) => {
 		setPais(e)
-		setIngrediente('')
 		setReceta('')
 	}
 	//mostrar resultados del filtro Ingrediente
 
-	const elegirFiltroIngrediente = (e) => {
-		setIngrediente(e)
-		setPais('')
-		setReceta('')
-	}
 	function cerrarModal() {
 		setError()
 		setReceta()
+		setIngredientList()
 	}
+
 	function manejoErrorReceta(e) {
 		setError(e)
+	}
+
+	function irArriba() {
+		divSugerenciasRef.current?.scrollIntoView({
+			behavior: 'smooth',
+		})
 	}
 
 	return (
@@ -183,139 +125,55 @@ function PlatoPais() {
 			<div className='divPlatoPais'>
 				<h1>Saborea el Mundo a tu Manera</h1>
 				<h2>
-					Encuentra recetas exquisitas según tus ingredientes favoritos o país
-					de origen
+					Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O País
+					De Origen
 				</h2>
-				<div className='divInputSearch'>
-					<input
-						placeholder='Papas, Holandesa'
-						type='search'
-						onChange={(e) => setFiltroIngrediente(e.target.value)}
-						name='inputSearch'
-					/>
-					{filtrosInputRegiones?.length === 0 &&
-					filtrosInputIngredientes?.length === 0 ? (
-						<div className='divMsjError'>
-							<h2>No Hay Coincidencias</h2>
-							<img
-								src='https://res.cloudinary.com/fotoscloudinary/image/upload/v1687373812/error_zdkoh9.png'
-								alt='icono error'
-							/>
+
+				<div className='divRecetasNombre'>
+					<div className='divSugerencias'>
+						<div className='regiones'>
+							<ul>
+								{regiones?.map((region, i) => {
+									return (
+										<li
+											onClick={() => {
+												elegirFiltroPais(region.en)
+											}}
+											key={i}
+											title={region.es}>
+											<img src={region.foto} alt={region.es} />
+										</li>
+									)
+								})}
+							</ul>
 						</div>
-					) : null}
-					<div className='divContainerH2'>
-						<h2 className='hidden' ref={h2Filtroref}>
-							{region || ingrediente}
-						</h2>
+						<IngredientesComponent
+							buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
+							ingredientesPorPagina={150}
+						/>
 					</div>
-				</div>
-
-				<div className='divRecetasNombre' ref={divRecetas}>
-					{ingredientes && ingredientes[570]?.foto ? (
-						<div className='divSugerencias'>
-							<div className='ingredientes'>
-								<ul>
-									{filtroIngrediente
-										? filtrosInputIngredientes?.map((ing) => {
-												return (
-													<li
-														key={ing.idIngredient}
-														onClick={() => {
-															elegirFiltroIngrediente(ing.strIngredient)
-															aparecerNombre()
-														}}>
-														<span>{ing.nombreEspañol}</span>
-
-														<img
-															src={ing.foto}
-															alt={ing.nombreEspañol}
-															title={ing.nombreEspañol}
-															loading='lazy'
-														/>
-													</li>
-												)
-										  })
-										: ingredientes?.map((ing) => {
-												return (
-													<li
-														key={ing.idIngredient}
-														onClick={() => {
-															aparecerNombre()
-															elegirFiltroIngrediente(ing.strIngredient)
-														}}>
-														<span>{ing.nombreEspañol}</span>
-														<img
-															src={ing.foto}
-															alt={ing.nombreEspañol}
-															title={ing.nombreEspañol}
-															loading='lazy'
-														/>
-													</li>
-												)
-										  })}
-								</ul>
-							</div>
-							<div className='regiones'>
-								<ul>
-									{filtrosInputRegiones
-										? filtrosInputRegiones?.map((region, i) => {
-												return (
-													<li
-														onClick={() => {
-															aparecerNombre()
-															elegirFiltroPais(region.en)
-														}}
-														key={i}
-														title={region.es}>
-														<img src={region.foto} alt={region.es} />
-													</li>
-												)
-										  })
-										: regiones?.map((region, i) => {
-												return (
-													<li
-														onClick={() => {
-															aparecerNombre()
-															elegirFiltroPais(region.en)
-														}}
-														key={i}
-														title={region.es}>
-														<img src={region.foto} alt={region.es} />
-													</li>
-												)
-										  })}
-								</ul>
-							</div>
-						</div>
-					) : (
-						<Modal
-							contenido={loading}
-							titulo={
-								'A Buscar Recetas!!! Puedes Buscarlas Por Ingrediente O Nacionalidad'
-							}
-						/>
-					)}
-
-					{receta ? (
-						<Receta
-							cerrarReceta={cerrarModal}
-							ingredientes={ingredientList}
-							loading={loading}
-							receta={receta}
-						/>
-					) : recetas ? (
-						recetas.map((receta, i) => {
-							return (
-								<Receta
-									manejoError={manejoErrorReceta}
-									mostrarReceta={mostrarReceta}
-									loading={loading}
-									key={i}
-									receta={receta}
-								/>
-							)
-						})
-					) : null}
+					<div className='divRecetasContainer' ref={divSugerenciasRef}>
+						{receta ? (
+							<Receta
+								irArriba={irArriba}
+								cerrarReceta={cerrarModal}
+								ingredientes={ingredientList}
+								receta={receta}
+							/>
+						) : recetas ? (
+							recetas.map((receta, i) => {
+								return (
+									<Receta
+										manejoError={manejoErrorReceta}
+										mostrarReceta={mostrarReceta}
+										key={i}
+										receta={receta}
+										irArriba={irArriba}
+									/>
+								)
+							})
+						) : null}
+					</div>
 				</div>
 			</div>
 		</>

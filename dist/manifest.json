@@ -4,7 +4,7 @@
     "src": "food.png"
   },
   "index.css": {
-    "file": "assets/index-e7cc015e.css",
+    "file": "assets/index-d3d8f35a.css",
     "src": "index.css"
   },
   "index.html": {
@@ -42,134 +42,134 @@
       "assets/backgroundLandscape-48dfe05f.png"
     ],
     "css": [
-      "assets/index-e7cc015e.css"
+      "assets/index-d3d8f35a.css"
     ],
-    "file": "assets/index-25a7ac3e.js",
+    "file": "index65308.js",
     "isEntry": true,
     "src": "index.html"
   },
-  "public/assets/CascadiaFuente.woff2": {
+  "src/assets/CascadiaFuente.woff2": {
     "file": "assets/CascadiaFuente-c5f6ea1d.woff2",
-    "src": "public/assets/CascadiaFuente.woff2"
+    "src": "src/assets/CascadiaFuente.woff2"
   },
-  "public/assets/backgroundLandscape.png": {
+  "src/assets/backgroundLandscape.png": {
     "file": "assets/backgroundLandscape-48dfe05f.png",
-    "src": "public/assets/backgroundLandscape.png"
+    "src": "src/assets/backgroundLandscape.png"
   },
-  "public/assets/backgroundPortrail.png": {
+  "src/assets/backgroundPortrail.png": {
     "file": "assets/backgroundPortrail-0986f963.png",
-    "src": "public/assets/backgroundPortrail.png"
+    "src": "src/assets/backgroundPortrail.png"
   },
-  "public/assets/images/canada.png": {
+  "src/assets/images/canada.png": {
     "file": "assets/canada-b06ba356.png",
-    "src": "public/assets/images/canada.png"
+    "src": "src/assets/images/canada.png"
   },
-  "public/assets/images/china.png": {
+  "src/assets/images/china.png": {
     "file": "assets/china-d5f557ff.png",
-    "src": "public/assets/images/china.png"
+    "src": "src/assets/images/china.png"
   },
-  "public/assets/images/croacia.png": {
+  "src/assets/images/croacia.png": {
     "file": "assets/croacia-6966fb1b.png",
-    "src": "public/assets/images/croacia.png"
+    "src": "src/assets/images/croacia.png"
   },
-  "public/assets/images/desconocida.png": {
+  "src/assets/images/desconocida.png": {
     "file": "assets/desconocida-22625683.png",
-    "src": "public/assets/images/desconocida.png"
+    "src": "src/assets/images/desconocida.png"
   },
-  "public/assets/images/eeuu.png": {
+  "src/assets/images/eeuu.png": {
     "file": "assets/eeuu-1d555a66.png",
-    "src": "public/assets/images/eeuu.png"
+    "src": "src/assets/images/eeuu.png"
   },
-  "public/assets/images/egipto.png": {
+  "src/assets/images/egipto.png": {
     "file": "assets/egipto-229e254a.png",
-    "src": "public/assets/images/egipto.png"
+    "src": "src/assets/images/egipto.png"
   },
-  "public/assets/images/england.png": {
+  "src/assets/images/england.png": {
     "file": "assets/england-cd889d91.png",
-    "src": "public/assets/images/england.png"
+    "src": "src/assets/images/england.png"
   },
-  "public/assets/images/españa.png": {
+  "src/assets/images/españa.png": {
     "file": "assets/españa-7ddddc39.png",
-    "src": "public/assets/images/españa.png"
+    "src": "src/assets/images/españa.png"
   },
-  "public/assets/images/filipinas.png": {
+  "src/assets/images/filipinas.png": {
     "file": "assets/filipinas-62e1237f.png",
-    "src": "public/assets/images/filipinas.png"
+    "src": "src/assets/images/filipinas.png"
   },
-  "public/assets/images/francia.png": {
+  "src/assets/images/francia.png": {
     "file": "assets/francia-971a889b.png",
-    "src": "public/assets/images/francia.png"
+    "src": "src/assets/images/francia.png"
   },
-  "public/assets/images/grecia.png": {
+  "src/assets/images/grecia.png": {
     "file": "assets/grecia-dc028d77.png",
-    "src": "public/assets/images/grecia.png"
+    "src": "src/assets/images/grecia.png"
   },
-  "public/assets/images/holanda.png": {
+  "src/assets/images/holanda.png": {
     "file": "assets/holanda-dd3672f1.png",
-    "src": "public/assets/images/holanda.png"
+    "src": "src/assets/images/holanda.png"
   },
-  "public/assets/images/india.png": {
+  "src/assets/images/india.png": {
     "file": "assets/india-8c944d7b.png",
-    "src": "public/assets/images/india.png"
+    "src": "src/assets/images/india.png"
   },
-  "public/assets/images/irlanda.png": {
+  "src/assets/images/irlanda.png": {
     "file": "assets/irlanda-fbc7c30b.png",
-    "src": "public/assets/images/irlanda.png"
+    "src": "src/assets/images/irlanda.png"
   },
-  "public/assets/images/italia.png": {
+  "src/assets/images/italia.png": {
     "file": "assets/italia-440c74d4.png",
-    "src": "public/assets/images/italia.png"
+    "src": "src/assets/images/italia.png"
   },
-  "public/assets/images/jamaica.png": {
+  "src/assets/images/jamaica.png": {
     "file": "assets/jamaica-c87e06e5.png",
-    "src": "public/assets/images/jamaica.png"
+    "src": "src/assets/images/jamaica.png"
   },
-  "public/assets/images/japon.png": {
+  "src/assets/images/japon.png": {
     "file": "assets/japon-ba2ca8f8.png",
-    "src": "public/assets/images/japon.png"
+    "src": "src/assets/images/japon.png"
   },
-  "public/assets/images/kenia.png": {
+  "src/assets/images/kenia.png": {
     "file": "assets/kenia-8482587f.png",
-    "src": "public/assets/images/kenia.png"
+    "src": "src/assets/images/kenia.png"
   },
-  "public/assets/images/malasia.png": {
+  "src/assets/images/malasia.png": {
     "file": "assets/malasia-c7d44802.png",
-    "src": "public/assets/images/malasia.png"
+    "src": "src/assets/images/malasia.png"
   },
-  "public/assets/images/marruecos.png": {
+  "src/assets/images/marruecos.png": {
     "file": "assets/marruecos-6edaa618.png",
-    "src": "public/assets/images/marruecos.png"
+    "src": "src/assets/images/marruecos.png"
   },
-  "public/assets/images/mexico.png": {
+  "src/assets/images/mexico.png": {
     "file": "assets/mexico-3570c29f.png",
-    "src": "public/assets/images/mexico.png"
+    "src": "src/assets/images/mexico.png"
   },
-  "public/assets/images/polonia.png": {
+  "src/assets/images/polonia.png": {
     "file": "assets/polonia-485f594d.png",
-    "src": "public/assets/images/polonia.png"
+    "src": "src/assets/images/polonia.png"
   },
-  "public/assets/images/portugal.png": {
+  "src/assets/images/portugal.png": {
     "file": "assets/portugal-d0a63a2c.png",
-    "src": "public/assets/images/portugal.png"
+    "src": "src/assets/images/portugal.png"
   },
-  "public/assets/images/rusia.png": {
+  "src/assets/images/rusia.png": {
     "file": "assets/rusia-45452389.png",
-    "src": "public/assets/images/rusia.png"
+    "src": "src/assets/images/rusia.png"
   },
-  "public/assets/images/tailandia.png": {
+  "src/assets/images/tailandia.png": {
     "file": "assets/tailandia-9c31417f.png",
-    "src": "public/assets/images/tailandia.png"
+    "src": "src/assets/images/tailandia.png"
   },
-  "public/assets/images/tunez.png": {
+  "src/assets/images/tunez.png": {
     "file": "assets/tunez-baafdab2.png",
-    "src": "public/assets/images/tunez.png"
+    "src": "src/assets/images/tunez.png"
   },
-  "public/assets/images/turquia.png": {
+  "src/assets/images/turquia.png": {
     "file": "assets/turquia-ae09303b.png",
-    "src": "public/assets/images/turquia.png"
+    "src": "src/assets/images/turquia.png"
   },
-  "public/assets/images/vietnam.png": {
+  "src/assets/images/vietnam.png": {
     "file": "assets/vietnam-cc3024e2.png",
-    "src": "public/assets/images/vietnam.png"
+    "src": "src/assets/images/vietnam.png"
   }
 }

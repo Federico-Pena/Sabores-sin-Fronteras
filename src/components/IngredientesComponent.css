@@ -1,0 +1,66 @@
+.ingredientes,
+.regiones {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	max-height: 320px;
+	transition: all 0.5s ease;
+	animation: fadeIn 1s ease;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.ingredientes {
+	border-radius: 3rem;
+	padding: 0.5rem;
+	overflow: hidden;
+	background-color: #ffffff6c;
+}
+.ingredientes ul {
+	width: auto;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ingredientes ul li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.5rem;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+	width: 100%;
+	transition: all 0.2s ease;
+	position: relative;
+}
+.ingredientes ul li .spanNombreEspañol {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+}
+.ingredientes ul li:hover {
+	background-color: #9191918f;
+}
+.ingredientes ul li:hover .spanNombreEspañol {
+	color: #000000;
+	text-shadow: 0px 0px 10px rgb(255, 255, 255), 0px 0px 10px rgb(255, 255, 255),
+		0px 0px 10px rgb(255, 255, 255);
+}
+.ingredientes ul li img {
+	width: 150px;
+	height: 150px;
+}
+.ingredientes ul li .loader {
+	border: 5px solid #f3f3f3;
+	border-top: 5px solid #3498db;
+	border-radius: 100%;
+	width: 2rem;
+	height: 2rem;
+	position: relative;
+	background-color: transparent;
+	animation: spin 2s linear infinite;
+}
