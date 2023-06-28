@@ -30,35 +30,11 @@ function Receta({
 	irArriba,
 }) {
 	const [flip, setFlip] = useState(false)
-	const ulInstruccionesRef = useRef()
-	const smallNombreFotoRef = useRef()
 
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll)
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	})
-
-	const handleScroll = () => {
-		const instucciones = ulInstruccionesRef.current?.childNodes
-		instucciones?.forEach((element) => {
-			if (element.getBoundingClientRect().y < 100 + window.innerHeight / 2) {
-				element.classList.add('liAnimacion')
-			}
-			if (element.getBoundingClientRect().y > 100 + window.innerHeight) {
-				element.classList.remove('liAnimacion')
-			}
-		})
-	}
 	function fliping() {
 		setFlip(!flip)
 	}
 
-	function irAId() {
-		smallNombreFotoRef.current?.scrollIntoView({ behavior: 'smooth' })
-	}
 	const obtenerReceta = async () => {
 		try {
 			const response = await fetch(
@@ -78,45 +54,49 @@ function Receta({
 				if (ingredientes) {
 					return
 				} else {
-					irArriba ? irArriba() : null
 					obtenerReceta()
 				}
 			}}>
+			{ingredientes && <h1>No Sabes Que Cocinar?</h1>}
+
 			{cerrarReceta && (
 				<button
 					className='btnCerrarReceta'
 					onClick={() => {
-						irArriba()
 						cerrarReceta()
 					}}
 					title='Cerrar Receta'>
 					<MdClose />
 				</button>
 			)}
-			{ingredientes && <h1>No Sabes Que Cocinar?</h1>}
 			<div className='divNombreFoto'>
 				{receta.strMealThumb && (
-					<img src={`${receta.strMealThumb}`} alt={receta.strMeal} />
+					<img
+						className='imgReceta'
+						src={`${receta.strMealThumb}`}
+						alt={receta.strMeal}
+					/>
 				)}
 				{receta.idMeal && (
-					<small ref={smallNombreFotoRef}>Receta N° {receta.idMeal}</small>
+					<small className='divNombreFotoSmall'>
+						Receta N° {receta.idMeal}
+					</small>
 				)}
-				{receta.strMeal && <h2>{receta.strMeal}</h2>}
+				{receta.strMeal && (
+					<h2 className='divNombreFotoH2'>{receta.strMeal}</h2>
+				)}
 			</div>
 			{flip ? (
 				<div className='divInstrucciones'>
 					<h3>Instructiones</h3>
-					<ul
-						id='ulInstructiones'
-						className='ulInstructions'
-						ref={ulInstruccionesRef}>
+					<ul className='ulInstructions'>
 						{receta?.strInstructions.split('.').map((e, i) => {
 							return e.trim() && e.trim().length >= 2 ? (
-								<li key={e}>
+								<li className='ulLiInstructions' key={e}>
 									<span className='spanInstructionsNumero'>
 										{'# ' + (i + 1)}
 									</span>
-									<span>{e}</span>
+									<span className='spanInstructionsContenido'>{e}</span>
 								</li>
 							) : null
 						})}
@@ -125,7 +105,6 @@ function Receta({
 						className='btnVerIngredientes'
 						title='Ver Ingredientes'
 						onClick={() => {
-							irAId()
 							fliping()
 						}}>
 						<strong>Volver</strong>
@@ -136,38 +115,46 @@ function Receta({
 				<div className='frente'>
 					<div className='divCategoriasInfo'>
 						{receta.strTags && (
-							<div>
-								<small>Tags</small>
+							<div className='divSCategoriasInfo'>
+								<small className='divCategoriasInfoSmall'>Tags</small>
 								<MdOutlineSell />
-								<ul>
+								<ul className='divCategoriasInfoUl'>
 									{receta.strTags.split(',').map((tag) => (
-										<li key={tag}>{tag}</li>
+										<li className='divCategoriasInfoUlLi' key={tag}>
+											{tag}
+										</li>
 									))}
 								</ul>
 							</div>
 						)}
 						{receta.strCategory && (
-							<div>
-								<small>Categoria</small>
-								<MdOutlineCategory /> {receta.strCategory}
+							<div className='divSCategoriasInfo'>
+								<small className='divCategoriasInfoSmall'>Categoria</small>
+								<MdOutlineCategory />
+								<small className='divCategoriasInfoSmall'>
+									{receta.strCategory}
+								</small>
 							</div>
 						)}
 						{receta.strArea && (
-							<div>
-								<small>Pais</small>
-								<MdOutlinePublic /> {receta.strArea}
+							<div className='divSCategoriasInfo'>
+								<small className='divCategoriasInfoSmall'>Pais</small>
+								<MdOutlinePublic />
+								<small className='divCategoriasInfoSmall'>
+									{receta.strArea}
+								</small>
 							</div>
 						)}
 					</div>
 					<div className='divEnlaces'>
 						{receta.strYoutube && (
-							<a href={receta.strYoutube} target='_blanck'>
+							<a className='enlaces' href={receta.strYoutube} target='_blanck'>
 								<MdVideocam />
 								Video
 							</a>
 						)}
 						{receta.strSource && (
-							<a href={receta.strSource} target='_blanck'>
+							<a className='enlaces' href={receta.strSource} target='_blanck'>
 								<MdOutlineSource />
 								Fuente
 							</a>
@@ -191,7 +178,6 @@ function Receta({
 								className='btnVerIngredientes'
 								title='Ver Ingredientes'
 								onClick={() => {
-									irAId()
 									fliping()
 								}}>
 								<strong>Ver Receta</strong> <MdReadMore />

@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
-import Receta from '../components/Receta'
+import Receta from '../components/Receta/Receta'
 import './PlatoRandom.css'
 import { TfiReload } from 'react-icons/tfi'
-import Modal from '../components/Modal'
+import Modal from '../components/Modal/Modal'
 import { fetchRecetas } from '../helpers/fetchRecetas'
-import BuscadorDePalabras from '../components/BuscadorDePalabras'
+import { textIngredientFormater } from '../helpers/textIngredientFormater'
+import BuscadorDePalabras from '../components//BuscadorDeLetras/BuscadorDeLetras'
 function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
@@ -43,21 +44,9 @@ function PlatoRandom() {
 		setLoading(false)
 	}
 	function mostrarReceta(e) {
+		setLoading(true)
 		setReceta(e)
-		const ingredientList = []
-		for (let i = 1; i <= 20; i++) {
-			const ingredientKey = `strIngredient${i}`
-			const measureKey = `strMeasure${i}`
-			const ingredient = e[ingredientKey]
-			const measure = e[measureKey]
-			// Verificar si el ingrediente es válido (no vacío)
-			if (ingredient && ingredient.trim() !== '') {
-				// Crear una cadena con la cantidad y el ingrediente
-				const ingredientEntry = `${measure} ${ingredient}`
-				// Agregar la cadena a la lista de ingredientes
-				ingredientList.push(ingredientEntry)
-			}
-		}
+		const ingredientList = textIngredientFormater(e)
 		setLoading(false)
 		setIngredientes(ingredientList)
 	}

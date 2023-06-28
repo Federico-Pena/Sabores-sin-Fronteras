@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { MdSend } from 'react-icons/md'
 
-import './BuscadorDePalabras.css'
-const BuscadorDePalabras = ({ buscadorRecetas }) => {
+import './BuscadorDeLetras.css'
+const BuscadorDeLetras = ({ buscadorRecetas }) => {
 	const [inputValue, setInputValue] = useState('')
 	const [error, setError] = useState(false)
-
 	const fetchRecetasLetra = async (e) => {
 		e.preventDefault()
 		if (inputValue) {
@@ -53,4 +52,4 @@ const BuscadorDePalabras = ({ buscadorRecetas }) => {
 	)
 }
 
-export default BuscadorDePalabras
+export default BuscadorDeLetras

@@ -1,7 +1,7 @@
 import './App.css'
-import Navegacion from './components/Navegacion'
+import Navegacion from './components/Navegacion/Navegacion'
 import { Routes, Route } from 'react-router-dom'
-import PlatoRandom from './pages/PlatoRandom'
+import PlatoRandom from './pages/PlatoRandom/'
 import PlatoPais from './pages/PlatoPais'
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 			<div className='divApp'>
 				<Routes>
 					<Route index path='/' element={<PlatoRandom />} exact />
-					<Route path='/PlatoPais' element={<PlatoPais />} />
+					<Route path='/PlatoPais' element={<PlatoPais exact />} />
 					<Route path='*' element={<PlatoRandom />} />
 				</Routes>
 			</div>

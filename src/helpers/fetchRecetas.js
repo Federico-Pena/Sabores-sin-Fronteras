@@ -87,64 +87,35 @@ export const fetchRecetas = async () => {
 }
 
 export const fetchIngredinetes = async (pagina, ingredientesPorPagina) => {
-	const nombreEspañol = []
 	try {
-		const responseEN = await fetch('../../datosIngredientes.json')
-		const responseES = await fetch('../../datosIngredientesEspañol.json')
-		const dataEN = await responseEN.json()
-		const dataES = await responseES.json()
-		const Promesas = await Promise.allSettled([dataEN, dataES])
-
-		Promesas.forEach((Promesa) => {
-			if (Promesa.status === 'fulfilled') {
-				const ingredientesEN = Promesas[0].value.meals.slice(
-					(pagina - 1) * ingredientesPorPagina,
-					pagina * ingredientesPorPagina
-				)
-				const ingredientesES = Promesas[1].value.meals.slice(
-					(pagina - 1) * ingredientesPorPagina,
-					pagina * ingredientesPorPagina
-				)
-				nombreEspañol.length > 0
-					? null
-					: nombreEspañol.push({
-							en: ingredientesEN,
-							es: ingredientesES,
-					  })
+		const response = await fetch('../../datosIngredientes.json')
+		const data = await response.json()
+		const startIndex = (pagina - 1) * ingredientesPorPagina
+		const endIndex = startIndex + ingredientesPorPagina
+		const ingredientesPaginados = data.meals.slice(startIndex, endIndex)
+		if (ingredientesPaginados) {
+			for (let i = 0; i < ingredientesPaginados.length; i++) {
+				ingredientesPaginados[
+					i
+				].foto = `https://www.themealdb.com/images/ingredients/${ingredientesPaginados[i].strIngredient}.png`
 			}
-		})
-
-		for (let i = 0; i < nombreEspañol[0].en.length; i++) {
-			nombreEspañol[0].en[
-				i
-			].foto = `https://www.themealdb.com/images/ingredients/${nombreEspañol[0].en[i].strIngredient}.png`
-			nombreEspañol[0].en[i].nombreEspañol =
-				nombreEspañol[0].es[i].strIngredient
+			return ingredientesPaginados
 		}
 	} catch (error) {
 		console.error(error)
 		throw new Error('Hubo un error al obtener los ingredientes.')
 	}
-	return nombreEspañol[0]
 }
 
 export const fetchRegiones = async () => {
-	let regionesEspañol = []
 	try {
-		const responseEN = await fetch('./datosRegiones.json')
-		const dataEN = await responseEN.json()
-		const responseES = await fetch('./datosRegionesEspañol.json')
-		const dataES = await responseES.json()
-		const Promesas = await Promise.all([dataES, dataEN])
-		Promesas[0].meals?.map((dataes) => {
-			regionesEspañol.push({ es: dataes.strArea })
+		const response = await fetch('./datosRegiones.json')
+		const data = await response.json()
+		data.meals?.map((dataen, i) => {
+			dataen.foto = arrayFotos[i]
 		})
-		Promesas[1].meals?.map((dataen, i) => {
-			regionesEspañol[i].en = dataen.strArea
-			regionesEspañol[i].foto = arrayFotos[i]
-		})
+		return data.meals
 	} catch (error) {
 		return error
 	}
-	return regionesEspañol
 }

@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
-import Receta from '../components/Receta'
-import Modal from '../components/Modal'
+import { useEffect, useState } from 'react'
+import Receta from '../components/Receta/Receta'
+import Modal from '../components/Modal/Modal'
 import { fetchRegiones } from '../helpers/fetchRecetas'
 import './PlatoPais.css'
-import IngredientesComponent from '../components/IngredientesComponent'
-import BuscadorPalabras from '../components/BuscadorDePalabras'
+import IngredientesComponent from '../components/IngredientesComponent/IngredientesComponent'
+import BuscadorPalabras from '../components/BuscadorDeLetras/BuscadorDeLetras'
+import { textIngredientFormater } from '../helpers/textIngredientFormater'
 function PlatoPais() {
 	const [region, setPais] = useState('')
 	const [regiones, setRegiones] = useState()
@@ -13,7 +14,6 @@ function PlatoPais() {
 	const [recetas, setRecetas] = useState()
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState()
-	const divSugerenciasRef = useRef(null)
 
 	useEffect(() => {
 		fetchRegions()
@@ -29,7 +29,9 @@ function PlatoPais() {
 		setLoading(true)
 		try {
 			const data = await fetchRegiones()
-			setRegiones(data.sort((a, b) => (a.es > b.es ? 1 : -1)))
+			setRegiones(
+				data.sort((a, b) => (a.strIngredient > b.strIngredient ? -1 : 1))
+			)
 		} catch (error) {
 			setError(error)
 		}
@@ -50,6 +52,7 @@ function PlatoPais() {
 		}
 		setLoading(false)
 	}
+	//mostrar resultados del filtro Ingrediente al hacer click en el icono
 	const buscarRecetaPorIngrediente = async (e) => {
 		setLoading(true)
 		try {
@@ -61,38 +64,24 @@ function PlatoPais() {
 		} catch (error) {
 			setError(error)
 		}
+		setReceta()
 		setLoading(false)
 	}
 
 	//mostrar Receta al hacerle click a la foto
-
 	const mostrarReceta = (e) => {
 		setLoading(true)
-		const ingredientList = []
+		const ingredientList = textIngredientFormater(e)
 		setReceta(e)
-		for (let i = 1; i <= 20; i++) {
-			const ingredientKey = `strIngredient${i}`
-			const measureKey = `strMeasure${i}`
-			const ingredient = e[ingredientKey]
-			const measure = e[measureKey]
-			// Verificar si el ingrediente es válido (no vacío)
-			if (ingredient && ingredient.trim() !== '') {
-				// Crear una cadena con la cantidad y el ingrediente
-				const ingredientEntry = `${measure} ${ingredient}`
-				// Agregar la cadena a la lista de ingredientes
-				ingredientList.push(ingredientEntry)
-			}
-		}
 		setLoading(false)
 		setIngredientList(ingredientList)
 	}
 
-	//mostrar resultados del filtro Pais
+	//mostrar resultados del filtro Pais al hacer click en el icono
 	const elegirFiltroPais = (e) => {
 		setPais(e)
 		setReceta('')
 	}
-	//mostrar resultados del filtro Ingrediente
 
 	function cerrarModal() {
 		setError()
@@ -102,12 +91,6 @@ function PlatoPais() {
 
 	function manejoErrorReceta(e) {
 		setError(e)
-	}
-
-	function irArriba() {
-		divSugerenciasRef.current?.scrollIntoView({
-			behavior: 'smooth',
-		})
 	}
 
 	return (
@@ -128,52 +111,51 @@ function PlatoPais() {
 					Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O País
 					De Origen
 				</h2>
-
-				<div className='divRecetasNombre'>
-					<div className='divSugerencias'>
-						<div className='regiones'>
-							<ul>
-								{regiones?.map((region, i) => {
-									return (
-										<li
-											onClick={() => {
-												elegirFiltroPais(region.en)
-											}}
-											key={i}
-											title={region.es}>
-											<img src={region.foto} alt={region.es} />
-										</li>
-									)
-								})}
-							</ul>
-						</div>
-						<IngredientesComponent
-							buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
-							ingredientesPorPagina={150}
-						/>
-					</div>
-					<div className='divRecetasContainer' ref={divSugerenciasRef}>
-						{receta ? (
-							<Receta
-								irArriba={irArriba}
-								cerrarReceta={cerrarModal}
-								ingredientes={ingredientList}
-								receta={receta}
-							/>
-						) : recetas ? (
-							recetas.map((receta, i) => {
-								return (
-									<Receta
-										manejoError={manejoErrorReceta}
-										mostrarReceta={mostrarReceta}
-										key={i}
-										receta={receta}
-										irArriba={irArriba}
+				<IngredientesComponent
+					buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
+					ingredientesPorPagina={82}
+				/>
+				<div className='regiones'>
+					<ul className='regionesUl'>
+						{regiones?.map((region, i) => {
+							return (
+								<li
+									className='regionesUlLi'
+									onClick={() => {
+										elegirFiltroPais(region.strArea)
+									}}
+									key={region.strArea}
+									title={region.strArea}>
+									<img
+										src={region.foto}
+										alt={region.strArea}
+										className='regionesUlLiImg'
 									/>
-								)
-							})
-						) : null}
-					</div>
+								</li>
+							)
+						})}
+					</ul>
+				</div>
+
+				<div className='divRecetasContainer'>
+					{receta ? (
+						<Receta
+							cerrarReceta={cerrarModal}
+							ingredientes={ingredientList}
+							receta={receta}
+						/>
+					) : recetas ? (
+						recetas.map((receta, i) => {
+							return (
+								<Receta
+									manejoError={manejoErrorReceta}
+									mostrarReceta={mostrarReceta}
+									key={i}
+									receta={receta}
+								/>
+							)
+						})
+					) : null}
 				</div>
 			</div>
 		</>

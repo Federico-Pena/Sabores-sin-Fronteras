@@ -4,7 +4,7 @@
     "src": "food.png"
   },
   "index.css": {
-    "file": "assets/index-d3d8f35a.css",
+    "file": "assets/index-dceaca59.css",
     "src": "index.css"
   },
   "index.html": {
@@ -42,9 +42,9 @@
       "assets/backgroundLandscape-48dfe05f.png"
     ],
     "css": [
-      "assets/index-d3d8f35a.css"
+      "assets/index-dceaca59.css"
     ],
-    "file": "index65308.js",
+    "file": "index87682.js",
     "isEntry": true,
     "src": "index.html"
   },
