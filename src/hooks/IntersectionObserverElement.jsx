@@ -1,34 +1,37 @@
 import { useEffect, useState } from 'react'
 
-function IntersectionObserverElement(visorRef, root, rootMargin, threshold) {
+export const IntersectionObserverElement = (elementRef, root, rootMargin) => {
 	const [visible, setVisible] = useState(false)
 
 	useEffect(() => {
-		const { current } = visorRef
-		const estaVisible = (entries) => {
-			if (current.children.length > 574) {
-				observer.unobserve(current.lastChild)
-				console.log('unobserve')
-			}
-			const [entry] = entries
-			setVisible(entry.isIntersecting)
+		const estaEnPantalla = (entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					setVisible(entry.isIntersecting)
+				} else {
+					setVisible(false)
+				}
+			})
 		}
-		const options = {
-			root: root.current || null,
-			rootMargin: rootMargin || '0px',
-			threshold: threshold || 0,
-		}
-		const observer = new IntersectionObserver(estaVisible, options)
-		if (current) {
-			observer.observe(current.lastChild)
-		}
-		return () => {
-			if (current) {
-				observer.disconnect()
-			}
-		}
-	}, [visorRef, root, rootMargin, threshold])
-	return { visible, visorRef }
-}
 
-export default IntersectionObserverElement
+		const opciones = {
+			root: root ? root.current : null,
+			rootMargin: rootMargin ? rootMargin : '0px',
+			threshold: 1,
+		}
+
+		const observer = new IntersectionObserver(estaEnPantalla, opciones)
+
+		if (elementRef.current) {
+			observer.observe(elementRef.current)
+		}
+
+		return () => {
+			if (elementRef.current) {
+				observer.unobserve(elementRef.current)
+			}
+		}
+	}, [elementRef, root])
+
+	return visible
+}

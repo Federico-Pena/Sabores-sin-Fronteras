@@ -13,7 +13,9 @@ h2 {
 	display: flex;
 	width: 90%;
 	height: 60px;
-	overflow: auto;
+	overflow-x: scroll;
+	scroll-behavior: smooth;
+
 	background-image: url('../assets//backgrondChiico.png');
 	background-position: center;
 	box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.856);

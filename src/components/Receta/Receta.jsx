@@ -11,6 +11,7 @@ import {
 } from 'react-icons/md'
 
 import './Receta.css'
+import { IntersectionObserverElement } from '../../hooks/IntersectionObserverElement'
 /**
  * @param {*} reseta
  * Objeto - Receta a mostrar
@@ -30,6 +31,9 @@ function Receta({
 	irArriba,
 }) {
 	const [flip, setFlip] = useState(false)
+	const ulInstRef = useRef(null)
+	const divref = useRef(null)
+	const visible = IntersectionObserverElement(ulInstRef)
 
 	function fliping() {
 		setFlip(!flip)
@@ -58,7 +62,6 @@ function Receta({
 				}
 			}}>
 			{ingredientes && <h1>No Sabes Que Cocinar?</h1>}
-
 			{cerrarReceta && (
 				<button
 					className='btnCerrarReceta'
@@ -96,7 +99,9 @@ function Receta({
 									<span className='spanInstructionsNumero'>
 										{'# ' + (i + 1)}
 									</span>
-									<span className='spanInstructionsContenido'>{e}</span>
+									<span className='spanInstructionsContenido' ref={ulInstRef}>
+										{e}
+									</span>
 								</li>
 							) : null
 						})}

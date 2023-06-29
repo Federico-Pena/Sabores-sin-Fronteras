@@ -1,105 +1,88 @@
 import './IngredientesComponent.css'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { fetchIngredinetes } from '../../helpers/fetchRecetas'
-import IntersectionObserverElement from '../../hooks/IntersectionObserverElement'
+import { useEffect, useRef, useState } from 'react'
+import { fetchIngredientes } from '../../helpers/fetchingIngredientes'
+import { IntersectionObserverElement } from '../../hooks/IntersectionObserverElement'
+import ImageLoader from '../ImageLoader/ImageLoader'
 // Uso de la función con paginación por scroll
-const IngredientesComponent = ({
-	ingredientesPorPagina,
-	buscarRecetaPorIngrediente,
-}) => {
+const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 	const [ingredientes, setIngredientes] = useState([])
-	const [pagina, setPagina] = useState(1)
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(false)
-	const ulIngredRef = useRef()
-	const { visible, visorRef } = IntersectionObserverElement(
-		ulIngredRef,
-		ulIngredRef,
-		'300px',
-		0
-	)
+	const [numElementosMostrados, setNumElementosMostrados] = useState(0)
+	const liRef = useRef(null)
+	const ulRef = useRef(null)
 
+	const visible = IntersectionObserverElement(liRef, ulRef)
 	useEffect(() => {
 		const fetchInitialIngredientes = async () => {
 			setLoading(true)
-			const initialIngredientes = await fetchIngredinetes(
-				pagina,
-				ingredientesPorPagina
+			const initialIngredientes = await fetchIngredientes()
+			const ingredientesOrdenados = initialIngredientes.meals.sort((a, b) =>
+				a.nombreEspañol.localeCompare(b.nombreEspañol)
 			)
-			setIngredientes(
-				initialIngredientes.sort((a, b) =>
-					a.nombreEspañol > b.nombreEspañol ? 1 : -1
-				)
-			)
+			setIngredientes(ingredientesOrdenados)
 			setLoading(false)
 		}
 		fetchInitialIngredientes()
-	}, [ingredientesPorPagina, pagina])
-
-	const cambiarPagina = useCallback(
-		() => setPagina((estadoAnterior) => estadoAnterior + 1),
-		[]
-	)
-
+	}, [])
 	useEffect(() => {
-		cambiarPagina()
-	}, [cambiarPagina])
-
-	useEffect(() => {
-		const masIngredientes = async () => {
-			const result = await fetchIngredinetes(pagina, ingredientesPorPagina)
-			setIngredientes((prev) => prev.concat(result))
-			//visorRef.current.firstChild.scrollIntoView()
+		if (visible) {
+			setNumElementosMostrados(
+				(prevNumElementosMostrados) =>
+					prevNumElementosMostrados + elementosPorIteracion
+			)
 		}
-
-		if (visible && ingredientes.length > 62) {
-			masIngredientes()
-		}
-	}, [pagina, visible])
+	}, [visible])
+	const elementosMostrados = ingredientes
+		.slice(0, numElementosMostrados)
+		.sort((a, b) => a.nombreEspañol.localeCompare(b.nombreEspañol))
+	const elementosPorIteracion = 20 // Número de elementos a mostrar en cada iteración
 
 	return (
 		<div className='divIngredientesComponent'>
 			<h3
 				className={`h3IngredientesLength ${
-					ingredientes.length === 246
+					elementosMostrados.length === 246
 						? 'length246'
-						: ingredientes.length === 328
+						: elementosMostrados.length === 328
 						? 'length328'
-						: ingredientes.length === 410
+						: elementosMostrados.length === 410
 						? 'length410'
-						: ingredientes.length === 492
+						: elementosMostrados.length === 492
 						? 'length492'
-						: ingredientes.length === 574
+						: elementosMostrados.length === 574
 						? 'length574'
 						: ''
 				}`}>
-				{ingredientes ? `${ingredientes.length} Ingredientes` : null}
+				{ingredientes
+					? `${elementosMostrados.length} / ${ingredientes.length} Ingredientes`
+					: null}
 			</h3>
 			<div className='divIComponent'>
-				<ul className='ulIComponent' ref={ulIngredRef}>
-					{ingredientes
-						? ingredientes?.map((ingrediente, i) => (
-								<li
-									className='ulLiIComponent'
-									key={ingrediente.idIngredient + i}
-									onClick={() =>
-										buscarRecetaPorIngrediente(ingrediente.strIngredient)
-									}>
-									<img
-										className='ulLiImgIComponent'
-										src={`${ingrediente.foto}`}
-										alt={ingrediente.strIngredient}
-									/>
-									<span className='ulLiImgInglesIComponent'>
-										{ingrediente.strIngredient}
-									</span>
-									<span className='ulLiImgEspañolIComponent'>
-										{ingrediente.nombreEspañol}
-									</span>
-								</li>
-						  ))
-						: null}
-					<li></li>
+				<ul className='ulIComponent' ref={ulRef}>
+					{elementosMostrados.map((ingrediente, i) => (
+						<li
+							className='ulLiIComponent'
+							key={ingrediente.idIngredient + i}
+							onClick={() =>
+								buscarRecetaPorIngrediente(ingrediente.strIngredient)
+							}>
+							<ImageLoader
+								src={`${
+									ingrediente.foto ||
+									'https://placehold.co/600x400/000000/FFFFFF.png'
+								}`}
+								altAttr={ingrediente.strIngredient}
+							/>
+							<span className='ulLiImgInglesIComponent'>
+								{ingrediente.strIngredient}
+							</span>
+							<span className='ulLiImgEspañolIComponent'>
+								{ingrediente.nombreEspañol}
+							</span>
+						</li>
+					))}
+					<li ref={liRef}></li>
 				</ul>
 			</div>
 		</div>

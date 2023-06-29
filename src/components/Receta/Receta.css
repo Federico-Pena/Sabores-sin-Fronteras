@@ -182,7 +182,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	opacity: 0;
+	padding: 2rem 0;
 }
 /* agregar para que aparezca animado con scroll */
 .recetasContainer .divInstrucciones .ulInstructions .liAnimacion {
@@ -213,15 +213,17 @@
 	.ulLiInstructions
 	.spanInstructionsNumero {
 	width: 50%;
-	margin: auto;
+	height: 2rem;
 	border-radius: 0.5rem 0.5rem 0 0;
-	margin-top: 2rem;
-	margin-bottom: -10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #643843;
 	color: var(--fontColor2);
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%);
 }
 
 @keyframes fadeIn {

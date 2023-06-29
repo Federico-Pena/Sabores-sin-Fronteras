@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Receta from '../components/Receta/Receta'
 import Modal from '../components/Modal/Modal'
-import { fetchRegiones } from '../helpers/fetchRecetas'
+import { fetchRegiones } from '../helpers/fetchingRegiones'
 import './PlatoPais.css'
 import IngredientesComponent from '../components/IngredientesComponent/IngredientesComponent'
 import BuscadorPalabras from '../components/BuscadorDeLetras/BuscadorDeLetras'
@@ -113,7 +113,6 @@ function PlatoPais() {
 				</h2>
 				<IngredientesComponent
 					buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
-					ingredientesPorPagina={82}
 				/>
 				<div className='regiones'>
 					<ul className='regionesUl'>
