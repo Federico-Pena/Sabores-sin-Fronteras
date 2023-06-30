@@ -26,16 +26,17 @@ function PlatoRandom() {
 		} catch (error) {
 			setError(error)
 		}
-
 		setLoading(false)
 	}
 
 	function cerrarModal() {
 		setError()
 	}
+
 	function buscadorRecetas(e) {
 		mostrarRecetas(e)
 	}
+
 	const mostrarRecetas = (e) => {
 		setLoading(true)
 		setReceta()
@@ -43,6 +44,7 @@ function PlatoRandom() {
 		setRecetas(e)
 		setLoading(false)
 	}
+
 	function mostrarReceta(e) {
 		setLoading(true)
 		setReceta(e)
@@ -50,9 +52,7 @@ function PlatoRandom() {
 		setLoading(false)
 		setIngredientes(ingredientList)
 	}
-	function irArriba() {
-		divPlatoRandom?.current.scrollIntoView({ behavior: 'smooth' })
-	}
+
 	function cerrarReceta() {
 		setError()
 		setReceta()
@@ -75,7 +75,10 @@ function PlatoRandom() {
 			) : receta ? (
 				<>
 					<h1>Sorpresa Culinaria</h1>
-					<button className='btnAleatoria' onClick={pintarRecetas}>
+					<button
+						title='receta aleatoria'
+						className='btnAleatoria'
+						onClick={pintarRecetas}>
 						<TfiReload />
 					</button>
 					<div className='divInputBuscar'>
@@ -86,7 +89,6 @@ function PlatoRandom() {
 						ingredientes={ingredientes}
 						receta={receta}
 						cerrarReceta={recetas ? cerrarReceta : null}
-						irArriba={irArriba}
 					/>
 				</>
 			) : recetas ? (
@@ -101,7 +103,6 @@ function PlatoRandom() {
 								mostrarReceta={mostrarReceta}
 								key={i}
 								receta={receta}
-								irArriba={irArriba}
 							/>
 						)
 					})}

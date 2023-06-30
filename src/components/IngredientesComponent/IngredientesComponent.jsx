@@ -1,8 +1,8 @@
 import './IngredientesComponent.css'
 import { useEffect, useRef, useState } from 'react'
 import { fetchIngredientes } from '../../helpers/fetchingIngredientes'
-import { IntersectionObserverElement } from '../../hooks/IntersectionObserverElement'
-import ImageLoader from '../ImageLoader/ImageLoader'
+import { useIntersectionObserverElement } from '../../hooks/useIntersectionObserverElement'
+import IngredinteLoader from './IngredinteLoader'
 // Uso de la función con paginación por scroll
 const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 	const [ingredientes, setIngredientes] = useState([])
@@ -12,7 +12,8 @@ const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 	const liRef = useRef(null)
 	const ulRef = useRef(null)
 
-	const visible = IntersectionObserverElement(liRef, ulRef)
+	const visible = useIntersectionObserverElement(liRef, ulRef)
+
 	useEffect(() => {
 		const fetchInitialIngredientes = async () => {
 			setLoading(true)
@@ -25,6 +26,7 @@ const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 		}
 		fetchInitialIngredientes()
 	}, [])
+
 	useEffect(() => {
 		if (visible) {
 			setNumElementosMostrados(
@@ -33,54 +35,22 @@ const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 			)
 		}
 	}, [visible])
+
 	const elementosMostrados = ingredientes
 		.slice(0, numElementosMostrados)
 		.sort((a, b) => a.nombreEspañol.localeCompare(b.nombreEspañol))
-	const elementosPorIteracion = 20 // Número de elementos a mostrar en cada iteración
+	const elementosPorIteracion = 20
 
 	return (
 		<div className='divIngredientesComponent'>
-			<h3
-				className={`h3IngredientesLength ${
-					elementosMostrados.length === 246
-						? 'length246'
-						: elementosMostrados.length === 328
-						? 'length328'
-						: elementosMostrados.length === 410
-						? 'length410'
-						: elementosMostrados.length === 492
-						? 'length492'
-						: elementosMostrados.length === 574
-						? 'length574'
-						: ''
-				}`}>
-				{ingredientes
-					? `${elementosMostrados.length} / ${ingredientes.length} Ingredientes`
-					: null}
-			</h3>
 			<div className='divIComponent'>
 				<ul className='ulIComponent' ref={ulRef}>
 					{elementosMostrados.map((ingrediente, i) => (
-						<li
-							className='ulLiIComponent'
-							key={ingrediente.idIngredient + i}
-							onClick={() =>
-								buscarRecetaPorIngrediente(ingrediente.strIngredient)
-							}>
-							<ImageLoader
-								src={`${
-									ingrediente.foto ||
-									'https://placehold.co/600x400/000000/FFFFFF.png'
-								}`}
-								altAttr={ingrediente.strIngredient}
-							/>
-							<span className='ulLiImgInglesIComponent'>
-								{ingrediente.strIngredient}
-							</span>
-							<span className='ulLiImgEspañolIComponent'>
-								{ingrediente.nombreEspañol}
-							</span>
-						</li>
+						<IngredinteLoader
+							buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
+							ingrediente={ingrediente}
+							key={ingrediente.foto + i}
+						/>
 					))}
 					<li ref={liRef}></li>
 				</ul>

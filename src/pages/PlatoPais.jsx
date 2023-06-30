@@ -4,7 +4,6 @@ import Modal from '../components/Modal/Modal'
 import { fetchRegiones } from '../helpers/fetchingRegiones'
 import './PlatoPais.css'
 import IngredientesComponent from '../components/IngredientesComponent/IngredientesComponent'
-import BuscadorPalabras from '../components/BuscadorDeLetras/BuscadorDeLetras'
 import { textIngredientFormater } from '../helpers/textIngredientFormater'
 function PlatoPais() {
 	const [region, setPais] = useState('')
@@ -18,7 +17,22 @@ function PlatoPais() {
 	useEffect(() => {
 		fetchRegions()
 	}, [])
+
 	useEffect(() => {
+		//buscar recetas por una region
+		const fetchRegion = async () => {
+			setLoading(true)
+			try {
+				const response = await fetch(
+					`https://www.themealdb.com/api/json/v1/1/filter.php?a=${region}`
+				)
+				const data = await response.json()
+				setRecetas(data.meals)
+			} catch (error) {
+				setError(error)
+			}
+			setLoading(false)
+		}
 		if (region) {
 			fetchRegion()
 		}
@@ -29,29 +43,13 @@ function PlatoPais() {
 		setLoading(true)
 		try {
 			const data = await fetchRegiones()
-			setRegiones(
-				data.sort((a, b) => (a.strIngredient > b.strIngredient ? -1 : 1))
-			)
+			setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
 		} catch (error) {
 			setError(error)
 		}
 		setLoading(false)
 	}
 
-	//buscar recetas por una region
-	const fetchRegion = async () => {
-		setLoading(true)
-		try {
-			const response = await fetch(
-				`https://www.themealdb.com/api/json/v1/1/filter.php?a=${region}`
-			)
-			const data = await response.json()
-			setRecetas(data.meals)
-		} catch (error) {
-			setError(error)
-		}
-		setLoading(false)
-	}
 	//mostrar resultados del filtro Ingrediente al hacer click en el icono
 	const buscarRecetaPorIngrediente = async (e) => {
 		setLoading(true)
@@ -72,9 +70,9 @@ function PlatoPais() {
 	const mostrarReceta = (e) => {
 		setLoading(true)
 		const ingredientList = textIngredientFormater(e)
+		setIngredientList(ingredientList)
 		setReceta(e)
 		setLoading(false)
-		setIngredientList(ingredientList)
 	}
 
 	//mostrar resultados del filtro Pais al hacer click en el icono

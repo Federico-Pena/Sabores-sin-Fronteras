@@ -1,8 +1,6 @@
 .divPlatoRandom {
 	min-height: 100vh;
 	padding: 5rem 0;
-	transition: 0.3s ease;
-	animation: fadeIn 1.5s ease;
 }
 
 .divPlatoRandom h1 {

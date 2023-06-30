@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+/* import { useState, useEffect } from 'react'
 import Receta from './Receta'
 function ContenedorRecetas() {
 	const [receta, setReceta] = useState('')
@@ -48,3 +48,4 @@ function ContenedorRecetas() {
 }
 
 export default ContenedorRecetas
+ */

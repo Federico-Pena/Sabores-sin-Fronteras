@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react'
 
-export const IntersectionObserverElement = (elementRef, root, rootMargin) => {
+export const useIntersectionObserverElement = (
+	elementRef,
+	root,
+	rootMargin,
+	threshold
+) => {
 	const [visible, setVisible] = useState(false)
 
 	useEffect(() => {
+		const { current } = elementRef
 		const estaEnPantalla = (entries, observer) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
@@ -17,7 +23,7 @@ export const IntersectionObserverElement = (elementRef, root, rootMargin) => {
 		const opciones = {
 			root: root ? root.current : null,
 			rootMargin: rootMargin ? rootMargin : '0px',
-			threshold: 1,
+			threshold: threshold ? threshold : 1,
 		}
 
 		const observer = new IntersectionObserver(estaEnPantalla, opciones)
@@ -27,11 +33,11 @@ export const IntersectionObserverElement = (elementRef, root, rootMargin) => {
 		}
 
 		return () => {
-			if (elementRef.current) {
-				observer.unobserve(elementRef.current)
+			if (current) {
+				observer.unobserve(current)
 			}
 		}
-	}, [elementRef, root])
+	}, [elementRef, root, rootMargin, threshold])
 
 	return visible
 }
