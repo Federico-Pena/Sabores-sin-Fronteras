@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MdSend } from 'react-icons/md'
 
 import './BuscadorDeLetras.css'
-const BuscadorDeLetras = ({ buscadorRecetas }) => {
+const BuscadorDeLetras = ({ buscadorRecetas, refParent }) => {
 	const [inputValue, setInputValue] = useState('')
 	const [error, setError] = useState(false)
 	const fetchRecetasLetra = async (e) => {
@@ -14,6 +14,7 @@ const BuscadorDeLetras = ({ buscadorRecetas }) => {
 				)
 				const data = await result.json()
 				buscadorRecetas(data.meals)
+				refParent.current.scrollIntoView({ behavior: 'smooth' })
 			} catch (error) {
 				setError(error)
 				setTimeout(() => {
@@ -38,6 +39,7 @@ const BuscadorDeLetras = ({ buscadorRecetas }) => {
 						autoComplete='off'
 						id='inputBuscar'
 						maxLength={1}
+						minLength={1}
 						type='text'
 						value={inputValue}
 						onChange={handleInputChange}
@@ -46,8 +48,8 @@ const BuscadorDeLetras = ({ buscadorRecetas }) => {
 				<button className='formInputBuscarBtn' onClick={fetchRecetasLetra}>
 					<MdSend />
 				</button>
-				{error ? <small>Ocurrió Un Error Al Buscar La imagen</small> : null}
 			</form>
+			{error ? <small>Ocurrió Un Error Al Buscar La imagen</small> : null}
 		</div>
 	)
 }

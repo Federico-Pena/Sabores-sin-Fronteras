@@ -14,7 +14,7 @@ export default defineConfig({
 				short_name: 'Sabores sin Fronteras',
 				start_url: '/',
 				description:
-					'Encuentra Inspiracion O Solo Admira Los Platos Del Mundo.',
+					'Viaja Por El Mundo. En Sabores Sin Fronteras Encontrarás Una Amplia Variedad De Recetas Internacionales, Desde Clásicos Italianos Hasta Exóticas Especias Asiáticas. ¡Descubre Nuevos Horizontes Culinarios!',
 				display: 'fullscreen',
 				background_color: '#643843',
 				theme_color: '#643843',

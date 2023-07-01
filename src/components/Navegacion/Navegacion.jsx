@@ -20,14 +20,14 @@ function Navegacion() {
 	return (
 		<header>
 			{location.pathname === '/' ? null : (
-				<nav className='headerNav'>
-					<button
-						className={open ? 'NavButtonMenuOpen' : 'NavButtonMenuClose'}
-						onClick={abrirMenu}>
-						<MdRestaurantMenu className={'ButtonMenuSvg'} />
-					</button>
+				<nav className={'headerNav'}>
 					<ul className={open ? 'NavUlOpen' : 'NavUlClose'}>
-						<li className='linkNav'>
+						<li
+							className={
+								location.pathname === '/PlatoRandom'
+									? 'linkNavLocation'
+									: 'linkNav'
+							}>
 							<Link className='linkNav' to={'/PlatoRandom'}>
 								{location.pathname === '/PlatoRandom' ? (
 									<IoHomeSharp />
@@ -36,7 +36,17 @@ function Navegacion() {
 								)}
 							</Link>
 						</li>
-						<li className='linkNav'>
+						<button
+							className={open ? 'NavButtonMenuOpen' : 'NavButtonMenuClose'}
+							onClick={abrirMenu}>
+							<MdRestaurantMenu className={'ButtonMenuSvg'} />
+						</button>
+						<li
+							className={
+								location.pathname === '/PlatoPais'
+									? 'linkNavLocation'
+									: 'linkNav'
+							}>
 							<Link className='linkNav' to={'/PlatoPais'}>
 								{location.pathname === '/PlatoRandom' ? (
 									<IoFastFoodOutline />
