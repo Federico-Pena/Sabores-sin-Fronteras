@@ -1,17 +1,77 @@
-nav ul {
-	display: flex;
-	justify-content: space-evenly;
-	background-color: rgba(247, 247, 247, 0.603);
-	padding: 1rem 0;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+.headerNav {
+	position: relative;
 }
 
+.headerNav .NavUlOpen {
+	display: flex;
+	justify-content: space-evenly;
+	background-color: rgba(54, 54, 54, 0.836);
+	padding: 1rem 0;
+	position: fixed;
+	z-index: 2;
+	top: 0rem;
+	left: 0rem;
+	width: 100%;
+	transition: all 1s ease-in-out;
+	border-bottom: 1px solid #eeeeee85;
+	clip-path: circle(100% at center);
+}
+.headerNav .NavUlClose {
+	display: flex;
+	justify-content: space-evenly;
+	background-color: rgba(54, 54, 54, 0.836);
+	padding: 1rem 0;
+	position: fixed;
+	z-index: 2;
+	top: 0rem;
+	left: 0rem;
+	width: 100%;
+	transition: all 1s ease-in-out;
+	border-bottom: 1px solid #eeeeee00;
+	clip-path: circle(0% at center);
+}
 .linkNav svg {
 	display: flex;
 	width: 2rem;
 	height: 2rem;
 	margin: auto;
-	color: black;
+	color: rgb(255, 255, 255);
+}
+.headerNav .NavButtonMenuOpen {
+	position: fixed;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 9;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 1rem;
+	border: none;
+	color: rgb(15, 15, 15);
+	background-color: rgba(255, 255, 255, 0.836);
+	transition: all 0.5s linear;
+	outline: 1px solid rgb(0, 0, 0);
+	outline-offset: -3px;
+}
+
+.headerNav .NavButtonMenuClose {
+	position: fixed;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 9;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 100%;
+	border: none;
+	color: rgb(255, 255, 255);
+	transition: all 0.5s linear;
+	outline: 1px solid rgb(255, 255, 255);
+	background-color: rgba(54, 54, 54, 0.836);
+}
+.headerNav .NavButtonMenuClose .ButtonMenuSvg {
+	width: 70%;
+	height: 70%;
+}
+.headerNav .NavButtonMenuOpen .ButtonMenuSvg {
+	width: 70%;
+	height: 70%;
 }

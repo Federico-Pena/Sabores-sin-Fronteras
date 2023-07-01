@@ -1,11 +1,11 @@
 .divFormInputBuscar {
 	display: flex;
 	flex-direction: column;
-	margin: 2rem 0;
+	margin: 1rem;
 }
 .divFormInputBuscar .formInputBuscar {
 	display: flex;
-	width: 50%;
+	width: 100%;
 	max-width: 215px;
 	margin: auto;
 	background-color: rgba(0, 0, 0, 0.849);

@@ -31,7 +31,11 @@ const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
 			ref={liRef}
 			className=''
 			onClick={() => buscarRecetaPorIngrediente(ingrediente.strIngredient)}>
-			<img className='ulLiImgIComponent' alt={ingrediente.strIngredient} />
+			<img
+				className='ulLiImgIComponent'
+				src={ingrediente.foto ? ingrediente.foto : 'placeholder.svg'}
+				alt={ingrediente.strIngredient}
+			/>
 			<span className='ulLiImgInglesIComponent'>
 				{ingrediente.strIngredient}
 			</span>

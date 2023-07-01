@@ -56,7 +56,6 @@ function Receta({
 					obtenerReceta()
 				}
 			}}>
-			{ingredientes && <h1>No Sabes Que Cocinar?</h1>}
 			{cerrarReceta && (
 				<button
 					className='btnCerrarReceta'

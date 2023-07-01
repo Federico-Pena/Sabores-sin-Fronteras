@@ -6,18 +6,21 @@ import Modal from '../components/Modal/Modal'
 import { fetchRecetas } from '../helpers/fetchRecetas'
 import { textIngredientFormater } from '../helpers/textIngredientFormater'
 import BuscadorDePalabras from '../components//BuscadorDeLetras/BuscadorDeLetras'
+import { Link } from 'react-router-dom'
 function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState()
 	const [recetas, setRecetas] = useState()
-	const divPlatoRandom = useRef(null)
+	const heroPlatoRandom = useRef(null)
+	const aleatoriaPlatoRandom = useRef(null)
+
 	useEffect(() => {
 		pintarRecetas()
 	}, [])
 
-	const pintarRecetas = async () => {
+	const pintarRecetas = async (e) => {
 		setLoading(true)
 		try {
 			const data = await fetchRecetas()
@@ -61,8 +64,13 @@ function PlatoRandom() {
 	function manejoError() {
 		setError(true)
 	}
+	const moverseEnPagina = (ref) => {
+		const releventDiv = ref.current
+		releventDiv.scrollIntoView({ behavior: 'smooth' })
+	}
 	return (
-		<div className='divPlatoRandom' ref={divPlatoRandom}>
+		<div className='divPlatoRandom'>
+			{ingredientes && <h1>No Sabes Que Cocinar?</h1>}
 			{error ? (
 				<Modal
 					cerrarModal={cerrarModal}
@@ -70,18 +78,20 @@ function PlatoRandom() {
 					error={error}
 					titulo={'Ocurrió Un Error'}
 				/>
-			) : loading ? (
-				<Modal loading={loading} />
-			) : receta ? (
+			) : null}
+			{loading ? <Modal loading={loading} /> : null}
+			{receta ? (
 				<>
-					<h1>Sorpresa Culinaria</h1>
-					<button
-						title='receta aleatoria'
-						className='btnAleatoria'
-						onClick={pintarRecetas}>
-						<TfiReload />
-					</button>
+					<div
+						className='aleatoriaPlatoRandom'
+						ref={aleatoriaPlatoRandom}></div>
 					<div className='divInputBuscar'>
+						<button
+							title='receta aleatoria'
+							className='btnAleatoria'
+							onClick={pintarRecetas}>
+							<TfiReload />
+						</button>
 						<BuscadorDePalabras buscadorRecetas={buscadorRecetas} />
 					</div>
 					<Receta
@@ -92,10 +102,14 @@ function PlatoRandom() {
 					/>
 				</>
 			) : recetas ? (
-				<>
-					<button className='btnAleatoria' onClick={pintarRecetas}>
-						<TfiReload />
-					</button>
+				<div className='aleatoriaPlatoRandom'>
+					<div className='divInputBuscar'>
+						<button className='btnAleatoria' onClick={pintarRecetas}>
+							<TfiReload />
+						</button>
+						<BuscadorDePalabras buscadorRecetas={buscadorRecetas} />
+					</div>
+
 					{recetas?.map((receta, i) => {
 						return (
 							<Receta
@@ -106,7 +120,7 @@ function PlatoRandom() {
 							/>
 						)
 					})}
-				</>
+				</div>
 			) : (
 				<>
 					<h1>Ocurrió Un Error</h1>

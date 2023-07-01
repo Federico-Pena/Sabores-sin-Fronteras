@@ -5,6 +5,7 @@ import { fetchRegiones } from '../helpers/fetchingRegiones'
 import './PlatoPais.css'
 import IngredientesComponent from '../components/IngredientesComponent/IngredientesComponent'
 import { textIngredientFormater } from '../helpers/textIngredientFormater'
+import RegionesComponent from '../components/RegionesComponent/RegionesComponent'
 function PlatoPais() {
 	const [region, setPais] = useState('')
 	const [regiones, setRegiones] = useState()
@@ -113,25 +114,10 @@ function PlatoPais() {
 					buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
 				/>
 				<div className='regiones'>
-					<ul className='regionesUl'>
-						{regiones?.map((region, i) => {
-							return (
-								<li
-									className='regionesUlLi'
-									onClick={() => {
-										elegirFiltroPais(region.strArea)
-									}}
-									key={region.strArea}
-									title={region.strArea}>
-									<img
-										src={region.foto}
-										alt={region.strArea}
-										className='regionesUlLiImg'
-									/>
-								</li>
-							)
-						})}
-					</ul>
+					<RegionesComponent
+						regiones={regiones}
+						elegirFiltroPais={elegirFiltroPais}
+					/>
 				</div>
 
 				<div className='divRecetasContainer'>

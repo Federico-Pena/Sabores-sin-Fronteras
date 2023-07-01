@@ -19,7 +19,6 @@
 	margin: auto;
 	padding: 1rem;
 	max-width: 600px;
-	overflow: hidden;
 }
 
 .divIComponent .ulIComponent {
@@ -29,12 +28,13 @@
 	width: 100%;
 	transition: all 0.2s ease;
 	position: relative;
-	overflow-y: scroll;
+	overflow: auto;
 	scroll-behavior: smooth;
 }
 
 .divIComponent .ulIComponent .ulLiIComponent {
 	width: auto;
+	scroll-snap-align: start;
 	position: relative;
 	transition: all 0.3s ease;
 	animation: zoomIn 1s ease;
@@ -72,7 +72,7 @@
 @keyframes zoomIn {
 	from {
 		opacity: 0;
-		transform: scale(0);
+		transform: scale(0.8);
 	}
 	to {
 		opacity: 1;

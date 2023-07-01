@@ -17,31 +17,34 @@ html {
 	padding: 0;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
+
 	overflow: auto;
+	overflow-x: hidden;
 }
 ::-webkit-scrollbar {
 	display: none;
 }
 body {
-	overflow-x: hidden;
 }
 .divApp {
 	position: relative;
-
+	height: 100vh;
 	width: 100%;
 	color: #e6dcdc;
-	overflow: hidden;
 	text-align: center;
 	font-family: Cascadia Code, sans-serif;
 }
 
 .bg {
 	background-image: url('./assets/backgroundPortrail.png');
+	background-color: rgba(106, 141, 163, 0.7);
+	background-blend-mode: multiply;
 	width: 100vw;
 	height: 100vh;
+	object-fit: cover;
 	position: fixed;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	background-position: center;
 	z-index: -1;
 }
 #root {

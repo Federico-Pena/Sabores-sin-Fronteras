@@ -1,26 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { VitePWA } from 'vite-plugin-pwa'
-import { hash } from './src/helpers/viteHash'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	build: {
-		rollupOptions: {
-			output: {
-				entryFileNames: `[name]` + hash + `.js`,
-				chunkFileNames: `[name]` + hash + `.js`,
-			},
-		},
-		outDir: './dist',
-		target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
-		cssCodeSplit: true,
-		manifest: true,
-		ssrManifest: true,
-	},
 	plugins: [
 		react(),
 		VitePWA({
+			registerType: 'autoUpdate',
+			strategies: 'network-first',
 			manifest: {
 				name: 'Sabores sin Fronteras',
 				short_name: 'Sabores sin Fronteras',
