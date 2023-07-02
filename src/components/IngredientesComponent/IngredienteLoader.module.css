@@ -1,0 +1,27 @@
+.Li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	flex-grow: 1;
+	transition: all 0.5s ease-in-out;
+}
+
+.Li:hover .Imagen {
+	transform: scale(1.2);
+	z-index: 2;
+}
+
+.Imagen {
+	width: 100px;
+	height: 100px;
+	transition: 0.5s ease-in-out;
+}
+.nombreEspañol {
+	display: none;
+}
+.nombreIngles {
+	position: absolute;
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+}

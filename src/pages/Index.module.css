@@ -1,5 +1,5 @@
 .heroPlatoRandom {
-	background-image: url('src/assets/backgroundPortrail.svg');
+	background-image: url('../assets/backgroundPortrail.svg');
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	display: flex;
@@ -16,7 +16,6 @@
 	flex-grow: 1;
 	padding: 2rem;
 	transition: all 0.5s ease-in-out;
-	animation: fadeIn 1s ease-in-out;
 	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
 }
 .divHeroBtn {
@@ -24,8 +23,7 @@
 	flex-direction: column;
 	align-items: center;
 	flex-grow: 1;
-	transition: all 0.5s ease-in-out;
-	animation: fadeIn 1s ease-in-out;
+	transition: all 1s ease-in-out;
 }
 .subTitulo {
 	font-size: 24px;
@@ -45,25 +43,3 @@
 .heroPlatoRandomBtn:hover {
 	transform: scale(1.1);
 }
-@keyframes fadeIn {
-	from {
-		opacity: 0.3;
-		transform: translateY(-20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0px);
-	}
-}
-/*
-.heroPlatoRandom .divHeroBtn .heroPlatoRandomBtn {
-
-	animation: fadeInLeft 1s ease-in-out;
-}
-.heroPlatoRandom .divHeroBtn .heroPlatoRandomBtn a {
-	color: #333333;
-}
-.heroPlatoRandom .divHeroBtn .heroPlatoRandomBtn:hover {
-	transform: scale(1.1);
-}
- */

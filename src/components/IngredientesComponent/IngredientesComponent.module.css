@@ -1,0 +1,10 @@
+.ulIComponent {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	height: 350px;
+	width: 90%;
+	max-width: 500px;
+	margin: auto;
+	overflow: auto;
+}

@@ -1,8 +1,9 @@
+import styles from './PlatoPais.module.css'
+import stylesDefault from '../App.module.css'
 import { useEffect, useState } from 'react'
 import Receta from '../components/Receta/Receta'
 import Modal from '../components/Modal/Modal'
 import { fetchRegiones } from '../helpers/fetchingRegiones'
-import styles from './PlatoPais.module.css'
 import IngredientesComponent from '../components/IngredientesComponent/IngredientesComponent'
 import { textIngredientFormater } from '../helpers/textIngredientFormater'
 import RegionesComponent from '../components/RegionesComponent/RegionesComponent'
@@ -104,14 +105,15 @@ function PlatoPais() {
 				/>
 			) : null}
 
-			<main className={styles.divPlatoPais}>
-				<section className={styles.divRecetasContainer}>
+			<main
+				className={`${styles.divPlatoPais} ${stylesDefault.DflexContainer}`}>
+				<section
+					className={`${styles.divRecetasContainer} ${stylesDefault.DsectionRandomRecetas}`}>
 					<div className={styles.titulos}>
-						<h1 className={styles.titulo}>Saborea el Mundo a tu Manera</h1>
-						<h2 className={styles.subTitulo}>
+						<h1>
 							Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O
 							País De Origen
-						</h2>
+						</h1>
 					</div>
 					<div className={styles.opciones}>
 						<IngredientesComponent
@@ -124,7 +126,8 @@ function PlatoPais() {
 					</div>
 				</section>
 
-				<section className={styles.divRecetasContainer}>
+				<section
+					className={`${styles.divRecetasContainer} ${stylesDefault.DsectionRandomRecetas}`}>
 					{receta ? (
 						<Receta
 							cerrarReceta={cerrarModal}

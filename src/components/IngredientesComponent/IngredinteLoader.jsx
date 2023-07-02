@@ -1,3 +1,4 @@
+import styles from './IngredienteLoader.module.css'
 import { useEffect, useRef } from 'react'
 
 const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
@@ -12,9 +13,7 @@ const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
-					liRef.current.classList.add('ulLiIComponent')
 					liRef.current.children[0].src = ingrediente.foto
-					console.log(liRef.current.children)
 					observer.unobserve(entry.target)
 				}
 			})
@@ -29,19 +28,19 @@ const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
 	return (
 		<li
 			ref={liRef}
-			className=''
+			className={styles.Li}
 			onClick={() => buscarRecetaPorIngrediente(ingrediente.strIngredient)}>
 			<img
-				className='ulLiImgIComponent'
-				src={ingrediente.foto ? ingrediente.foto : 'placeholder.svg'}
+				className={styles.Imagen}
+				src={
+					ingrediente.foto
+						? ingrediente.foto
+						: 'https://placehold.co/600x400.png'
+				}
 				alt={ingrediente.strIngredient}
 			/>
-			<span className='ulLiImgInglesIComponent'>
-				{ingrediente.strIngredient}
-			</span>
-			<span className='ulLiImgEspañolIComponent'>
-				{ingrediente.nombreEspañol}
-			</span>
+			<span className={styles.nombreIngles}>{ingrediente.strIngredient}</span>
+			<span className={styles.nombreEspañol}>{ingrediente.nombreEspañol}</span>
 		</li>
 	)
 }

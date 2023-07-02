@@ -1,4 +1,4 @@
-import './IngredientesComponent.css'
+import styles from './IngredientesComponent.module.css'
 import { useEffect, useRef, useState } from 'react'
 import { fetchIngredientes } from '../../helpers/fetchingIngredientes'
 import { useIntersectionObserverElement } from '../../hooks/useIntersectionObserverElement'
@@ -42,20 +42,16 @@ const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 	const elementosPorIteracion = 20
 
 	return (
-		<div className='divIngredientesComponent'>
-			<div className='divIComponent'>
-				<ul className='ulIComponent' ref={ulRef}>
-					{elementosMostrados.map((ingrediente, i) => (
-						<IngredinteLoader
-							buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
-							ingrediente={ingrediente}
-							key={ingrediente.foto + i}
-						/>
-					))}
-					<li ref={liRef}></li>
-				</ul>
-			</div>
-		</div>
+		<ul className={styles.ulIComponent} ref={ulRef}>
+			{elementosMostrados.map((ingrediente, i) => (
+				<IngredinteLoader
+					buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
+					ingrediente={ingrediente}
+					key={ingrediente.foto + i}
+				/>
+			))}
+			<li ref={liRef}></li>
+		</ul>
 	)
 }
 

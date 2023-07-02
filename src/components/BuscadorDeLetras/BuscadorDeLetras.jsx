@@ -50,7 +50,7 @@ const BuscadorDeLetras = ({ buscadorRecetas, refParent }) => {
 					<MdSend className={styles.btnFormSvg} />
 				</button>
 			</form>
-			{error ? <small>Ocurrió Un Error Al Buscar La imagen</small> : null}
+			{error ? <small>Error De Red Intente Nuevamente</small> : null}
 		</div>
 	)
 }
