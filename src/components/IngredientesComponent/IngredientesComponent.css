@@ -11,7 +11,6 @@
 	width: 90%;
 	height: 300px;
 	overflow: hidden;
-	background: url('../../assets//backgrondChiico.png');
 	background-position: center;
 	backdrop-filter: blur(10px);
 	box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.863);

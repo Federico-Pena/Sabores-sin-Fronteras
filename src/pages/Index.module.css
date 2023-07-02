@@ -1,0 +1,69 @@
+.heroPlatoRandom {
+	background-image: url('src/assets/backgroundPortrail.svg');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	min-height: 100vh;
+}
+
+.divHeroTitulo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-grow: 1;
+	padding: 2rem;
+	transition: all 0.5s ease-in-out;
+	animation: fadeIn 1s ease-in-out;
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+}
+.divHeroBtn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-grow: 1;
+	transition: all 0.5s ease-in-out;
+	animation: fadeIn 1s ease-in-out;
+}
+.subTitulo {
+	font-size: 24px;
+	font-weight: 400;
+}
+.heroPlatoRandomBtn {
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #e6dcdc;
+	border-radius: 0.5rem;
+	transition: all 0.3s ease-in-out;
+	padding: 0.5rem 1rem;
+	border: none;
+	color: #333333;
+}
+
+.heroPlatoRandomBtn:hover {
+	transform: scale(1.1);
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0.3;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+/*
+.heroPlatoRandom .divHeroBtn .heroPlatoRandomBtn {
+
+	animation: fadeInLeft 1s ease-in-out;
+}
+.heroPlatoRandom .divHeroBtn .heroPlatoRandomBtn a {
+	color: #333333;
+}
+.heroPlatoRandom .divHeroBtn .heroPlatoRandomBtn:hover {
+	transform: scale(1.1);
+}
+ */

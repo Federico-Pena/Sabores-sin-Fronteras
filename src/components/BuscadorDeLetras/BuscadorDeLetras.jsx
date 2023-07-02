@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { MdSend } from 'react-icons/md'
 
-import './BuscadorDeLetras.css'
+import styles from './BuscadorDeLetras.module.css'
 const BuscadorDeLetras = ({ buscadorRecetas, refParent }) => {
 	const [inputValue, setInputValue] = useState('')
 	const [error, setError] = useState(false)
@@ -30,14 +30,15 @@ const BuscadorDeLetras = ({ buscadorRecetas, refParent }) => {
 	}
 
 	return (
-		<div className='divFormInputBuscar'>
-			<form className='formInputBuscar'>
+		<div className={styles.divFormInputBuscar}>
+			<form className={styles.formBuscador}>
 				<label htmlFor='inputBuscar'>
 					<span>Una Letra</span>
 					<input
 						title='Buscar Por Una Letra'
 						autoComplete='off'
 						id='inputBuscar'
+						className={styles.inputForm}
 						maxLength={1}
 						minLength={1}
 						type='text'
@@ -45,8 +46,8 @@ const BuscadorDeLetras = ({ buscadorRecetas, refParent }) => {
 						onChange={handleInputChange}
 					/>
 				</label>
-				<button className='formInputBuscarBtn' onClick={fetchRecetasLetra}>
-					<MdSend />
+				<button className={styles.btnForm} onClick={fetchRecetasLetra}>
+					<MdSend className={styles.btnFormSvg} />
 				</button>
 			</form>
 			{error ? <small>Ocurrió Un Error Al Buscar La imagen</small> : null}

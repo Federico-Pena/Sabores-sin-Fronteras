@@ -1,0 +1,25 @@
+.Ul {
+	height: 80px;
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+	overflow: auto;
+	display: flex;
+}
+.Li {
+	display: flex;
+	margin: 0.5rem;
+	transform: scale(0.8);
+	border-radius: 100%;
+	background-color: aliceblue;
+	transition: all 0.3s ease-in-out;
+}
+.Li:hover {
+	transform: scale(0.95);
+	box-shadow: 0px 0px 10px 4px black;
+}
+.Img {
+	border-radius: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}

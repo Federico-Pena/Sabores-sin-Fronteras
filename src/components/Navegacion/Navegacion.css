@@ -7,7 +7,7 @@
 	justify-content: space-evenly;
 	background-color: rgba(54, 54, 54, 0.836);
 	width: 100%;
-	transition: all 1s ease-in-out;
+	transition: all 0.5s ease-in-out;
 	border-bottom: 1px solid #eeeeee85;
 	position: fixed;
 	top: 0;

@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom'
-import './Index.css'
+import styles from './Index.module.css'
 function Index() {
 	return (
-		<div className='heroPlatoRandom'>
-			<div className='divHeroTitulo'>
+		<div className={styles.heroPlatoRandom}>
+			<div className={styles.divHeroTitulo}>
 				<h1>Explora la gastronomía desde tu hogar</h1>
-				<p>¡Descubre nuevos horizontes culinarios!</p>
+				<p className={styles.subTitulo}>
+					¡Descubre nuevos horizontes culinarios!
+				</p>
 			</div>
-			<div className='divHeroBtn'>
-				<button className='heroPlatoRandomBtn' title='Boton Empezar'>
-					<Link to='/PlatoRandom'>Empecemos</Link>
-				</button>
+			<div className={styles.divHeroBtn}>
+				<Link className={styles.heroPlatoRandomBtn} to='/PlatoRandom'>
+					Empecemos
+				</Link>
 			</div>
 		</div>
 	)

@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import Receta from '../components/Receta/Receta'
-import './PlatoRandom.css'
-import { TfiReload } from 'react-icons/tfi'
+import styles from './PlatoRandom.module.css'
 import Modal from '../components/Modal/Modal'
 import { fetchRecetas } from '../helpers/fetchRecetas'
 import { textIngredientFormater } from '../helpers/textIngredientFormater'
 import BuscadorDePalabras from '../components//BuscadorDeLetras/BuscadorDeLetras'
+import RecetaAleatoria from '../components/RecetaAleatoria/RecetaAleatoria'
 function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
@@ -68,7 +68,7 @@ function PlatoRandom() {
 		releventDiv.scrollIntoView({ behavior: 'smooth' })
 	}
 	return (
-		<div className='divPlatoRandom'>
+		<main className={styles.divPlatoRandom}>
 			{error ? (
 				<Modal
 					cerrarModal={cerrarModal}
@@ -78,7 +78,7 @@ function PlatoRandom() {
 				/>
 			) : null}
 			{loading ? <Modal loading={loading} /> : null}
-			<section className='sectionRandomRecetas'>
+			<section className={styles.sectionRandomRecetas}>
 				{ingredientes && (
 					<>
 						<h1>No Sabes Que Cocinar?</h1>
@@ -90,24 +90,17 @@ function PlatoRandom() {
 						</p>
 					</>
 				)}
-				<div className='divInputBuscar'>
-					<div className='divInputBuscarContainer'>
-						<button
-							title='receta aleatoria'
-							className='btnAleatoria'
-							onClick={pintarRecetas}>
-							<TfiReload />
-						</button>
-						<BuscadorDePalabras
-							buscadorRecetas={buscadorRecetas}
-							refParent={divRandomRecetasRef}
-						/>
-					</div>
+				<div className={styles.divInputBuscar}>
+					<RecetaAleatoria pintarRecetas={pintarRecetas} />
+					<BuscadorDePalabras
+						buscadorRecetas={buscadorRecetas}
+						refParent={divRandomRecetasRef}
+					/>
 				</div>
 			</section>
 			{receta ? (
-				<section className='sectionRandomRecetas'>
-					<div className='divRandomRecetas' ref={divRandomRecetasRef}>
+				<section className={styles.sectionRandomRecetas}>
+					<div className={styles.divRandomRecetas} ref={divRandomRecetasRef}>
 						<Receta
 							manejoError={manejoError}
 							ingredientes={ingredientes}
@@ -117,8 +110,8 @@ function PlatoRandom() {
 					</div>
 				</section>
 			) : recetas ? (
-				<section className='sectionRandomRecetas'>
-					<div className='divRandomRecetas' ref={divRandomRecetasRef}>
+				<section className={styles.sectionRandomRecetas}>
+					<div className={styles.divRandomRecetas} ref={divRandomRecetasRef}>
 						{recetas?.map((receta, i) => {
 							return (
 								<Receta
@@ -132,7 +125,7 @@ function PlatoRandom() {
 					</div>
 				</section>
 			) : null}
-		</div>
+		</main>
 	)
 }
 

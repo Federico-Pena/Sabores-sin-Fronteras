@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Receta from '../components/Receta/Receta'
 import Modal from '../components/Modal/Modal'
 import { fetchRegiones } from '../helpers/fetchingRegiones'
-import './PlatoPais.css'
+import styles from './PlatoPais.module.css'
 import IngredientesComponent from '../components/IngredientesComponent/IngredientesComponent'
 import { textIngredientFormater } from '../helpers/textIngredientFormater'
 import RegionesComponent from '../components/RegionesComponent/RegionesComponent'
@@ -104,23 +104,27 @@ function PlatoPais() {
 				/>
 			) : null}
 
-			<div className='divPlatoPais'>
-				<h1>Saborea el Mundo a tu Manera</h1>
-				<h2>
-					Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O País
-					De Origen
-				</h2>
-				<IngredientesComponent
-					buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
-				/>
-				<div className='regiones'>
-					<RegionesComponent
-						regiones={regiones}
-						elegirFiltroPais={elegirFiltroPais}
-					/>
-				</div>
+			<main className={styles.divPlatoPais}>
+				<section className={styles.divRecetasContainer}>
+					<div className={styles.titulos}>
+						<h1 className={styles.titulo}>Saborea el Mundo a tu Manera</h1>
+						<h2 className={styles.subTitulo}>
+							Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O
+							País De Origen
+						</h2>
+					</div>
+					<div className={styles.opciones}>
+						<IngredientesComponent
+							buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
+						/>
+						<RegionesComponent
+							regiones={regiones}
+							elegirFiltroPais={elegirFiltroPais}
+						/>
+					</div>
+				</section>
 
-				<div className='divRecetasContainer'>
+				<section className={styles.divRecetasContainer}>
 					{receta ? (
 						<Receta
 							cerrarReceta={cerrarModal}
@@ -138,9 +142,11 @@ function PlatoPais() {
 								/>
 							)
 						})
-					) : null}
-				</div>
-			</div>
+					) : (
+						<h2 className={styles.subTitulo}>Realiza Una Busqueda</h2>
+					)}
+				</section>
+			</main>
 		</>
 	)
 }

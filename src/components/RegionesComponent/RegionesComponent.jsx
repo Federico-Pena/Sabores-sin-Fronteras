@@ -1,10 +1,11 @@
+import styles from './RegionesComponent.module.css'
 function RegionesComponent({ regiones, elegirFiltroPais }) {
 	return (
-		<ul className='regionesUl'>
+		<ul className={styles.Ul}>
 			{regiones?.map((region) => {
 				return (
 					<li
-						className='regionesUlLi'
+						className={styles.Li}
 						onClick={() => {
 							elegirFiltroPais(region.strArea)
 						}}
@@ -13,7 +14,7 @@ function RegionesComponent({ regiones, elegirFiltroPais }) {
 						<img
 							src={region.foto}
 							alt={region.strArea}
-							className='regionesUlLiImg'
+							className={styles.Img}
 						/>
 					</li>
 				)
