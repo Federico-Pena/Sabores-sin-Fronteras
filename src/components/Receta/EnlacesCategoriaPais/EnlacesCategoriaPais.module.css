@@ -1,0 +1,46 @@
+.containerInfo {
+	scroll-snap-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+	letter-spacing: 3px;
+	min-width: 100vw;
+	min-height: 500px;
+}
+.ulInfo {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+.liInfo {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.liSmall {
+	width: 100%;
+	font-size: 18px;
+}
+.liIcono {
+	width: 2rem;
+	height: 2rem;
+}
+
+.divEnlaces {
+	border-top: 1px solid #eeeeee9f;
+	flex-grow: 1;
+	display: flex;
+}
+.enlaces {
+	flex-grow: 1;
+	color: #e6dcdc;
+	display: flex;
+	justify-content: center;
+}
+.enlaceIcono {
+	align-self: center;
+	width: 4rem;
+	height: 4rem;
+}

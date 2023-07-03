@@ -1,0 +1,28 @@
+.divFoto {
+	scroll-snap-align: start;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 100vw;
+	min-height: 500px;
+	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+	letter-spacing: 3px;
+}
+
+.imgReceta {
+	object-fit: cover;
+	border-radius: 0.5rem;
+}
+.SmallFoto {
+	position: absolute;
+	bottom: -1.5rem;
+	left: 50%;
+	transform: translate(-50%);
+	font-size: 16px;
+}
+.H2Foto {
+	position: absolute;
+	top: 1.5rem;
+	left: 50%;
+	transform: translate(-50%);
+}

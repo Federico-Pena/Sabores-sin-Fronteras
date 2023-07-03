@@ -56,15 +56,10 @@ let arrayFotos = [
 	desconocida,
 	vietnam,
 ]
-export const fetchRegiones = async () => {
-	try {
-		const response = await fetch('./datosRegiones.json')
-		const data = await response.json()
-		data.meals?.map((dataen, i) => {
-			dataen.foto = arrayFotos[i]
-		})
-		return data.meals
-	} catch (error) {
-		return error
-	}
+import datosRegiones from '../../datosRegiones.json'
+export const obtenerRegiones = async () => {
+	datosRegiones.meals?.map((dataen, i) => {
+		dataen.foto = arrayFotos[i]
+	})
+	return datosRegiones.meals
 }

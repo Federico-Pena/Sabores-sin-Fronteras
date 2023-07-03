@@ -17,20 +17,20 @@
 button,
 a font {
 	cursor: pointer;
+	color: #e6dcdc;
 }
 body,
 html,
 #root {
 	scroll-behavior: smooth;
 	overflow: auto;
-	overflow-x: hidden;
 	font-family: Cascadia Code, sans-serif;
 	color: #e6dcdc;
 	min-height: 100vh;
 	min-width: 100vw;
 }
 ::-webkit-scrollbar {
-	display: none;
+	width: 0;
 }
 
 @font-face {

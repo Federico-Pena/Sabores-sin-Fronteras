@@ -1,0 +1,16 @@
+.recetasContainer {
+	scroll-snap-align: start;
+	display: flex;
+	align-items: center;
+	overflow: auto;
+	width: 100%;
+	max-width: 800px;
+	min-height: 100vh;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	position: relative;
+}
+
+.btnCerrar {
+	position: absolute;
+}

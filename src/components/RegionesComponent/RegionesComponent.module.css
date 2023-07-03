@@ -5,6 +5,7 @@
 	margin: auto;
 	overflow: auto;
 	display: flex;
+	overflow: scroll;
 }
 .Li {
 	display: flex;

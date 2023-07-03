@@ -1,5 +1,5 @@
 .heroPlatoRandom {
-	background-image: url('../assets/backgroundPortrail.svg');
+	background-image: url('../../assets/backgroundPortrail.svg');
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	display: flex;

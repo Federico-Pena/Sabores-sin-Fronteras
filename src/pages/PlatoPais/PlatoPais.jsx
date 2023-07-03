@@ -1,12 +1,12 @@
 import styles from './PlatoPais.module.css'
-import stylesDefault from '../App.module.css'
+import stylesDefault from '../../App.module.css'
 import { useEffect, useState } from 'react'
-import Receta from '../components/Receta/Receta'
-import Modal from '../components/Modal/Modal'
-import { fetchRegiones } from '../helpers/fetchingRegiones'
-import IngredientesComponent from '../components/IngredientesComponent/IngredientesComponent'
-import { textIngredientFormater } from '../helpers/textIngredientFormater'
-import RegionesComponent from '../components/RegionesComponent/RegionesComponent'
+import Receta from '../../components/Receta/Receta'
+import Modal from '../../components/Modal/Modal'
+import { obtenerRegiones } from '../../helpers/obtenerRegiones'
+import IngredientesComponent from '../../components/IngredientesComponent/IngredientesComponent'
+import { textIngredientFormater } from '../../helpers/textIngredientFormater'
+import RegionesComponent from '../../components/RegionesComponent/RegionesComponent'
 function PlatoPais() {
 	const [region, setPais] = useState('')
 	const [regiones, setRegiones] = useState()
@@ -44,7 +44,7 @@ function PlatoPais() {
 	const fetchRegions = async () => {
 		setLoading(true)
 		try {
-			const data = await fetchRegiones()
+			const data = await obtenerRegiones()
 			setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
 		} catch (error) {
 			setError(error)

@@ -1,9 +1,8 @@
-import styles from './App.module.css'
 import Navegacion from './components/Navegacion/Navegacion'
 import { Routes, Route } from 'react-router-dom'
-import PlatoRandom from './pages/PlatoRandom/'
-import PlatoPais from './pages/PlatoPais'
-import Index from './pages/Index'
+import PlatoRandom from './pages/PlatoRandom/PlatoRandom/'
+import PlatoPais from './pages/PlatoPais/PlatoPais'
+import Index from './pages/Index/Index'
 
 function App() {
 	return (

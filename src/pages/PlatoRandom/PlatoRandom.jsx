@@ -1,12 +1,13 @@
 import styles from './PlatoRandom.module.css'
-import stylesDefault from '../App.module.css'
+import stylesDefault from '../../App.module.css'
 import { useState, useEffect, useRef } from 'react'
-import Receta from '../components/Receta/Receta'
-import Modal from '../components/Modal/Modal'
-import { fetchRecetas } from '../helpers/fetchRecetas'
-import { textIngredientFormater } from '../helpers/textIngredientFormater'
-import BuscadorDePalabras from '../components//BuscadorDeLetras/BuscadorDeLetras'
-import RecetaAleatoria from '../components/RecetaAleatoria/RecetaAleatoria'
+import Receta from '../../components/Receta/Receta'
+import Modal from '../../components/Modal/Modal'
+import { fetchRecetas } from '../../helpers/fetchRecetas'
+import { textIngredientFormater } from '../../helpers/textIngredientFormater'
+import BuscadorDePalabras from '../../components/BuscadorDeLetras/BuscadorDeLetras'
+import RecetaAleatoria from '../../components/RecetaAleatoria/RecetaAleatoria'
+import ContenedorRecetas from '../../components/ContenedorRecetas/ContenedorRecetas'
 function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
@@ -23,13 +24,13 @@ function PlatoRandom() {
 			const data = await fetchRecetas()
 			setReceta(...data.data[0].meals)
 			setIngredientes(data.ingredientes)
-			if (sectionRandomRef.current) {
-				sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
-			}
 		} catch (error) {
 			setError(error)
 		}
 		setLoading(false)
+		if (sectionRandomRef.current) {
+			sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
+		}
 	}
 
 	function cerrarModal() {
@@ -116,16 +117,18 @@ function PlatoRandom() {
 				<section
 					className={stylesDefault.DsectionRandomRecetas}
 					ref={sectionRandomRef}>
-					{recetas?.map((receta, i) => {
-						return (
-							<Receta
-								manejoError={manejoError}
-								mostrarReceta={mostrarReceta}
-								key={i}
-								receta={receta}
-							/>
-						)
-					})}
+					<ContenedorRecetas>
+						{recetas?.map((receta, i) => {
+							return (
+								<Receta
+									manejoError={manejoError}
+									mostrarReceta={mostrarReceta}
+									key={i}
+									receta={receta}
+								/>
+							)
+						})}
+					</ContenedorRecetas>
 				</section>
 			) : null}
 		</main>
