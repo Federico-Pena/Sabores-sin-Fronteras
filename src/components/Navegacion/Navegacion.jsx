@@ -6,52 +6,39 @@ import {
 	IoHomeSharp,
 } from 'react-icons/io5'
 import { MdRestaurantMenu } from 'react-icons/md'
-import './Navegacion.css'
+import styles from './Navegacion.module.css'
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
 
 function Navegacion() {
 	let location = useLocation()
-	const [open, setOpen] = useState(false)
 
-	const abrirMenu = () => {
-		setOpen(!open)
-	}
 	return (
 		<header>
 			{location.pathname === '/' ? null : (
-				<nav className={'headerNav'}>
-					<ul className={open ? 'NavUlOpen' : 'NavUlClose'}>
-						<li
-							className={
-								location.pathname === '/PlatoRandom'
-									? 'linkNavLocation'
-									: 'linkNav'
-							}>
-							<Link className='linkNav' to={'/PlatoRandom'}>
+				<nav className={styles.Nav}>
+					<ul className={styles.UlNav}>
+						<li className={styles.liNav}>
+							<img
+								className={styles.logoNav}
+								src='/assets/food.png'
+								alt='Logo'
+							/>
+						</li>
+						<li className={styles.liNav}>
+							<Link className={styles.linkPlatoRandom} to={'/PlatoRandom'}>
 								{location.pathname === '/PlatoRandom' ? (
-									<IoHomeSharp />
+									<IoHomeSharp className={styles.iconNav} />
 								) : (
-									<IoHomeOutline />
+									<IoHomeOutline className={styles.iconNav} />
 								)}
 							</Link>
 						</li>
-						<button
-							className={open ? 'NavButtonMenuOpen' : 'NavButtonMenuClose'}
-							onClick={abrirMenu}>
-							<MdRestaurantMenu className={'ButtonMenuSvg'} />
-						</button>
-						<li
-							className={
-								location.pathname === '/PlatoPais'
-									? 'linkNavLocation'
-									: 'linkNav'
-							}>
-							<Link className='linkNav' to={'/PlatoPais'}>
+						<li className={styles.liNav}>
+							<Link className={styles.linkPlatoPais} to={'/PlatoPais'}>
 								{location.pathname === '/PlatoRandom' ? (
-									<IoFastFoodOutline />
+									<IoFastFoodOutline className={styles.iconNav} />
 								) : (
-									<IoFastFoodSharp />
+									<IoFastFoodSharp className={styles.iconNav} />
 								)}
 							</Link>
 						</li>

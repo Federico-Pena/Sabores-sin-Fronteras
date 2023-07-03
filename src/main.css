@@ -30,7 +30,7 @@ html,
 	min-width: 100vw;
 }
 ::-webkit-scrollbar {
-	width: 0;
+	display: none;
 }
 
 @font-face {

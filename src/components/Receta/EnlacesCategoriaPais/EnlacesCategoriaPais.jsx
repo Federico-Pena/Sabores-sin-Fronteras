@@ -1,4 +1,6 @@
 import styles from './EnlacesCategoriaPais.module.css'
+import stylesGreceta from '../Receta.module.css'
+
 import {
 	MdOutlinePublic,
 	MdOutlineCategory,
@@ -8,7 +10,7 @@ import {
 } from 'react-icons/md'
 function CategoriaPais({ receta }) {
 	return (
-		<div className={styles.containerInfo}>
+		<div className={styles.divUl}>
 			<ul className={styles.ulInfo}>
 				{receta.strTags &&
 					receta.strTags.split(',').map((tag) => (
@@ -38,25 +40,26 @@ function CategoriaPais({ receta }) {
 						<small className={styles.liSmall}>{receta.strArea}</small>
 					</li>
 				)}
+
+				<li className={styles.liInfo}>
+					{receta.strYoutube && (
+						<a
+							className={styles.enlaces}
+							href={receta.strYoutube}
+							target='_blanck'>
+							<MdVideocam className={styles.enlaceIcono} />
+						</a>
+					)}
+					{receta.strSource && (
+						<a
+							className={styles.enlaces}
+							href={receta.strSource}
+							target='_blanck'>
+							<MdOutlineSource className={styles.enlaceIcono} />
+						</a>
+					)}
+				</li>
 			</ul>
-			<div className={styles.divEnlaces}>
-				{receta.strYoutube && (
-					<a
-						className={styles.enlaces}
-						href={receta.strYoutube}
-						target='_blanck'>
-						<MdVideocam className={styles.enlaceIcono} />
-					</a>
-				)}
-				{receta.strSource && (
-					<a
-						className={styles.enlaces}
-						href={receta.strSource}
-						target='_blanck'>
-						<MdOutlineSource className={styles.enlaceIcono} />
-					</a>
-				)}
-			</div>
 		</div>
 	)
 }

@@ -1,0 +1,52 @@
+.Nav {
+	display: flex;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 3rem;
+	height: 12rem;
+	background-color: #ffffff6b;
+	backdrop-filter: blur(5px);
+	border-radius: 0 0 0.5rem 0;
+	z-index: 2;
+	clip-path: circle(40% at 50% 0%);
+	transition: all 0.5s ease-in-out;
+}
+
+.UlNav {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.liNav {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	justify-content: center;
+	border-top: 1px solid #303030c7;
+}
+.logoNav {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 100%;
+	padding: 0.5rem;
+}
+
+.iconNav {
+	width: 3rem;
+	padding: 0.5rem;
+	height: 3rem;
+	color: black;
+	transition: all 0.2s linear;
+	align-self: flex-start;
+	cursor: pointer;
+}
+.iconNav:hover {
+	scale: 1.1;
+	color: rgba(255, 255, 255, 0.678);
+}
+.Nav:hover {
+	clip-path: circle(100% at 0% 50%);
+}

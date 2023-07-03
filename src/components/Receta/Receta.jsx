@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { MdClose } from 'react-icons/md'
 
 import styles from './Receta.module.css'
@@ -23,6 +23,7 @@ function Receta({
 	mostrarReceta,
 	manejoError,
 }) {
+	const divRecetRef = useRef(null)
 	const [flip, setFlip] = useState(false)
 	function fliping() {
 		setFlip(!flip)
@@ -39,9 +40,13 @@ function Receta({
 			manejoError(error)
 		}
 	}
-
+	function scrollReceta(e) {
+		console.log(e)
+	}
 	return (
 		<div
+			onDrag={scrollReceta}
+			ref={divRecetRef}
 			className={styles.recetasContainer}
 			onClick={() => {
 				ingredientes ? null : obtenerReceta()
@@ -54,16 +59,22 @@ function Receta({
 					<MdClose />
 				</button>
 			)}
-			<FotoReceta receta={receta} />
+			<div className={styles.sliderDiv}>
+				<FotoReceta receta={receta} />
+			</div>
+
 			{flip ? (
-				<Instrucciones fliping={fliping} receta={receta} />
+				<div className={styles.sliderDiv}>
+					<Instrucciones fliping={fliping} receta={receta} />
+				</div>
 			) : ingredientes ? (
 				<>
-					<CategoriaPais receta={receta} />
-
-					{ingredientes && (
+					<div className={styles.sliderDiv}>
+						<CategoriaPais receta={receta} />
+					</div>
+					<div className={styles.sliderDiv}>
 						<Ingredientes ingredientes={ingredientes} fliping={fliping} />
-					)}
+					</div>
 				</>
 			) : null}
 		</div>

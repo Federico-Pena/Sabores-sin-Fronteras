@@ -1,28 +1,30 @@
 .divFoto {
-	scroll-snap-align: start;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	min-width: 100vw;
-	min-height: 500px;
-	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
-	letter-spacing: 3px;
-}
-
-.imgReceta {
-	object-fit: cover;
+	flex: auto;
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+	max-height: 70vh;
 	border-radius: 0.5rem;
+	aspect-ratio: 1/1;
+}
+.imgReceta {
+	border-radius: 0.5rem;
+	max-width: 100%;
+	max-height: 100%;
 }
 .SmallFoto {
 	position: absolute;
-	bottom: -1.5rem;
+	bottom: 15%;
 	left: 50%;
 	transform: translate(-50%);
 	font-size: 16px;
 }
 .H2Foto {
 	position: absolute;
-	top: 1.5rem;
+	top: 15%;
 	left: 50%;
 	transform: translate(-50%);
 }

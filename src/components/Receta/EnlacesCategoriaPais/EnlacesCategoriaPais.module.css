@@ -1,23 +1,29 @@
-.containerInfo {
-	scroll-snap-align: center;
+.divUl {
 	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
-	letter-spacing: 3px;
-	min-width: 100vw;
-	min-height: 500px;
+	flex: auto;
+	width: 100%;
+	background-image: url('../../../assets/backgrondReceta.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	background-attachment: fixed;
+	max-width: 1000px;
+	margin: auto;
+	border-radius: 0.5rem;
 }
 .ulInfo {
-	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+	justify-content: space-evenly;
+	align-items: center;
 }
 .liInfo {
-	flex-grow: 1;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
+	width: 80%;
+	border-bottom: 1px solid #eee;
 }
 .liSmall {
 	width: 100%;
@@ -27,20 +33,26 @@
 	width: 2rem;
 	height: 2rem;
 }
-
-.divEnlaces {
-	border-top: 1px solid #eeeeee9f;
-	flex-grow: 1;
-	display: flex;
+.liInfo:last-child {
+	border-bottom: none;
 }
 .enlaces {
-	flex-grow: 1;
+	width: 50%;
 	color: #e6dcdc;
-	display: flex;
-	justify-content: center;
+	border: 1px solid white;
+	border-radius: 0.5rem;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
 }
 .enlaceIcono {
-	align-self: center;
 	width: 4rem;
 	height: 4rem;
+}
+.enlaces:hover {
+	color: #444444;
+	background-color: #e6dcdc;
+	border: 1px solid rgb(85, 85, 85);
+}
+.enlaces:active {
+	transform: scale(0.9);
 }

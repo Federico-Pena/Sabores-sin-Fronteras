@@ -32,11 +32,7 @@ const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
 			onClick={() => buscarRecetaPorIngrediente(ingrediente.strIngredient)}>
 			<img
 				className={styles.Imagen}
-				src={
-					ingrediente.foto
-						? ingrediente.foto
-						: 'https://placehold.co/600x400.png'
-				}
+				src={ingrediente.foto}
 				alt={ingrediente.strIngredient}
 			/>
 			<span className={styles.nombreIngles}>{ingrediente.strIngredient}</span>

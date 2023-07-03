@@ -41,15 +41,9 @@ function PlatoPais() {
 	}, [region])
 
 	//todas las regiones
-	const fetchRegions = async () => {
-		setLoading(true)
-		try {
-			const data = await obtenerRegiones()
-			setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
-		} catch (error) {
-			setError(error)
-		}
-		setLoading(false)
+	const fetchRegions = () => {
+		const data = obtenerRegiones()
+		setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
 	}
 
 	//mostrar resultados del filtro Ingrediente al hacer click en el icono

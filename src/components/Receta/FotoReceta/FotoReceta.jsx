@@ -1,4 +1,5 @@
 import styles from './FotoReceta.module.css'
+import stylesGreceta from '../Receta.module.css'
 
 function FotoReceta({ receta }) {
 	return (

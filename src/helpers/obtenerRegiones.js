@@ -57,7 +57,7 @@ let arrayFotos = [
 	vietnam,
 ]
 import datosRegiones from '../../datosRegiones.json'
-export const obtenerRegiones = async () => {
+export const obtenerRegiones = () => {
 	datosRegiones.meals?.map((dataen, i) => {
 		dataen.foto = arrayFotos[i]
 	})

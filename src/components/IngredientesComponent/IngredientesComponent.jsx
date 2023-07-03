@@ -1,13 +1,11 @@
 import styles from './IngredientesComponent.module.css'
 import { useEffect, useRef, useState } from 'react'
-import { fetchIngredientes } from '../../helpers/fetchingIngredientes'
+import { obtenerIngredientes } from '../../helpers/obtenerIngredientes'
 import { useIntersectionObserverElement } from '../../hooks/useIntersectionObserverElement'
 import IngredinteLoader from './IngredinteLoader'
-// Uso de la función con paginación por scroll
+
 const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 	const [ingredientes, setIngredientes] = useState([])
-	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState(false)
 	const [numElementosMostrados, setNumElementosMostrados] = useState(0)
 	const liRef = useRef(null)
 	const ulRef = useRef(null)
@@ -15,16 +13,11 @@ const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 	const visible = useIntersectionObserverElement(liRef, ulRef)
 
 	useEffect(() => {
-		const fetchInitialIngredientes = async () => {
-			setLoading(true)
-			const initialIngredientes = await fetchIngredientes()
-			const ingredientesOrdenados = initialIngredientes.meals.sort((a, b) =>
-				a.nombreEspañol.localeCompare(b.nombreEspañol)
-			)
-			setIngredientes(ingredientesOrdenados)
-			setLoading(false)
-		}
-		fetchInitialIngredientes()
+		const ingred = obtenerIngredientes()
+		const ingredientesOrdenados = ingred?.meals.sort((a, b) =>
+			a.nombreEspañol.localeCompare(b.nombreEspañol)
+		)
+		setIngredientes(ingredientesOrdenados)
 	}, [])
 
 	useEffect(() => {

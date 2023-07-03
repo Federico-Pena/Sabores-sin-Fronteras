@@ -2,7 +2,7 @@ import styles from './Instrucciones.module.css'
 import { MdOutlineArrowBack } from 'react-icons/md'
 function Instrucciones({ receta, fliping }) {
 	return (
-		<div className={styles.containerInfo}>
+		<div className={styles.divInstrucciones}>
 			<h3>Instructiones</h3>
 			<ul className={styles.ulIns}>
 				{receta?.strInstructions.split('.').map((e, i) => {

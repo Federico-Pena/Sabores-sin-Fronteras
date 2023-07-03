@@ -1,9 +1,38 @@
-.containerInfo {
-	scroll-snap-align: start;
-	position: relative;
+.Ingredientes {
 	display: flex;
 	flex-direction: column;
-	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
-	letter-spacing: 3px;
-	min-width: 100vw;
+	flex: auto;
+	width: 100%;
+	background-image: url('../../../assets/backgrondReceta.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	background-attachment: fixed;
+	max-width: 1000px;
+	margin: auto;
+	border-radius: 0.5rem;
+}
+
+.titulo {
+	margin: 1rem 0;
+}
+Ul {
+	overflow: auto;
+	flex: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.Li {
+	flex: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #eee;
+	width: 80%;
+	font-size: 18px;
+	margin-bottom: 1rem;
+}
+.Li:last-child {
+	border-bottom: none;
 }
