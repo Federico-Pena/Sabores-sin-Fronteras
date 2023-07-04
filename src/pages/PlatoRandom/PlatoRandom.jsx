@@ -102,21 +102,17 @@ function PlatoRandom() {
 					/>
 				</div>
 			</section>
-			{receta ? (
-				<section
-					className={stylesDefault.DsectionRandomRecetas}
-					ref={sectionRandomRef}>
+			<section
+				className={stylesDefault.DsectionRandomRecetas}
+				ref={sectionRandomRef}>
+				{receta ? (
 					<Receta
 						manejoError={manejoError}
 						ingredientes={ingredientes}
 						receta={receta}
 						cerrarReceta={recetas ? cerrarReceta : null}
 					/>
-				</section>
-			) : recetas ? (
-				<section
-					className={stylesDefault.DsectionRandomRecetas}
-					ref={sectionRandomRef}>
+				) : recetas ? (
 					<ContenedorRecetas>
 						{recetas?.map((receta, i) => {
 							return (
@@ -129,8 +125,8 @@ function PlatoRandom() {
 							)
 						})}
 					</ContenedorRecetas>
-				</section>
-			) : null}
+				) : null}
+			</section>
 		</main>
 	)
 }

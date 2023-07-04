@@ -3,14 +3,10 @@
 	flex-direction: column;
 	flex: auto;
 	width: 100%;
-	background-image: url('../../../assets/backgrondReceta.svg');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position: center;
-	background-attachment: fixed;
 	max-width: 1000px;
 	margin: auto;
 	border-radius: 0.5rem;
+	padding: 1rem 0;
 }
 
 .titulo {
@@ -22,17 +18,24 @@ Ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin: 2rem 0;
+	gap: 1rem;
 }
 .Li {
 	flex: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #eeeeee81;
 	width: 80%;
 	font-size: 18px;
-	margin-bottom: 1rem;
 }
-.Li:last-child {
-	border-bottom: none;
+
+.btnVerIngredientes {
+	width: 90%;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	margin: auto;
+	color: black;
+	font-size: 16px;
 }

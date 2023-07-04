@@ -5,7 +5,7 @@ import { MdReadMore } from 'react-icons/md'
 function Ingredientes({ ingredientes, fliping }) {
 	return (
 		<div className={styles.Ingredientes}>
-			<h3 className={styles.titulo}>Ingredientes</h3>
+			<h2 className={styles.titulo}>Ingredientes</h2>
 			<ul className={styles.Ul}>
 				{ingredientes?.map((entry, i) => {
 					return (
@@ -19,7 +19,7 @@ function Ingredientes({ ingredientes, fliping }) {
 				className={styles.btnVerIngredientes}
 				title='Ver Ingredientes'
 				onClick={fliping}>
-				<strong>Ver Receta</strong> <MdReadMore />
+				<strong>Ver Instrucciones</strong>
 			</button>
 		</div>
 	)

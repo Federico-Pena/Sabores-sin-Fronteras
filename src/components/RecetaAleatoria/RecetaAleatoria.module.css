@@ -5,7 +5,8 @@
 	width: 4rem;
 	height: 4rem;
 	margin: 0.5rem;
-	background: rgba(0, 0, 0, 0.801);
+	background-color: rgba(68, 143, 34, 0.849);
+
 	cursor: pointer;
 	box-shadow: 0px 0px 5px black;
 	transition: all 0.3s ease;

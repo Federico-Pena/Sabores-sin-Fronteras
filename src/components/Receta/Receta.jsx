@@ -40,12 +40,9 @@ function Receta({
 			manejoError(error)
 		}
 	}
-	function scrollReceta(e) {
-		console.log(e)
-	}
+
 	return (
 		<div
-			onDrag={scrollReceta}
 			ref={divRecetRef}
 			className={styles.recetasContainer}
 			onClick={() => {
@@ -56,7 +53,7 @@ function Receta({
 					className={styles.btnCerrar}
 					onClick={cerrarReceta}
 					title='Cerrar Receta'>
-					<MdClose />
+					<MdClose className={styles.btnCerrarIco} />
 				</button>
 			)}
 			<div className={styles.sliderDiv}>

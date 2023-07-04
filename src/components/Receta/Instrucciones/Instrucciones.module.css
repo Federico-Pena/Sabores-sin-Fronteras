@@ -2,45 +2,58 @@
 	display: flex;
 	flex-direction: column;
 	flex: auto;
-	background-image: url('../../../assets/backgrondReceta.svg');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position: center;
-	background-attachment: fixed;
 	max-width: 1000px;
 	width: 100%;
 	margin: auto;
-	padding: 1rem 0;
 	border-radius: 0.5rem;
 }
-
+.h2Instrucciones {
+	margin: 1rem 0;
+}
 .ulIns {
-	margin-top: 2rem;
 	overflow: auto;
 	max-height: 600px;
+	max-width: 900px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	padding-top: 3rem;
 }
 
-.liIns {
-	background-color: #eee;
+.liintruccion {
+	background-color: #dbdbdb;
 	color: rgb(44, 44, 44);
-	text-shadow: none;
 	border-radius: 0.5rem;
 	padding: 0.5rem;
 	text-align: justify;
-	line-height: 2rem;
-	margin-bottom: 2rem;
-	font-weight: bold;
+	text-shadow: none;
+	font-size: 16px;
+	position: relative;
+	border: 1px solid black;
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 }
-.liNumero {
-	width: 40%;
+
+.spanNumero {
+	position: absolute;
+	top: -2rem;
+	left: 50%;
+	width: 5rem;
+	transform: translate(-50%);
 	background-color: #dbdbdb;
 	color: rgb(44, 44, 44);
 	border-radius: 0.5rem 0.5rem 0 0;
-	margin: auto;
 	padding: 0.5rem;
 	text-align: center;
 }
-.volverBtn {
+.btnVolver {
+	width: 90%;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	margin: auto;
+	color: black;
+}
+.btnVolverico {
 	color: black;
 	width: 2rem;
 	height: 2rem;

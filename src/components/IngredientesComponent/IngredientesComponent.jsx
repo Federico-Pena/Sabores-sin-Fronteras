@@ -35,7 +35,7 @@ const IngredientesComponent = ({ buscarRecetaPorIngrediente }) => {
 	const elementosPorIteracion = 20
 
 	return (
-		<ul className={styles.ulIComponent} ref={ulRef}>
+		<ul className={styles.ulingrediente} ref={ulRef}>
 			{elementosMostrados.map((ingrediente, i) => (
 				<IngredinteLoader
 					buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}

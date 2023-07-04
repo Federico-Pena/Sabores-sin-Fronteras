@@ -19,6 +19,10 @@ a font {
 	cursor: pointer;
 	color: #e6dcdc;
 }
+button {
+	border: none;
+	outline: none;
+}
 body,
 html,
 #root {

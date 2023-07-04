@@ -18,11 +18,7 @@ function Navegacion() {
 				<nav className={styles.Nav}>
 					<ul className={styles.UlNav}>
 						<li className={styles.liNav}>
-							<img
-								className={styles.logoNav}
-								src='/assets/food.png'
-								alt='Logo'
-							/>
+							<img className={styles.logoNav} src='/food.png' alt='Logo' />
 						</li>
 						<li className={styles.liNav}>
 							<Link className={styles.linkPlatoRandom} to={'/PlatoRandom'}>
