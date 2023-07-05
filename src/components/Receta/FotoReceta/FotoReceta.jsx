@@ -1,5 +1,4 @@
 import styles from './FotoReceta.module.css'
-import stylesGreceta from '../Receta.module.css'
 
 function FotoReceta({ receta }) {
 	return (
@@ -14,7 +13,7 @@ function FotoReceta({ receta }) {
 			{receta.strMealThumb && (
 				<img
 					className={styles.imgReceta}
-					src={`${receta.strMealThumb}`}
+					src={receta.strMealThumb}
 					alt={receta.strMeal}
 				/>
 			)}

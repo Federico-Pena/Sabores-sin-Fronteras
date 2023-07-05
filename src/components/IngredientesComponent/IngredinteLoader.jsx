@@ -36,7 +36,9 @@ const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
 				alt={ingrediente.strIngredient}
 			/>
 			<span className={styles.nombreIngles}>{ingrediente.strIngredient}</span>
-			<span className={styles.nombreEspañol}>{ingrediente.nombreEspañol}</span>
+			<span lang='es' className={styles.nombreEspañol}>
+				{ingrediente.nombreEspañol}
+			</span>
 		</li>
 	)
 }

@@ -11,7 +11,9 @@ import {
 function CategoriaPais({ receta }) {
 	return (
 		<div className={styles.divUl}>
-			<h2>Categorías Y Enlaces</h2>
+			<h2>
+				Categorías {receta.strYoutube || receta.strSource ? 'Y Enlaces' : null}
+			</h2>
 			<ul className={styles.ulInfo}>
 				{receta.strTags &&
 					receta.strTags.split(',').map((tag) => (

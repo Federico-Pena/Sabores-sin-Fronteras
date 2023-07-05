@@ -2,25 +2,33 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	position: relative;
 	transition: all 0.5s ease-in-out;
+	background-color: #dbdbdb91;
+	color: rgb(44, 44, 44);
+	padding: 1rem 0.5rem;
+	border-radius: 0.3rem;
+	box-shadow: 0px 0px 10px 1px black;
 }
-
+.Li:hover {
+	background-color: transparent;
+	color: #eee;
+	box-shadow: none;
+}
 .Li:hover .Imagen {
-	transform: scale(1.2);
+	transform: scale(1.1) rotateZ(-15deg);
 	z-index: 2;
 }
 
 .Imagen {
-	width: 85px;
-	height: 85px;
+	width: 130px;
+	height: 150px;
 	transition: 0.5s ease-in-out;
 }
 .nombreEspañol {
-	display: none;
+	position: absolute;
+	top: 0;
 }
 .nombreIngles {
-	position: absolute;
-	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+	display: none;
 }

@@ -21,8 +21,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	background-color: #dbdbdb;
+	color: rgb(44, 44, 44);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
 	width: 80%;
-	border-bottom: 1px solid #eee;
+	font-size: 18px;
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
+	text-shadow: none;
 }
 .liSmall {
 	width: 100%;
@@ -33,15 +39,17 @@
 	height: 2rem;
 }
 .liInfo:last-child {
-	border-bottom: none;
+	background-color: transparent;
+	box-shadow: none;
 }
 .enlaces {
 	width: 50%;
-	color: #e6dcdc;
+	color: #dadada;
 	border: 1px solid white;
 	border-radius: 0.5rem;
 	transition: all 0.3s ease-in-out;
 	cursor: pointer;
+	background-color: rgba(34, 103, 143, 0.849);
 }
 .enlaceIcono {
 	width: 4rem;

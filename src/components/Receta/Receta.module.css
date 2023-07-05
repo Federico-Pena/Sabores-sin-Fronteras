@@ -17,7 +17,6 @@
 	flex: auto;
 	scroll-snap-align: center;
 	scroll-behavior: smooth;
-
 	overflow-x: hidden;
 	min-width: 100vw;
 	min-height: 100vh;
@@ -25,8 +24,9 @@
 	flex-direction: column;
 	align-items: center;
 	position: sticky;
-	background: fixed no-repeat center cover
-		url('../../assets/backgreondReceta.svg');
+	background: rgb(255, 255, 255) url('../../assets/backgreondReceta.svg')
+		no-repeat fixed center;
+	background-size: cover;
 	padding-top: 3rem;
 }
 
@@ -47,6 +47,11 @@
 	width: 2rem;
 	height: 2rem;
 }
+.abajoIco {
+	width: 3rem;
+	height: 3rem;
+	animation: btnAbajoAnimate 1s infinite ease-in-out alternate;
+}
 
 @keyframes recetaAnimate {
 	from {
@@ -54,5 +59,14 @@
 	}
 	to {
 		clip-path: circle(1000% at center);
+	}
+}
+@keyframes btnAbajoAnimate {
+	from {
+		transform: translateY(-20px);
+	}
+	to {
+		transform: translateY(0px);
+		color: rgb(0, 0, 0);
 	}
 }

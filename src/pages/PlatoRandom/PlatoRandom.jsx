@@ -12,9 +12,9 @@ function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
 	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState()
-	const [recetas, setRecetas] = useState()
-	const sectionRandomRef = useRef()
+	const [error, setError] = useState(null)
+	const [recetas, setRecetas] = useState([])
+	const sectionRandomRef = useRef(null)
 	useEffect(() => {
 		pintarRecetas()
 	}, [])
@@ -30,9 +30,9 @@ function PlatoRandom() {
 		setLoading(false)
 		setTimeout(() => {
 			if (sectionRandomRef.current) {
-				sectionRandomRef.current.scrollIntoView()
+				sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
 			}
-		}, 1000)
+		}, 500)
 	}
 
 	function cerrarModal() {
@@ -51,9 +51,9 @@ function PlatoRandom() {
 		setLoading(false)
 		setTimeout(() => {
 			if (sectionRandomRef.current) {
-				sectionRandomRef.current.scrollIntoView()
+				sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
 			}
-		}, 1000)
+		}, 500)
 	}
 
 	function mostrarReceta(e) {
@@ -87,7 +87,7 @@ function PlatoRandom() {
 			{loading ? <Modal loading={loading} /> : null}
 			<section className={stylesDefault.DsectionRandomRecetas}>
 				<div className={styles.sectionH1}>
-					<h1>
+					<h1 lang='es'>
 						En Sabores Sin Fronteras Encontrarás Una Amplia Variedad De Recetas
 						Internacionales, Desde Clásicos Italianos Hasta Exóticas Especias
 						Asiáticas. ¡Descubre Nuevos Horizontes Culinarios!

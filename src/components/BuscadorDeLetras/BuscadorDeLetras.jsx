@@ -36,7 +36,10 @@ const BuscadorDeLetras = ({ buscadorRecetas, refParent }) => {
 	return (
 		<div className={styles.divFormInputBuscar}>
 			{loading ? <Modal loading={loading} /> : null}
-			<form className={styles.formBuscador} onSubmit={fetchRecetasLetra}>
+			<form
+				className={styles.formBuscador}
+				onSubmit={fetchRecetasLetra}
+				lang='ES'>
 				<label htmlFor='selectBuscar'>Una Letra</label>
 				<select
 					value={inputValue}

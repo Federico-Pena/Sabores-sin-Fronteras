@@ -18,17 +18,22 @@ Ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	margin: 2rem 0;
 	gap: 1rem;
 }
 .Li {
-	flex: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-bottom: 1px solid #eeeeee81;
+	background-color: #dbdbdb;
+	color: rgb(44, 44, 44);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
 	width: 80%;
 	font-size: 18px;
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
+	text-shadow: none;
 }
 
 .btnVerIngredientes {

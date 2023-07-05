@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { MdClose } from 'react-icons/md'
-
+import { FiChevronsDown } from 'react-icons/fi'
 import styles from './Receta.module.css'
 import FotoReceta from './FotoReceta/FotoReceta'
 import Instrucciones from './Instrucciones/Instrucciones'
@@ -36,6 +36,11 @@ function Receta({
 			)
 			const data = await response.json()
 			mostrarReceta(data.meals[0])
+			setTimeout(() => {
+				if (divRecetRef.current) {
+					divRecetRef.current.scrollIntoView({ behavior: 'smooth' })
+				}
+			}, 500)
 		} catch (error) {
 			manejoError(error)
 		}
@@ -58,6 +63,7 @@ function Receta({
 			)}
 			<div className={styles.sliderDiv}>
 				<FotoReceta receta={receta} />
+				{ingredientes ? <FiChevronsDown className={styles.abajoIco} /> : null}
 			</div>
 
 			{flip ? (

@@ -32,6 +32,8 @@ function PlatoPais() {
 		//buscar recetas por una region
 		const fetchRegion = async () => {
 			setLoading(true)
+			setBuscado()
+
 			try {
 				const response = await fetch(
 					`https://www.themealdb.com/api/json/v1/1/filter.php?a=${region}`
@@ -56,6 +58,8 @@ function PlatoPais() {
 		//mostrar resultados del filtro Ingrediente al hacer click en el icono
 		const buscarRecetaPorIngrediente = async () => {
 			setLoading(true)
+			setBuscado()
+
 			try {
 				const response = await fetch(
 					`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`
@@ -128,7 +132,7 @@ function PlatoPais() {
 				className={`${styles.divPlatoPais} ${stylesDefault.DflexContainer}`}>
 				<section className={stylesDefault.DsectionRandomRecetas}>
 					<div className={styles.titulos}>
-						<h1>
+						<h1 lang='es'>
 							Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O
 							País De Origen
 						</h1>
@@ -147,9 +151,13 @@ function PlatoPais() {
 				<section
 					className={stylesDefault.DsectionRandomRecetas}
 					ref={sectionRef}>
-					{buscado && !receta ? (
+					{buscado && !receta && recetas ? (
 						<h3 className={styles.buscadoH1}>
-							{buscado} - {recetas.length} Resultados
+							{buscado} {recetas.length} Results
+						</h3>
+					) : buscado && !receta ? (
+						<h3 lang='es' className={styles.buscadoH1}>
+							No Hay Resultados
 						</h3>
 					) : null}
 					{receta ? (
@@ -170,7 +178,9 @@ function PlatoPais() {
 							)
 						})
 					) : (
-						<h2 className={styles.subTitulo}>Realiza Una Busqueda</h2>
+						<h2 lang='es' className={styles.subTitulo}>
+							Realiza Una Busqueda
+						</h2>
 					)}
 				</section>
 			</main>
