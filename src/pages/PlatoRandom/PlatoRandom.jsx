@@ -15,14 +15,13 @@ function PlatoRandom() {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(null)
 	const [recetas, setRecetas] = useState([])
-	const [resultados, setResultados] = useState('')
+	const [buscado, setBuscado] = useState()
 	const sectionRandomRef = useRef(null)
 	useEffect(() => {
 		pintarRecetas()
 	}, [])
 	const pintarRecetas = async () => {
 		setLoading(true)
-		setResultados()
 		try {
 			const data = await fetchRecetas()
 			setReceta(...data.data[0].meals)
@@ -51,8 +50,7 @@ function PlatoRandom() {
 		setReceta()
 		setIngredientes()
 		setRecetas(e)
-		console.log(e.length)
-		setResultados(e.length)
+
 		setLoading(false)
 		setTimeout(() => {
 			if (sectionRandomRef.current) {
@@ -77,7 +75,10 @@ function PlatoRandom() {
 	function manejoError() {
 		setError(true)
 	}
-
+	function mostrarBuscados(e) {
+		console.log(e.length)
+		setBuscado(e)
+	}
 	return (
 		<main
 			className={`${stylesDefault.DflexContainer} ${styles.divPlatoRandom}`}>
@@ -105,16 +106,13 @@ function PlatoRandom() {
 					<BuscadorDePalabras
 						buscadorRecetas={buscadorRecetas}
 						refParent={sectionRandomRef}
+						setBuscados={mostrarBuscados}
 					/>
 				</div>
 			</section>
 			<section
 				className={stylesDefault.DsectionRandomRecetas}
 				ref={sectionRandomRef}>
-				{!receta && recetas.length > 0 && (
-					<FiChevronsDown className={styles.horizontalIco} />
-				)}
-
 				{receta ? (
 					<Receta
 						manejoError={manejoError}
@@ -122,20 +120,28 @@ function PlatoRandom() {
 						receta={receta}
 						cerrarReceta={recetas ? cerrarReceta : null}
 					/>
-				) : recetas ? (
+				) : recetas?.length > 0 ? (
 					<ContenedorRecetas>
 						{recetas?.map((receta, i) => {
 							return (
-								<Receta
-									manejoError={manejoError}
-									mostrarReceta={mostrarReceta}
-									key={i}
-									receta={receta}
-								/>
+								<div className={styles.divnumeroReceta} key={i}>
+									<small className={styles.numeroReceta}>
+										{i + 1}/{recetas.length}
+									</small>
+									<Receta
+										manejoError={manejoError}
+										mostrarReceta={mostrarReceta}
+										receta={receta}
+									/>
+								</div>
 							)
 						})}
 					</ContenedorRecetas>
-				) : null}
+				) : (
+					<h2 lang='es' className={styles.subTitulo}>
+						Realiza Una Busqueda
+					</h2>
+				)}
 			</section>
 		</main>
 	)

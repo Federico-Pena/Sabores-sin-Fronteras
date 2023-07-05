@@ -28,20 +28,25 @@
 	align-items: flex-start;
 	width: 100%;
 }
-.horizontalIco {
-	flex: auto;
-	width: 3rem;
-	height: 3rem;
-	position: absolute;
-	top: 8rem;
-	animation: btnHorizontalAnimate 1s infinite ease-in-out alternate;
+.buscadoh3 {
+	position: sticky;
+	text-align: center;
+	top: 3rem;
+	right: 1rem;
+	z-index: 3;
+	background-color: rgba(0, 0, 0, 0.418);
+	align-self: flex-end;
+	padding: 0.5rem;
+	border-radius: 0.3rem;
 }
-@keyframes btnHorizontalAnimate {
-	from {
-		transform: translateX(-20px) rotate(-90deg);
-	}
-	to {
-		transform: translateX(0px) rotate(-90deg);
-		color: rgb(0, 0, 0);
-	}
+.divnumeroReceta {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.numeroReceta {
+	position: absolute;
+	top: 3rem;
+	left: 50%;
+	transform: translate(-50%);
 }

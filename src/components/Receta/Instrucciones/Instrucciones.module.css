@@ -37,6 +37,7 @@
 	width: 100%;
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 	transition: all 0.3s ease-in-out;
+	line-height: 2rem;
 }
 .liintruccionAnimado {
 	animation: recetaAnimate2 2s ease-in-out;

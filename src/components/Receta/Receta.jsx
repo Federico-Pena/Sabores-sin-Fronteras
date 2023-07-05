@@ -53,15 +53,15 @@ function Receta({
 			onClick={() => {
 				ingredientes ? null : obtenerReceta()
 			}}>
-			{cerrarReceta && (
-				<button
-					className={styles.btnCerrar}
-					onClick={cerrarReceta}
-					title='Cerrar Receta'>
-					<MdClose className={styles.btnCerrarIco} />
-				</button>
-			)}
 			<div className={styles.sliderDiv}>
+				{cerrarReceta && (
+					<button
+						className={styles.btnCerrar}
+						onClick={cerrarReceta}
+						title='Cerrar Receta'>
+						<MdClose className={styles.btnCerrarIco} />
+					</button>
+				)}
 				<FotoReceta receta={receta} />
 				{ingredientes ? <FiChevronsDown className={styles.abajoIco} /> : null}
 			</div>

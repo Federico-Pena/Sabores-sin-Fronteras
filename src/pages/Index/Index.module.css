@@ -39,7 +39,9 @@
 	border: none;
 	color: #333333;
 }
-
+.heroPlatoRandomBtn font {
+	color: #333333;
+}
 .heroPlatoRandomBtn:hover {
 	transform: scale(1.1);
 }

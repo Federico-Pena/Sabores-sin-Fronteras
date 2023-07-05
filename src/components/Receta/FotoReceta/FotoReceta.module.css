@@ -13,8 +13,9 @@
 .imgReceta {
 	object-fit: cover;
 	border-radius: 0.5rem;
-	width: 360px;
-	height: 360px;
+	max-width: 100%;
+	height: auto;
+	mix-blend-mode: hard-light;
 }
 .SmallFoto {
 	font-size: 16px;
@@ -30,4 +31,5 @@
 	flex-direction: column;
 	justify-content: center;
 	letter-spacing: 3px;
+	z-index: 2;
 }

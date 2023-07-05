@@ -40,3 +40,14 @@
 	padding: 0.5rem;
 	border-radius: 0.3rem;
 }
+.divnumeroRecetaPais {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.numeroRecetaPais {
+	position: absolute;
+	top: 5rem;
+	left: 50%;
+	transform: translate(-50%);
+}

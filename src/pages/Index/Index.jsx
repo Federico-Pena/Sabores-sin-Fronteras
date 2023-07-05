@@ -13,7 +13,7 @@ function Index() {
 			</div>
 			<div className={styles.divHeroBtn}>
 				<Link className={styles.heroPlatoRandomBtn} to='/PlatoRandom'>
-					Empecemos
+					Empieza
 				</Link>
 			</div>
 		</div>

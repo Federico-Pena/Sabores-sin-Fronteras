@@ -171,12 +171,16 @@ function PlatoPais() {
 						<ContenedorRecetas>
 							{recetas.map((receta, i) => {
 								return (
-									<Receta
-										manejoError={manejoErrorReceta}
-										mostrarReceta={mostrarReceta}
-										key={i}
-										receta={receta}
-									/>
+									<div className={styles.divnumeroRecetaPais} key={i}>
+										<small className={styles.numeroRecetaPais}>
+											{i + 1}/{recetas.length}
+										</small>
+										<Receta
+											manejoError={manejoErrorReceta}
+											mostrarReceta={mostrarReceta}
+											receta={receta}
+										/>
+									</div>
 								)
 							})}
 						</ContenedorRecetas>
