@@ -13,13 +13,12 @@
 }
 
 .DsectionRandomRecetas {
-	scroll-snap-align: start;
+	scroll-snap-align: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
 	min-height: 100vh;
-	padding-top: 2rem;
 	scroll-behavior: smooth;
 	transition: all 0.5s ease-in-out;
 }

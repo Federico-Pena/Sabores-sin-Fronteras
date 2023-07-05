@@ -28,9 +28,11 @@ function PlatoRandom() {
 			setError(error)
 		}
 		setLoading(false)
-		if (sectionRandomRef.current) {
-			sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
-		}
+		setTimeout(() => {
+			if (sectionRandomRef.current) {
+				sectionRandomRef.current.scrollIntoView()
+			}
+		}, 1000)
 	}
 
 	function cerrarModal() {
@@ -47,9 +49,11 @@ function PlatoRandom() {
 		setIngredientes()
 		setRecetas(e)
 		setLoading(false)
-		if (sectionRandomRef.current) {
-			sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
-		}
+		setTimeout(() => {
+			if (sectionRandomRef.current) {
+				sectionRandomRef.current.scrollIntoView()
+			}
+		}, 1000)
 	}
 
 	function mostrarReceta(e) {
@@ -68,10 +72,7 @@ function PlatoRandom() {
 	function manejoError() {
 		setError(true)
 	}
-	const moverseEnPagina = (ref) => {
-		const releventDiv = ref.current
-		releventDiv.scrollIntoView({ behavior: 'smooth' })
-	}
+
 	return (
 		<main
 			className={`${stylesDefault.DflexContainer} ${styles.divPlatoRandom}`}>
@@ -80,7 +81,7 @@ function PlatoRandom() {
 					cerrarModal={cerrarModal}
 					manejoError={error}
 					error={error}
-					titulo={'Error De Red'}
+					titulo={'Ocurrió un Error'}
 				/>
 			) : null}
 			{loading ? <Modal loading={loading} /> : null}

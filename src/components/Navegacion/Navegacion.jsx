@@ -17,10 +17,7 @@ function Navegacion() {
 			{location.pathname === '/' ? null : (
 				<nav className={styles.Nav}>
 					<ul className={styles.UlNav}>
-						<li className={styles.liNav}>
-							<img className={styles.logoNav} src='/food.png' alt='Logo' />
-						</li>
-						<li className={styles.liNav}>
+						<li className={styles.liNavRandom}>
 							<Link className={styles.linkPlatoRandom} to={'/PlatoRandom'}>
 								{location.pathname === '/PlatoRandom' ? (
 									<IoHomeSharp className={styles.iconNav} />
@@ -29,7 +26,10 @@ function Navegacion() {
 								)}
 							</Link>
 						</li>
-						<li className={styles.liNav}>
+						<li className={styles.liNavlogo}>
+							<img className={styles.logoNav} src='/food.png' alt='Logo' />
+						</li>
+						<li className={styles.liNavPais}>
 							<Link className={styles.linkPlatoPais} to={'/PlatoPais'}>
 								{location.pathname === '/PlatoRandom' ? (
 									<IoFastFoodOutline className={styles.iconNav} />

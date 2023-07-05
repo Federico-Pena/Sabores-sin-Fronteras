@@ -1,7 +1,8 @@
 .divPlatoRandom {
-	background-image: url('../../assets/backgroundPortrail2.svg');
+	background-image: url('../../assets/backgroundPortrail3.svg');
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 .divPlatoRandom::-webkit-scrollbar {
 	width: 0;
@@ -9,6 +10,8 @@
 
 .sectionH1 {
 	flex-grow: 1;
+	font-size: 16px;
+	max-width: 900px;
 	padding: 0 2rem;
 	display: flex;
 	flex-direction: column;

@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react'
-
+/**
+ *
+ * @param {*} elementRef
+ * @param {*} root
+ * @param {*} rootMargin
+ * @param {*} threshold
+ * Funciona para dos elementos que estan en el mismo componente
+ */
 export const useIntersectionObserverElement = (
 	elementRef,
 	root,

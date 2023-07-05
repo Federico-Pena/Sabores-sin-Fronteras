@@ -1,5 +1,5 @@
 .recetasContainer {
-	scroll-snap-align: center;
+	scroll-snap-align: start;
 	scroll-behavior: smooth;
 	scroll-snap-type: y mandatory;
 	display: flex;
@@ -8,7 +8,9 @@
 	max-height: 100vh;
 	width: 100vw;
 	position: relative;
+	transition: all 0.3s ease-in-out;
 	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
+	animation: recetaAnimate 2s ease-in-out;
 }
 
 .sliderDiv {
@@ -20,19 +22,38 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: sticky;
+	background-image: url('../../assets/backgreondReceta.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	padding-top: 3rem;
 }
 
 .btnCerrar {
 	position: absolute;
 	top: 1rem;
 	right: 1rem;
+	width: 2rem;
+	height: 2rem;
 	color: black;
 	border-radius: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 1;
 }
 .btnCerrarIco {
 	width: 2rem;
 	height: 2rem;
+}
+
+@keyframes recetaAnimate {
+	from {
+		clip-path: circle(0% at center);
+	}
+	to {
+		clip-path: circle(1000% at center);
+	}
 }

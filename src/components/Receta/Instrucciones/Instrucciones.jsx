@@ -1,16 +1,21 @@
+import { useRef } from 'react'
 import styles from './Instrucciones.module.css'
-import { MdOutlineArrowBack } from 'react-icons/md'
+import InstruccionIntersection from './InstruccionIntersection'
 function Instrucciones({ receta, fliping }) {
+	const ulInstRef = useRef(null)
+
 	return (
 		<div className={styles.divInstrucciones}>
 			<h2 className={styles.h2Instrucciones}>Instructiones</h2>
-			<ul className={styles.ulIns}>
+			<ul className={styles.ulIns} ref={ulInstRef}>
 				{receta?.strInstructions.split('.').map((e, i) => {
 					return e.trim() && e.trim().length >= 2 ? (
-						<li className={styles.liintruccion} key={e}>
-							<span className={styles.spanContenido}>{e}</span>
-							<span className={styles.spanNumero}>{'# ' + (i + 1)}</span>
-						</li>
+						<InstruccionIntersection
+							key={e + i}
+							Instruccion={e}
+							index={i}
+							root={ulInstRef.current}
+						/>
 					) : null
 				})}
 			</ul>
@@ -18,7 +23,7 @@ function Instrucciones({ receta, fliping }) {
 				className={styles.btnVolver}
 				title='Ver Ingredientes'
 				onClick={fliping}>
-				<MdOutlineArrowBack className={styles.btnVolverico} />
+				Volver
 			</button>
 		</div>
 	)

@@ -6,6 +6,8 @@
 	width: 100%;
 	margin: auto;
 	border-radius: 0.5rem;
+	animation: recetaAnimate 2s ease-in-out;
+	overflow: hidden;
 }
 .h2Instrucciones {
 	margin: 1rem 0;
@@ -31,7 +33,12 @@
 	font-size: 16px;
 	position: relative;
 	border: 1px solid black;
+	width: 100%;
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
+	transition: all 0.5s ease-in-out;
+}
+.liintruccionAnimado {
+	animation: recetaAnimate2 2s ease-in-out;
 }
 
 .spanNumero {
@@ -48,13 +55,39 @@
 }
 .btnVolver {
 	width: 90%;
-	padding: 0.5rem;
+	padding: 1rem;
 	border-radius: 0.5rem;
-	margin: auto;
+	margin: 1rem auto;
 	color: black;
+	font-size: 16px;
+	transition: all 0.3s ease-in-out;
 }
+.btnVolver:hover {
+	color: #d3d3d3;
+	background-color: #464545;
+}
+.btnVolver:active {
+	transform: scale(0.98);
+}
+
 .btnVolverico {
 	color: black;
 	width: 2rem;
 	height: 2rem;
+}
+@keyframes recetaAnimate {
+	from {
+		clip-path: circle(0% at center);
+	}
+	to {
+		clip-path: circle(1000% at center);
+	}
+}
+@keyframes recetaAnimate2 {
+	from {
+		clip-path: circle(0% at left);
+	}
+	to {
+		clip-path: circle(1000% at left);
+	}
 }

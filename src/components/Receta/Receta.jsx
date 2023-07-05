@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MdClose } from 'react-icons/md'
 
 import styles from './Receta.module.css'

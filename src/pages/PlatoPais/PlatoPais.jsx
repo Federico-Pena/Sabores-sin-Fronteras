@@ -1,6 +1,6 @@
 import styles from './PlatoPais.module.css'
 import stylesDefault from '../../App.module.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Receta from '../../components/Receta/Receta'
 import Modal from '../../components/Modal/Modal'
 import { obtenerRegiones } from '../../helpers/obtenerRegiones'
@@ -8,17 +8,25 @@ import IngredientesComponent from '../../components/IngredientesComponent/Ingred
 import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 import RegionesComponent from '../../components/RegionesComponent/RegionesComponent'
 function PlatoPais() {
-	const [region, setPais] = useState('')
+	const [region, setPais] = useState()
 	const [regiones, setRegiones] = useState()
-	const [ingredientList, setIngredientList] = useState('')
+	const [ingrediente, setIngrediente] = useState()
+	const [ingredientList, setIngredientList] = useState()
 	const [receta, setReceta] = useState()
 	const [recetas, setRecetas] = useState()
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState()
+	const [buscado, setBuscado] = useState()
+	const sectionRef = useRef(null)
 
 	useEffect(() => {
 		fetchRegions()
 	}, [])
+	//todas las regiones
+	const fetchRegions = () => {
+		const data = obtenerRegiones()
+		setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
+	}
 
 	useEffect(() => {
 		//buscar recetas por una region
@@ -34,33 +42,41 @@ function PlatoPais() {
 				setError(error)
 			}
 			setLoading(false)
+			setBuscado(region)
 		}
-		if (region) {
-			fetchRegion()
-		}
+		setTimeout(() => {
+			if (sectionRef.current) {
+				sectionRef.current.scrollIntoView()
+			}
+		}, 500)
+		fetchRegion()
 	}, [region])
 
-	//todas las regiones
-	const fetchRegions = () => {
-		const data = obtenerRegiones()
-		setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
-	}
-
-	//mostrar resultados del filtro Ingrediente al hacer click en el icono
-	const buscarRecetaPorIngrediente = async (e) => {
-		setLoading(true)
-		try {
-			const response = await fetch(
-				`https://www.themealdb.com/api/json/v1/1/filter.php?i=${e}`
-			)
-			const data = await response.json()
-			setRecetas(data.meals)
-		} catch (error) {
-			setError(error)
+	useEffect(() => {
+		//mostrar resultados del filtro Ingrediente al hacer click en el icono
+		const buscarRecetaPorIngrediente = async () => {
+			setLoading(true)
+			try {
+				const response = await fetch(
+					`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`
+				)
+				const data = await response.json()
+				setRecetas(data.meals)
+			} catch (error) {
+				setError(error)
+			}
+			setReceta()
+			setPais()
+			setLoading(false)
+			setBuscado(ingrediente)
+			setTimeout(() => {
+				if (sectionRef.current) {
+					sectionRef.current.scrollIntoView()
+				}
+			}, 500)
 		}
-		setReceta()
-		setLoading(false)
-	}
+		buscarRecetaPorIngrediente()
+	}, [ingrediente])
 
 	//mostrar Receta al hacerle click a la foto
 	const mostrarReceta = (e) => {
@@ -68,13 +84,19 @@ function PlatoPais() {
 		const ingredientList = textIngredientFormater(e)
 		setIngredientList(ingredientList)
 		setReceta(e)
+		setPais()
 		setLoading(false)
+		setTimeout(() => {
+			if (sectionRef.current) {
+				sectionRef.current.scrollIntoView()
+			}
+		}, 500)
 	}
 
 	//mostrar resultados del filtro Pais al hacer click en el icono
 	const elegirFiltroPais = (e) => {
 		setPais(e)
-		setReceta('')
+		setReceta()
 	}
 
 	function cerrarModal() {
@@ -85,6 +107,9 @@ function PlatoPais() {
 
 	function manejoErrorReceta(e) {
 		setError(e)
+	}
+	function setarIngrediente(e) {
+		setIngrediente(e)
 	}
 
 	return (
@@ -101,8 +126,7 @@ function PlatoPais() {
 
 			<main
 				className={`${styles.divPlatoPais} ${stylesDefault.DflexContainer}`}>
-				<section
-					className={`${styles.divRecetasContainer} ${stylesDefault.DsectionRandomRecetas}`}>
+				<section className={stylesDefault.DsectionRandomRecetas}>
 					<div className={styles.titulos}>
 						<h1>
 							Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O
@@ -111,7 +135,7 @@ function PlatoPais() {
 					</div>
 					<div className={styles.opciones}>
 						<IngredientesComponent
-							buscarRecetaPorIngrediente={buscarRecetaPorIngrediente}
+							buscarRecetaPorIngrediente={setarIngrediente}
 						/>
 						<RegionesComponent
 							regiones={regiones}
@@ -121,7 +145,13 @@ function PlatoPais() {
 				</section>
 
 				<section
-					className={`${styles.divRecetasContainer} ${stylesDefault.DsectionRandomRecetas}`}>
+					className={stylesDefault.DsectionRandomRecetas}
+					ref={sectionRef}>
+					{buscado && !receta ? (
+						<h3 className={styles.buscadoH1}>
+							{buscado} - {recetas.length} Resultados
+						</h3>
+					) : null}
 					{receta ? (
 						<Receta
 							cerrarReceta={cerrarModal}
