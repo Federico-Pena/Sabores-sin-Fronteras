@@ -16,6 +16,8 @@
 .sliderDiv {
 	flex: auto;
 	scroll-snap-align: center;
+	scroll-behavior: smooth;
+
 	overflow-x: hidden;
 	min-width: 100vw;
 	min-height: 100vh;
@@ -23,11 +25,8 @@
 	flex-direction: column;
 	align-items: center;
 	position: sticky;
-	background-image: url('../../assets/backgreondReceta.svg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-	background-size: 100% 100%;
+	background: fixed no-repeat center cover
+		url('../../assets/backgreondReceta.svg');
 	padding-top: 3rem;
 }
 

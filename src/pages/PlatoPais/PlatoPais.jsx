@@ -46,7 +46,7 @@ function PlatoPais() {
 		}
 		setTimeout(() => {
 			if (sectionRef.current) {
-				sectionRef.current.scrollIntoView()
+				sectionRef.current.scrollIntoView({ behavior: 'smooth' })
 			}
 		}, 500)
 		fetchRegion()
@@ -71,7 +71,7 @@ function PlatoPais() {
 			setBuscado(ingrediente)
 			setTimeout(() => {
 				if (sectionRef.current) {
-					sectionRef.current.scrollIntoView()
+					sectionRef.current.scrollIntoView({ behavior: 'smooth' })
 				}
 			}, 500)
 		}
@@ -88,7 +88,7 @@ function PlatoPais() {
 		setLoading(false)
 		setTimeout(() => {
 			if (sectionRef.current) {
-				sectionRef.current.scrollIntoView()
+				sectionRef.current.scrollIntoView({ behavior: 'smooth' })
 			}
 		}, 500)
 	}
