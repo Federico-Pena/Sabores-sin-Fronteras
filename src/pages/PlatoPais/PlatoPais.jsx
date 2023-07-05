@@ -7,6 +7,7 @@ import { obtenerRegiones } from '../../helpers/obtenerRegiones'
 import IngredientesComponent from '../../components/IngredientesComponent/IngredientesComponent'
 import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 import RegionesComponent from '../../components/RegionesComponent/RegionesComponent'
+import ContenedorRecetas from '../../components/ContenedorRecetas/ContenedorRecetas'
 function PlatoPais() {
 	const [region, setPais] = useState()
 	const [regiones, setRegiones] = useState()
@@ -167,16 +168,18 @@ function PlatoPais() {
 							receta={receta}
 						/>
 					) : recetas ? (
-						recetas.map((receta, i) => {
-							return (
-								<Receta
-									manejoError={manejoErrorReceta}
-									mostrarReceta={mostrarReceta}
-									key={i}
-									receta={receta}
-								/>
-							)
-						})
+						<ContenedorRecetas>
+							{recetas.map((receta, i) => {
+								return (
+									<Receta
+										manejoError={manejoErrorReceta}
+										mostrarReceta={mostrarReceta}
+										key={i}
+										receta={receta}
+									/>
+								)
+							})}
+						</ContenedorRecetas>
 					) : (
 						<h2 lang='es' className={styles.subTitulo}>
 							Realiza Una Busqueda

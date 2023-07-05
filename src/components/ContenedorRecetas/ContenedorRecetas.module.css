@@ -1,9 +1,9 @@
 .contenedorRecetas {
 	overflow: auto;
 	max-height: 100vh;
-	scroll-snap-type: y mandatory;
+	max-width: 100vw;
+	scroll-snap-type: x mandatory;
 	scroll-behavior: smooth;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 }

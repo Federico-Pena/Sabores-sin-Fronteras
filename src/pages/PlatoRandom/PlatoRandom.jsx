@@ -8,18 +8,21 @@ import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 import BuscadorDePalabras from '../../components/BuscadorDeLetras/BuscadorDeLetras'
 import RecetaAleatoria from '../../components/RecetaAleatoria/RecetaAleatoria'
 import ContenedorRecetas from '../../components/ContenedorRecetas/ContenedorRecetas'
+import { FiChevronsDown } from 'react-icons/fi'
 function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(null)
 	const [recetas, setRecetas] = useState([])
+	const [resultados, setResultados] = useState('')
 	const sectionRandomRef = useRef(null)
 	useEffect(() => {
 		pintarRecetas()
 	}, [])
 	const pintarRecetas = async () => {
 		setLoading(true)
+		setResultados()
 		try {
 			const data = await fetchRecetas()
 			setReceta(...data.data[0].meals)
@@ -48,6 +51,8 @@ function PlatoRandom() {
 		setReceta()
 		setIngredientes()
 		setRecetas(e)
+		console.log(e.length)
+		setResultados(e.length)
 		setLoading(false)
 		setTimeout(() => {
 			if (sectionRandomRef.current) {
@@ -106,6 +111,10 @@ function PlatoRandom() {
 			<section
 				className={stylesDefault.DsectionRandomRecetas}
 				ref={sectionRandomRef}>
+				{!receta && recetas.length > 0 && (
+					<FiChevronsDown className={styles.horizontalIco} />
+				)}
+
 				{receta ? (
 					<Receta
 						manejoError={manejoError}

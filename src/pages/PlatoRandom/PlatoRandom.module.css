@@ -28,3 +28,20 @@
 	align-items: flex-start;
 	width: 100%;
 }
+.horizontalIco {
+	flex: auto;
+	width: 3rem;
+	height: 3rem;
+	position: absolute;
+	top: 8rem;
+	animation: btnHorizontalAnimate 1s infinite ease-in-out alternate;
+}
+@keyframes btnHorizontalAnimate {
+	from {
+		transform: translateX(-20px) rotate(-90deg);
+	}
+	to {
+		transform: translateX(0px) rotate(-90deg);
+		color: rgb(0, 0, 0);
+	}
+}

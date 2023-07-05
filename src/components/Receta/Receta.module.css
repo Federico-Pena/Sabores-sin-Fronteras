@@ -4,7 +4,6 @@
 	scroll-snap-type: y mandatory;
 	display: flex;
 	flex-direction: column;
-	aspect-ratio: 1/1;
 	max-height: 100vh;
 	width: 100vw;
 	position: relative;
@@ -23,10 +22,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	position: sticky;
-	background: rgb(255, 255, 255) url('../../assets/backgreondReceta.svg')
-		no-repeat fixed center;
-	background-size: cover;
 	padding-top: 3rem;
 }
 
@@ -48,6 +43,7 @@
 	height: 2rem;
 }
 .abajoIco {
+	flex: auto;
 	width: 3rem;
 	height: 3rem;
 	animation: btnAbajoAnimate 1s infinite ease-in-out alternate;
