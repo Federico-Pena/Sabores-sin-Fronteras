@@ -4,6 +4,12 @@ import stylesDefault from '../../App.module.css'
 function Index() {
 	return (
 		<div className={styles.heroPlatoRandom}>
+			<video
+				autoPlay
+				muted
+				loop
+				className={styles.HeroVideo}
+				src='/assets/indexVideo.mp4'></video>
 			<div
 				className={`${styles.divHeroTitulo} ${stylesDefault.fadeInAnimation}`}>
 				<h1>Explora la gastronomía desde tu hogar</h1>

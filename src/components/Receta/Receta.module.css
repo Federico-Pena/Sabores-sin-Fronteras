@@ -10,6 +10,7 @@
 	position: relative;
 	transition: all 0.3s ease-in-out;
 	animation: recetaAnimate 2s ease-in-out;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .sliderDiv {
@@ -22,10 +23,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-top: 3rem;
 	position: relative;
-	background: var(--colortexto);
-	color: #eee;
+	color: var(--colortexto);
+	background-color: var(--fondo);
 }
 
 .btnCerrar {

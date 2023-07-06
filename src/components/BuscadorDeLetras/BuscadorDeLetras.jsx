@@ -19,11 +19,11 @@ const BuscadorDeLetras = ({ buscadorRecetas, refParent, setBuscados }) => {
 				const data = await result.json()
 				buscadorRecetas(data.meals)
 				setBuscados(inputValue)
-				setTimeout(() => {
+				/* setTimeout(() => {
 					if (refParent.current) {
 						refParent.current.scrollIntoView({ behavior: 'smooth' })
 					}
-				}, 500)
+				}, 500) */
 			} catch (error) {
 				setError(error)
 			}

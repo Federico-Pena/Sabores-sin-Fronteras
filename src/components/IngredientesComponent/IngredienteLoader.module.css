@@ -9,7 +9,7 @@
 	background-repeat: no-repeat;
 	padding: 1rem 0.5rem;
 	border-radius: 0.3rem;
-	color: black;
+	color: var(--colortexto);
 	box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.705);
 }
 .Li:hover {
@@ -30,6 +30,8 @@
 .nombreEspañol {
 	position: absolute;
 	top: 0;
+	text-align: center;
+	font-weight: bold;
 }
 .nombreIngles {
 	display: none;

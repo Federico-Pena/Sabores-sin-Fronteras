@@ -1,12 +1,23 @@
+.divPlatoPais {
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+		url('https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	min-height: calc(100vh - 52px);
+	color: #eee;
+}
+
 .titulos {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	max-width: 1000px;
-	margin: auto;
-	flex-grow: 0.5;
 	cursor: default;
 	line-height: 2rem;
+	color: rgb(251, 251, 252);
+	text-align: center;
+	margin: 2rem auto;
 }
 
 .opciones {

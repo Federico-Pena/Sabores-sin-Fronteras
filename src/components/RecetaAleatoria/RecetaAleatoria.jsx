@@ -1,14 +1,14 @@
-import { TfiReload } from 'react-icons/tfi'
+import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi'
 import styles from './RecetaAleatoria.module.css'
 function RecetaAleatoria({ pintarRecetas }) {
 	return (
 		<div className={styles.formAleatoria}>
-			<label htmlFor='selectBuscar'>Aleatoria</label>
+			<label htmlFor='selectBuscar'>Random</label>
 			<button
 				title='receta aleatoria'
 				className={styles.btnAleatoria}
 				onClick={pintarRecetas}>
-				<TfiReload className={styles.btnAleatoriaSvg} />
+				<GiPerspectiveDiceSixFacesRandom className={styles.btnAleatoriaSvg} />
 			</button>
 		</div>
 	)

@@ -184,11 +184,7 @@ function PlatoPais() {
 								)
 							})}
 						</ContenedorRecetas>
-					) : (
-						<h2 lang='es' className={styles.subTitulo}>
-							Realiza Una Busqueda
-						</h2>
-					)}
+					) : null}
 				</section>
 			</main>
 		</>

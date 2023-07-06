@@ -1,44 +1,25 @@
 .Nav {
 	display: flex;
-	position: fixed;
-	left: 0;
-	top: 0;
 	width: 100%;
-	background-color: #ffffff6b;
-	backdrop-filter: blur(5px);
-	z-index: 9;
-	clip-path: circle(3.5rem at 50% -40%);
 	transition: all 0.5s ease-in-out;
+	background-color: var(--colorResaltado2);
 }
 
 .UlNav {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-content: center;
 	flex-grow: 1;
 	margin: 0;
 }
 
-.liNavRandom,
-.liNavlogo,
-.liNavPais {
+.liNavPag {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
-.liNavRandom {
-	flex-grow: 1;
-}
-.liNavPais {
-	flex-grow: 1;
-}
-.liNavRandom:hover {
-	background-color: azure;
-}
-.liNavPais:hover {
-	background-color: azure;
-}
+
 .logoNav {
 	width: 3rem;
 	height: 3rem;
@@ -50,14 +31,16 @@
 	width: 3rem;
 	padding: 0.5rem;
 	height: 3rem;
-	color: black;
-	transition: all 0.2s linear;
 	cursor: pointer;
+	color: var(--color4);
+}
+.iconNavActive {
+	width: 3rem;
+	padding: 0.5rem;
+	height: 3rem;
+	cursor: pointer;
+	color: rgba(22, 68, 219, 0.692);
 }
 .iconNav:hover {
 	scale: 1.1;
-	color: rgba(255, 255, 255, 0.678);
-}
-.Nav:hover {
-	clip-path: circle(100% at center);
 }

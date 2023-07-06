@@ -9,7 +9,7 @@
 	overflow: hidden;
 }
 .h2Instrucciones {
-	margin: 1rem 0;
+	margin: 1rem auto;
 }
 .ulIns {
 	overflow: auto;
@@ -20,13 +20,12 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	gap: 4rem;
-	padding-top: 3rem;
+	padding: 3rem 0;
 }
 
 .liintruccion {
 	border-radius: 0.5rem;
 	padding: 0.5rem;
-	text-align: justify;
 	position: relative;
 	border: 1px solid black;
 	width: 100%;
@@ -35,6 +34,8 @@
 	background-color: #dbdbdb;
 	color: rgb(44, 44, 44);
 	font-size: 18px;
+	font-weight: bold;
+	text-align: justify;
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 }
 .liintruccionAnimado {
@@ -43,13 +44,14 @@
 
 .spanNumero {
 	position: absolute;
-	top: -2rem;
+	top: -2.5rem;
 	left: 50%;
 	width: 5rem;
 	transform: translate(-50%);
 	background-color: #dbdbdb;
 	color: rgb(44, 44, 44);
-	border-radius: 0.5rem 0.5rem 0 0;
+	border-radius: 0.5rem;
+	border-bottom: 1px solid black;
 	padding: 0.5rem;
 	text-align: center;
 }
@@ -58,10 +60,11 @@
 	padding: 1rem;
 	border-radius: 0.5rem;
 	margin: 1rem auto;
-	color: #444444;
-	background-color: var(--colorResaltado2);
+	color: rgb(70, 70, 70);
+	background-color: var(--colorResaltado1);
 	font-size: 16px;
 	transition: all 0.3s ease-in-out;
+	font-weight: bold;
 }
 .btnVolver:hover {
 	color: #d3d3d3;

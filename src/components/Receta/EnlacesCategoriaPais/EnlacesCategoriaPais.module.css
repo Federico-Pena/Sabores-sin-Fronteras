@@ -2,36 +2,45 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	flex: 0.8 1 auto;
+	flex: auto;
 	width: 100%;
 	max-width: 1000px;
 	margin: auto;
 	border-radius: 0.5rem;
 }
+
+.divUl h2 {
+	width: 100%;
+	text-align: center;
+	color: var(--colortexto);
+
+	margin: 1rem auto;
+}
 .ulInfo {
+	overflow: auto;
+	flex: auto;
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	justify-content: space-evenly;
 	align-items: center;
-	overflow: auto;
-	margin-top: 2rem;
+	justify-content: space-evenly;
+	gap: 1rem;
 }
 .liInfo {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	background-color: #dbdbdb;
-	color: rgb(44, 44, 44);
+	color: var(--colortexto);
 	border-radius: 0.5rem;
 	padding: 0.5rem;
 	width: 80%;
-	font-size: 18px;
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 }
 .liSmall {
 	width: 100%;
 	font-size: 18px;
+	font-weight: bolder;
+	text-align: center;
 }
 .liIcono {
 	width: 2rem;
@@ -43,21 +52,24 @@
 }
 .enlaces {
 	width: 50%;
+	margin: 0 0.5rem;
 	border: 1px solid white;
 	border-radius: 0.5rem;
 	transition: all 0.3s ease-in-out;
 	cursor: pointer;
-	color: #444444;
-	background-color: var(--colorResaltado2);
+	color: rgb(70, 70, 70);
+	background-color: var(--colorResaltado1);
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
+	display: flex;
+	justify-content: center;
 }
 .enlaceIcono {
 	width: 4rem;
 	height: 4rem;
 }
 .enlaces:hover {
-	color: #c7c7c7;
-	background-color: #e6dcdc;
+	color: #d3d3d3;
+	background-color: #464545;
 	border: 1px solid rgb(85, 85, 85);
 }
 .enlaces:active {
