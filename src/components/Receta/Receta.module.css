@@ -4,11 +4,11 @@
 	scroll-snap-type: y mandatory;
 	display: flex;
 	flex-direction: column;
-	max-height: 100vh;
+	height: 100vh;
 	width: 100vw;
+	background-attachment: fixed;
 	position: relative;
 	transition: all 0.3s ease-in-out;
-	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
 	animation: recetaAnimate 2s ease-in-out;
 }
 
@@ -24,6 +24,8 @@
 	align-items: center;
 	padding-top: 3rem;
 	position: relative;
+	background: var(--colortexto);
+	color: #eee;
 }
 
 .btnCerrar {
@@ -32,12 +34,11 @@
 	right: 3rem;
 	width: 2rem;
 	height: 2rem;
-	color: black;
 	border-radius: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 1;
+	background-color: transparent;
 }
 .btnCerrarIco {
 	width: 2rem;

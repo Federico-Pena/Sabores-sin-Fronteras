@@ -6,7 +6,6 @@
 	width: 100%;
 	margin: auto;
 	border-radius: 0.5rem;
-	animation: recetaAnimate 2s ease-in-out;
 	overflow: hidden;
 }
 .h2Instrucciones {
@@ -25,19 +24,18 @@
 }
 
 .liintruccion {
-	background-color: #dbdbdb;
-	color: rgb(44, 44, 44);
 	border-radius: 0.5rem;
 	padding: 0.5rem;
 	text-align: justify;
-	text-shadow: none;
-	font-size: 16px;
 	position: relative;
 	border: 1px solid black;
 	width: 100%;
-	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 	transition: all 0.3s ease-in-out;
 	line-height: 2rem;
+	background-color: #dbdbdb;
+	color: rgb(44, 44, 44);
+	font-size: 18px;
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 }
 .liintruccionAnimado {
 	animation: recetaAnimate2 2s ease-in-out;
@@ -60,7 +58,8 @@
 	padding: 1rem;
 	border-radius: 0.5rem;
 	margin: 1rem auto;
-	color: black;
+	color: #444444;
+	background-color: var(--colorResaltado2);
 	font-size: 16px;
 	transition: all 0.3s ease-in-out;
 }
@@ -77,14 +76,7 @@
 	width: 2rem;
 	height: 2rem;
 }
-@keyframes recetaAnimate {
-	from {
-		clip-path: circle(0% at center);
-	}
-	to {
-		clip-path: circle(200% at center);
-	}
-}
+
 @keyframes recetaAnimate2 {
 	from {
 		clip-path: circle(0% at left);

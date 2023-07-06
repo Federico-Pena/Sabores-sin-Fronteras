@@ -28,7 +28,6 @@
 	width: 80%;
 	font-size: 18px;
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
-	text-shadow: none;
 }
 .liSmall {
 	width: 100%;
@@ -44,19 +43,20 @@
 }
 .enlaces {
 	width: 50%;
-	color: #dadada;
 	border: 1px solid white;
 	border-radius: 0.5rem;
 	transition: all 0.3s ease-in-out;
 	cursor: pointer;
-	background-color: rgba(34, 103, 143, 0.849);
+	color: #444444;
+	background-color: var(--colorResaltado2);
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 }
 .enlaceIcono {
 	width: 4rem;
 	height: 4rem;
 }
 .enlaces:hover {
-	color: #444444;
+	color: #c7c7c7;
 	background-color: #e6dcdc;
 	border: 1px solid rgb(85, 85, 85);
 }

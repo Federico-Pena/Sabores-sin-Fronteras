@@ -1,7 +1,4 @@
 .heroPlatoRandom {
-	background-image: url('../../assets/backgroundPortrail.svg');
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
@@ -16,7 +13,6 @@
 	flex-grow: 1;
 	padding: 2rem;
 	transition: all 0.5s ease-in-out;
-	text-shadow: 0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black;
 }
 .divHeroBtn {
 	display: flex;
@@ -32,16 +28,15 @@
 .heroPlatoRandomBtn {
 	font-size: 20px;
 	font-weight: bold;
-	background-color: #e6dcdc;
 	border-radius: 0.5rem;
 	transition: all 0.3s ease-in-out;
 	padding: 0.5rem 1rem;
 	border: none;
-	color: #333333;
+	background-color: var(--colorResaltado1);
+	color: #353535;
+	cursor: pointer;
 }
-.heroPlatoRandomBtn font {
-	color: #333333;
-}
+
 .heroPlatoRandomBtn:hover {
 	transform: scale(1.1);
 }

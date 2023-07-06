@@ -93,10 +93,9 @@ function PlatoRandom() {
 			{loading ? <Modal loading={loading} /> : null}
 			<section className={stylesDefault.DsectionRandomRecetas}>
 				<div className={styles.sectionH1}>
-					<h1 lang='es'>
+					<h1>
 						En Sabores Sin Fronteras Encontrarás Una Amplia Variedad De Recetas
-						Internacionales, Desde Clásicos Italianos Hasta Exóticas Especias
-						Asiáticas. ¡Descubre Nuevos Horizontes Culinarios!
+						Internacionales. ¡Descubre Nuevos Horizontes Culinarios!
 					</h1>
 				</div>
 				<div className={styles.divInputBuscar}>

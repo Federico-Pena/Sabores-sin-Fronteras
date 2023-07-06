@@ -15,7 +15,6 @@
 	border-radius: 0.5rem;
 	max-width: 100%;
 	height: auto;
-	mix-blend-mode: hard-light;
 }
 .SmallFoto {
 	font-size: 16px;
@@ -24,6 +23,7 @@
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 50%;
+	margin-bottom: 2rem;
 }
 .H2Foto {
 	position: absolute;
@@ -32,4 +32,5 @@
 	justify-content: center;
 	letter-spacing: 3px;
 	z-index: 2;
+	text-shadow: 0px 0px 5px black, 0px 0px 10px black;
 }

@@ -1,8 +1,9 @@
 :root {
-	--bgColor1: #643843;
-	--bgColor2: #99627a;
-	--fontColor1: #c88ea7;
-	--fontColor2: #e7cbcb;
+	--colorResaltado1: #d49686;
+	--colorResaltado2: #dcbe9c;
+	--colortexto: #612f22;
+	--color4: #8c8474;
+	--fondo: #d4c4ad;
 }
 * {
 	margin: 0;
@@ -13,15 +14,21 @@
 	text-align: center;
 	text-transform: capitalize;
 	cursor: default;
+	letter-spacing: 2px;
+	font-weight: 600;
 }
 button,
 a font {
 	cursor: pointer;
-	color: #e6dcdc;
+	color: #eee;
 }
 button {
 	border: none;
 	outline: none;
+}
+body {
+	background-color: #612f22;
+	color: #eee;
 }
 body,
 html,
@@ -29,7 +36,6 @@ html,
 	scroll-behavior: smooth;
 	overflow: auto;
 	font-family: Cascadia Code, sans-serif;
-	color: #e6dcdc;
 	min-height: 100vh;
 	min-width: 100vw;
 }
