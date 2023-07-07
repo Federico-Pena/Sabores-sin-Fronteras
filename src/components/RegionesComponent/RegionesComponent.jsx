@@ -11,12 +11,12 @@ function RegionesComponent({ regiones, elegirFiltroPais }) {
 						}}
 						key={region.strArea}
 						title={region.strArea}>
+						<span>{region.strArea}</span>
 						<img
 							src={region.foto}
 							alt={region.strArea}
 							className={styles.ImgRegion}
 						/>
-						<small>{region.strArea}</small>
 					</li>
 				)
 			})}

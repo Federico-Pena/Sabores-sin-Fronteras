@@ -10,4 +10,6 @@
 	overflow: auto;
 	margin: auto;
 	padding: 1rem;
+	background-color: var(--fondo);
+	border-radius: 0.5rem;
 }

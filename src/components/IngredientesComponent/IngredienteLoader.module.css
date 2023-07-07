@@ -10,7 +10,7 @@
 	padding: 1rem 0.5rem;
 	border-radius: 0.3rem;
 	color: var(--colortexto);
-	box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.705);
+	box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.418);
 }
 .Li:hover {
 	background-color: transparent;

@@ -5,6 +5,7 @@
 	background-position: center;
 	background-size: cover;
 	color: #eee;
+	position: relative;
 }
 .tituloPLatoLetra {
 	display: flex;
@@ -21,22 +22,17 @@
 	justify-content: space-evenly;
 	align-items: center;
 	width: 100%;
-	height: 50vh;
 }
 
-.buscadoH1Letra {
-	position: sticky;
-	text-align: center;
-	top: 3rem;
+.buscadoH1Letra,
+.H1NadaLetra {
+	position: absolute;
+	top: 110vh;
 	right: 1rem;
 	z-index: 3;
 	align-self: flex-end;
-	padding: 0.5rem;
-	border-radius: 0.3rem;
 	color: var(--colortexto);
 }
 .H1NadaLetra {
-	padding: 0.5rem;
-	border-radius: 0.3rem;
-	color: white;
+	color: #eee;
 }

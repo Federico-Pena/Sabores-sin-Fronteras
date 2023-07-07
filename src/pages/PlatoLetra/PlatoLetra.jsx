@@ -12,8 +12,12 @@ function PlatoLetra() {
 	const [recetas, setRecetas] = useState([])
 	const sectionLetraRef = useRef()
 
+	useEffect(() => {
+		mostrarBuscados(buscado)
+	}, [buscado])
 	function buscadorRecetas(e) {
 		setRecetas(e)
+		setReceta()
 		if (sectionLetraRef.current) {
 			setTimeout(() => {
 				sectionLetraRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -50,18 +54,13 @@ function PlatoLetra() {
 			<section
 				className={stylesDefault.DsectionRandomRecetas}
 				ref={sectionLetraRef}>
-				{buscado && !receta && recetas ? (
-					<h3 className={styles.buscadoH1Letra}>{recetas.length} Results</h3>
-				) : buscado && !receta ? (
-					<h3 className={styles.buscadoH1}>No Hay Resultados</h3>
-				) : null}
 				{receta ? (
 					<Receta
 						ingredientes={ingredientes}
 						receta={receta}
 						cerrarReceta={cerrarReceta}
 					/>
-				) : recetas.length > 0 ? (
+				) : recetas?.length > 0 ? (
 					<ContenedorRecetas>
 						{recetas.map((receta, i) => {
 							return (
@@ -69,11 +68,20 @@ function PlatoLetra() {
 							)
 						})}
 					</ContenedorRecetas>
-				) : (
+				) : null}
+				{buscado && !receta && recetas ? (
+					<h3 translate='no' className={styles.buscadoH1Letra}>
+						{recetas.length} Resultados
+					</h3>
+				) : buscado && !recetas ? (
+					<h3 translate='no' className={styles.H1NadaLetra}>
+						No Hay Resultados
+					</h3>
+				) : !buscado && !receta && !recetas.length ? (
 					<h1 translate='no' className={styles.H1NadaLetra}>
 						Realiza Una Busqueda
 					</h1>
-				)}
+				) : null}
 			</section>
 		</main>
 	)

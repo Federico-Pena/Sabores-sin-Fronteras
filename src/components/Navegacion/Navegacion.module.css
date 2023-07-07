@@ -4,6 +4,7 @@
 	transition: all 0.5s ease-in-out;
 	background-color: var(--colorResaltado2);
 	position: absolute;
+	z-index: 2;
 }
 
 .UlNav {
@@ -23,11 +24,11 @@
 	justify-content: center;
 	text-align: center;
 	flex: auto;
-	transition: all 1s ease-in-out;
+	transition: all 0.5s ease-in-out;
 	clip-path: circle(3rem at top);
 }
 .liNavPag:hover {
-	clip-path: circle(100% at top);
+	clip-path: circle(120% at top);
 }
 .liNavLogo {
 	flex: auto;

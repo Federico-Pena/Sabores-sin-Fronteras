@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { IoFastFoodOutline } from 'react-icons/io5'
+import { BiWorld } from 'react-icons/bi'
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi'
 import { TiSortAlphabeticallyOutline } from 'react-icons/ti'
+import { TfiAgenda } from 'react-icons/tfi'
 import styles from './Navegacion.module.css'
 import { useLocation } from 'react-router-dom'
 
@@ -11,7 +12,7 @@ function Navegacion() {
 	return (
 		<header>
 			{location.pathname === '/' ? null : (
-				<nav className={styles.Nav}>
+				<nav className={styles.Nav} translate='no'>
 					<ul className={styles.UlNav}>
 						<li className={styles.liNavLogo}>
 							<img className={styles.logoNav} src='/food.png' alt='Logo' />
@@ -39,17 +40,27 @@ function Navegacion() {
 									<TiSortAlphabeticallyOutline className={styles.iconNav} />
 								)}
 							</Link>
-							Letters
+							Letra
 						</li>
 						<li className={styles.liNavPag}>
 							<Link to={'/PlatoPais'}>
 								{location.pathname === '/PlatoPais' ? (
-									<IoFastFoodOutline className={styles.iconNavActive} />
+									<BiWorld className={styles.iconNavActive} />
 								) : (
-									<IoFastFoodOutline className={styles.iconNav} />
+									<BiWorld className={styles.iconNav} />
 								)}
 							</Link>
-							Region / Ing
+							Región
+						</li>
+						<li className={styles.liNavPag}>
+							<Link to={'/RecetasGuardadas'}>
+								{location.pathname === '/RecetasGuardadas' ? (
+									<TfiAgenda className={styles.iconNavActive} />
+								) : (
+									<TfiAgenda className={styles.iconNav} />
+								)}
+							</Link>
+							Agenda
 						</li>
 					</ul>
 				</nav>

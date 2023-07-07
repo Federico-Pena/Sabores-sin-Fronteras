@@ -1,0 +1,71 @@
+.divPlatosGuardados {
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+		url('https://www.themealdb.com/images/media/meals/uuxwvq1483907861.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: rgb(255, 255, 255);
+	font-family: Cascadia Code;
+}
+.divguardadas {
+	flex: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	max-width: 1000px;
+	width: 100%;
+}
+.divGuardadasOverflow {
+	max-height: 70vh;
+	overflow: auto;
+	justify-content: flex-start;
+}
+.guardadas {
+	color: var(--colortexto);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.719);
+	border: 1px solid rgb(0, 0, 0);
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	width: 100%;
+	height: auto;
+	background-color: var(--fondo);
+	max-width: 900px;
+	position: relative;
+}
+.guardadasFotoNombre {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	flex: auto;
+}
+.guardadasFotoNombre img {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+	border-radius: 100%;
+}
+.guardadasFotoNombre p {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	max-width: 120px;
+}
+.guardadasBtns {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+.guardadasBtns button {
+	padding: 0.5rem 1rem;
+	border-radius: 0.2rem;
+}
+.Dsectionh1 {
+	width: 100%;
+	text-align: center;
+}

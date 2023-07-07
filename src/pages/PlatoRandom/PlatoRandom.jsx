@@ -37,7 +37,9 @@ function PlatoRandom() {
 	function manejoError() {
 		setError(true)
 	}
-
+	function cerrarReceta() {
+		setReceta('')
+	}
 	return (
 		<main
 			className={`${stylesDefault.DflexContainer} ${styles.divPlatoRandom}`}>
@@ -66,6 +68,7 @@ function PlatoRandom() {
 						manejoError={manejoError}
 						ingredientes={ingredientes}
 						receta={receta}
+						cerrarReceta={cerrarReceta}
 					/>
 				) : (
 					<h1 translate='no' className={styles.H1NadaRandom}>

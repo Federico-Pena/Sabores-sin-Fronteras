@@ -6,6 +6,7 @@
 	background-size: cover;
 	color: #eee;
 	min-height: 100vh;
+	position: relative;
 }
 
 .titulos {
@@ -31,14 +32,11 @@
 	animation: fadeIn 1s ease;
 }
 .buscadoH1 {
-	position: sticky;
-	text-align: center;
-	top: 3rem;
+	position: absolute;
+	top: 110vh;
 	right: 1rem;
-	z-index: 3;
+	z-index: 4;
 	align-self: flex-end;
-	padding: 0.5rem;
-	border-radius: 0.3rem;
 	color: var(--colortexto);
 }
 .H1Nada {

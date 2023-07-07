@@ -16,7 +16,7 @@ function PlatoPais() {
 	const [receta, setReceta] = useState()
 	const [recetas, setRecetas] = useState()
 	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState()
+	const [error, setError] = useState(false)
 	const [buscado, setBuscado] = useState()
 	const sectionRef = useRef(null)
 
@@ -67,7 +67,7 @@ function PlatoPais() {
 				const data = await response.json()
 				setRecetas(data.meals)
 			} catch (error) {
-				setError(error)
+				setError(true)
 			}
 			setReceta()
 			setPais()
@@ -90,7 +90,6 @@ function PlatoPais() {
 		const ingredientList = textIngredientFormater(e)
 		setIngredientList(ingredientList)
 		setReceta(e)
-		setPais()
 		setLoading(false)
 		if (receta) {
 			setTimeout(() => {
@@ -108,7 +107,7 @@ function PlatoPais() {
 	}
 
 	function cerrarModal() {
-		setError()
+		setError(false)
 		setReceta()
 		setIngredientList()
 	}

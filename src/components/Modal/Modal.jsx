@@ -1,4 +1,4 @@
-import './Modal.css'
+import styles from './Modal.module.css'
 /**
  *
  * @param {*} loading
@@ -22,14 +22,15 @@ function Modal({
 	contenido,
 }) {
 	return (
-		<div className='modalContainer'>
+		<div className={styles.modalContainer}>
 			{loading && (
-				<div className='loaderContainer'>
-					<p className='loader'></p>
+				<div className={styles.loaderContainer}>
+					<img src='./food.png' alt='' />
+					<p className={styles.loader}></p>
 				</div>
 			)}
 			{exito && (
-				<div className='exitoContainer'>
+				<div className={styles.exitoContainer}>
 					{titulo ? <h2>{titulo}</h2> : null}
 					<img
 						src='https://res.cloudinary.com/fotoscloudinary/image/upload/v1687373808/exito_fjc1pe.png'
@@ -40,7 +41,7 @@ function Modal({
 				</div>
 			)}
 			{error && (
-				<div className='exitoContainer'>
+				<div className={styles.exitoContainer}>
 					{titulo ? <h2>{titulo}</h2> : null}
 					<img
 						src='https://res.cloudinary.com/fotoscloudinary/image/upload/v1687373812/error_zdkoh9.png'
@@ -51,13 +52,13 @@ function Modal({
 				</div>
 			)}
 			{contenido && (
-				<div className='exitoContainer'>
-					<div className='divTitulo'>
+				<div className={styles.exitoContainer}>
+					<div className={styles.divTitulo}>
 						{titulo ? <h2>{titulo}</h2> : null}
 						{descripcion ? <p>{descripcion}</p> : null}
 					</div>
 					{contenido ? <div>{contenido}</div> : null}
-					<div className='divBtnContenido'>
+					<div className={styles.divBtnContenido}>
 						{cerrarModal && <button onClick={cerrarModal}>Aceptar</button>}
 					</div>
 				</div>

@@ -4,13 +4,14 @@
 	scroll-snap-type: y mandatory;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	max-height: 100vh;
 	width: 100vw;
 	background-attachment: fixed;
 	position: relative;
 	transition: all 0.3s ease-in-out;
 	animation: recetaAnimate 2s ease-in-out;
 	font-family: sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana;
+	z-index: 3;
 }
 
 .sliderDiv {
@@ -41,7 +42,9 @@
 	align-items: center;
 	background-color: transparent;
 }
-.btnCerrarIco {
+
+.btnCerrarIco,
+.btnGuardarIco {
 	width: 2rem;
 	height: 2rem;
 	transition: all 0.3s ease-in-out;
@@ -50,6 +53,26 @@
 .btnCerrarIco:hover {
 	transform: scale(1.2);
 }
+.btnGuardarIco:hover {
+	transform: scale(1.2);
+}
+.btnGuardarIco path {
+	cursor: pointer;
+}
+.btnGuardar {
+	position: absolute;
+	top: 3rem;
+	left: 3rem;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 100%;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+}
+
 .abajoIco {
 	flex: auto;
 	width: 3rem;
