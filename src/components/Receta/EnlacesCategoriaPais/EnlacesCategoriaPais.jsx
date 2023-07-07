@@ -51,14 +51,17 @@ function CategoriaPais({ receta }) {
 							href={receta.strYoutube}
 							target='_blanck'>
 							<MdVideocam className={styles.enlaceIcono} />
+							Video
 						</a>
 					)}
+
 					{receta.strSource && (
 						<a
 							className={styles.enlaces}
 							href={receta.strSource}
 							target='_blanck'>
 							<MdOutlineSource className={styles.enlaceIcono} />
+							Source
 						</a>
 					)}
 				</li>

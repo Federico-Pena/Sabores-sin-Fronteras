@@ -8,9 +8,14 @@ export const textIngredientFormater = (listaDeIngredientes) => {
 		// Verificar si el ingrediente es válido (no vacío)
 		if (ingredient && ingredient.trim() !== '') {
 			// Crear una cadena con la cantidad y el ingrediente
-			const ingredientEntry = `${measure} ${ingredient}`
+			/* const Measure = `${measure} ${ingredient}` */
+			const Ingredients = {
+				medidas: measure,
+				ingredientes: ingredient,
+			}
+
 			// Agregar la cadena a la lista de ingredientes
-			ingredientList.push(ingredientEntry)
+			ingredientList.push(Ingredients)
 		}
 	}
 	return ingredientList

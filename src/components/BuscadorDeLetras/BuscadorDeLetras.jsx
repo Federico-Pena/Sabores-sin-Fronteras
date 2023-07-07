@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MdSend } from 'react-icons/md'
 
 import styles from './BuscadorDeLetras.module.css'
 import Modal from '../Modal/Modal'
-const BuscadorDeLetras = ({ buscadorRecetas, refParent, setBuscados }) => {
+const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 	const [inputValue, setInputValue] = useState('')
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -19,11 +19,6 @@ const BuscadorDeLetras = ({ buscadorRecetas, refParent, setBuscados }) => {
 				const data = await result.json()
 				buscadorRecetas(data.meals)
 				setBuscados(inputValue)
-				/* setTimeout(() => {
-					if (refParent.current) {
-						refParent.current.scrollIntoView({ behavior: 'smooth' })
-					}
-				}, 500) */
 			} catch (error) {
 				setError(error)
 			}
@@ -39,12 +34,9 @@ const BuscadorDeLetras = ({ buscadorRecetas, refParent, setBuscados }) => {
 	return (
 		<div className={styles.divFormInputBuscar}>
 			{loading ? <Modal loading={loading} /> : null}
-			<form
-				className={styles.formBuscador}
-				onSubmit={fetchRecetasLetra}
-				lang='ES'>
-				<label htmlFor='selectBuscar'>Una Letra</label>
+			<form className={styles.formBuscador} onSubmit={fetchRecetasLetra}>
 				<select
+					translate='no'
 					value={inputValue}
 					className={styles.inputForm}
 					id='selectBuscar'

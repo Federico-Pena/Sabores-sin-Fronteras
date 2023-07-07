@@ -1,66 +1,81 @@
-import { useRef, useState } from 'react'
+import stylesDefault from '../../App.module.css'
+import styles from './PlatoLetra.module.css'
+import { useEffect, useRef, useState } from 'react'
 import BuscadorDePalabras from '../../components/BuscadorDeLetras/BuscadorDeLetras'
-
+import ContenedorRecetas from '../../components/ContenedorRecetas/ContenedorRecetas'
+import Receta from '../../components/Receta/Receta'
+import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 function PlatoLetra() {
 	const [buscado, setBuscado] = useState()
-	const [loading, setLoading] = useState()
 	const [receta, setReceta] = useState()
 	const [ingredientes, setIngredientes] = useState()
 	const [recetas, setRecetas] = useState([])
 	const sectionLetraRef = useRef()
-	const mostrarRecetas = (e) => {
-		setLoading(true)
-		setReceta()
-		setIngredientes()
-
-		setLoading(false)
-		/* setTimeout(() => {
-			if (sectionLetraRef.current) {
-				sectionLetraRef.current.scrollIntoView({ behavior: 'smooth' })
-			}
-		}, 500) */
-	}
 
 	function buscadorRecetas(e) {
-		mostrarRecetas(e)
+		setRecetas(e)
+		if (sectionLetraRef.current) {
+			setTimeout(() => {
+				sectionLetraRef.current.scrollIntoView({ behavior: 'smooth' })
+			}, 500)
+		}
 	}
 
 	function mostrarBuscados(e) {
 		setBuscado(e)
 	}
-	/*   function cerrarReceta() {
-		setError()
+
+	function mostrarReceta(e) {
+		setReceta(e)
+		const ingredientList = textIngredientFormater(e)
+		setIngredientes(ingredientList)
+	}
+	function cerrarReceta() {
 		setReceta()
 		setIngredientes()
-	} */
+	}
 	return (
-		<>
-			{/* {recetas?.length > 0 ? (
+		<main className={`${stylesDefault.DflexContainer} ${styles.divPLatoLetra}`}>
+			<section className={stylesDefault.DsectionRandomRecetas}>
+				<div className={styles.tituloPLatoLetra}>
+					<h1>Explora por Letra</h1>
+				</div>
+				<div className={styles.BuscadorDePalabrasPLatoLetra}>
+					<BuscadorDePalabras
+						buscadorRecetas={buscadorRecetas}
+						setBuscados={mostrarBuscados}
+					/>
+				</div>
+			</section>
+			<section
+				className={stylesDefault.DsectionRandomRecetas}
+				ref={sectionLetraRef}>
+				{buscado && !receta && recetas ? (
+					<h3 className={styles.buscadoH1Letra}>{recetas.length} Results</h3>
+				) : buscado && !receta ? (
+					<h3 className={styles.buscadoH1}>No Hay Resultados</h3>
+				) : null}
+				{receta ? (
+					<Receta
+						ingredientes={ingredientes}
+						receta={receta}
+						cerrarReceta={cerrarReceta}
+					/>
+				) : recetas.length > 0 ? (
 					<ContenedorRecetas>
-						{recetas?.map((receta, i) => {
+						{recetas.map((receta, i) => {
 							return (
-								<div className={styles.divnumeroReceta} key={i}>
-									<small className={styles.numeroReceta}>
-										{i + 1}/{recetas.length}
-									</small>
-									<Receta
-										manejoError={manejoError}
-										mostrarReceta={mostrarReceta}
-										receta={receta}
-									/>
-								</div>
+								<Receta key={i} mostrarReceta={mostrarReceta} receta={receta} />
 							)
 						})}
 					</ContenedorRecetas>
 				) : (
-					<h2 className={styles.subTitulo}>
+					<h1 translate='no' className={styles.H1NadaLetra}>
 						Realiza Una Busqueda
-					</h2>} */}
-			<BuscadorDePalabras
-				buscadorRecetas={buscadorRecetas}
-				setBuscados={mostrarBuscados}
-			/>
-		</>
+					</h1>
+				)}
+			</section>
+		</main>
 	)
 }
 

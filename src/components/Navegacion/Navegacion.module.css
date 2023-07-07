@@ -3,6 +3,7 @@
 	width: 100%;
 	transition: all 0.5s ease-in-out;
 	background-color: var(--colorResaltado2);
+	position: absolute;
 }
 
 .UlNav {
@@ -12,19 +13,35 @@
 	align-content: center;
 	flex-grow: 1;
 	margin: 0;
+	max-width: 1100px;
+	margin: auto;
 }
 
 .liNavPag {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	text-align: center;
+	flex: auto;
+	transition: all 1s ease-in-out;
+	clip-path: circle(3rem at top);
 }
-
+.liNavPag:hover {
+	clip-path: circle(100% at top);
+}
+.liNavLogo {
+	flex: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	transition: all 1s ease-in-out;
+}
 .logoNav {
 	width: 3rem;
 	height: 3rem;
 	border-radius: 100%;
-	padding: 0.5rem;
 }
 
 .iconNav {
@@ -32,6 +49,7 @@
 	padding: 0.5rem;
 	height: 3rem;
 	cursor: pointer;
+	transition: all 0.5s ease-in-out;
 	color: var(--color4);
 }
 .iconNavActive {
@@ -40,7 +58,4 @@
 	height: 3rem;
 	cursor: pointer;
 	color: rgba(22, 68, 219, 0.692);
-}
-.iconNav:hover {
-	scale: 1.1;
 }

@@ -8,7 +8,6 @@ function FotoReceta({ receta }) {
 					<small
 						className={styles.SmallFoto}>{`Receta N° ${receta.idMeal}`}</small>
 				)}
-				{receta.strMeal && <h2 className={styles.H2Foto}>{receta.strMeal}</h2>}
 			</div>
 			<div className={styles.divImgReceta}>
 				{receta.strMealThumb && (
@@ -18,6 +17,7 @@ function FotoReceta({ receta }) {
 						alt={receta.strMeal}
 					/>
 				)}
+				{receta.strMeal && <h2 className={styles.H2Foto}>{receta.strMeal}</h2>}
 			</div>
 		</div>
 	)

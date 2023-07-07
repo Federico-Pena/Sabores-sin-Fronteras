@@ -13,11 +13,12 @@ function Navegacion() {
 			{location.pathname === '/' ? null : (
 				<nav className={styles.Nav}>
 					<ul className={styles.UlNav}>
-						<li className={styles.liNavlogo}>
+						<li className={styles.liNavLogo}>
 							<img className={styles.logoNav} src='/food.png' alt='Logo' />
+							SSF
 						</li>
 						<li className={styles.liNavPag}>
-							<Link className={styles.linkPlatoRandom} to={'/PlatoRandom'}>
+							<Link to={'/PlatoRandom'}>
 								{location.pathname === '/PlatoRandom' ? (
 									<GiPerspectiveDiceSixFacesRandom
 										className={styles.iconNavActive}
@@ -26,9 +27,10 @@ function Navegacion() {
 									<GiPerspectiveDiceSixFacesRandom className={styles.iconNav} />
 								)}
 							</Link>
+							Random
 						</li>
 						<li className={styles.liNavPag}>
-							<Link className={styles.linkPlatoRandom} to={'/PlatoLetra'}>
+							<Link to={'/PlatoLetra'}>
 								{location.pathname === '/PlatoLetra' ? (
 									<TiSortAlphabeticallyOutline
 										className={styles.iconNavActive}
@@ -37,15 +39,17 @@ function Navegacion() {
 									<TiSortAlphabeticallyOutline className={styles.iconNav} />
 								)}
 							</Link>
+							Letters
 						</li>
 						<li className={styles.liNavPag}>
-							<Link className={styles.linkPlatoPais} to={'/PlatoPais'}>
+							<Link to={'/PlatoPais'}>
 								{location.pathname === '/PlatoPais' ? (
 									<IoFastFoodOutline className={styles.iconNavActive} />
 								) : (
 									<IoFastFoodOutline className={styles.iconNav} />
 								)}
 							</Link>
+							Region / Ing
 						</li>
 					</ul>
 				</nav>

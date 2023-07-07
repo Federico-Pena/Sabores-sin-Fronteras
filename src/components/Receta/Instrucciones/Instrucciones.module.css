@@ -31,7 +31,7 @@
 	width: 100%;
 	transition: all 0.3s ease-in-out;
 	line-height: 2rem;
-	background-color: #dbdbdb;
+	background-color: snow;
 	color: rgb(44, 44, 44);
 	font-size: 18px;
 	font-weight: bold;
@@ -46,9 +46,11 @@
 	position: absolute;
 	top: -2.5rem;
 	left: 50%;
-	width: 5rem;
+	width: 60px;
+	max-height: 50px;
 	transform: translate(-50%);
-	background-color: #dbdbdb;
+	background-color: snow;
+	overflow: hidden;
 	color: rgb(44, 44, 44);
 	border-radius: 0.5rem;
 	border-bottom: 1px solid black;

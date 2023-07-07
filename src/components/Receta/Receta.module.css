@@ -10,12 +10,12 @@
 	position: relative;
 	transition: all 0.3s ease-in-out;
 	animation: recetaAnimate 2s ease-in-out;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana;
 }
 
 .sliderDiv {
 	flex: auto;
-	scroll-snap-align: center;
+	scroll-snap-align: start;
 	scroll-behavior: smooth;
 	overflow-x: hidden;
 	min-width: 100vw;
@@ -35,6 +35,7 @@
 	width: 2rem;
 	height: 2rem;
 	border-radius: 100%;
+	z-index: 3;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -43,6 +44,11 @@
 .btnCerrarIco {
 	width: 2rem;
 	height: 2rem;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
+}
+.btnCerrarIco:hover {
+	transform: scale(1.2);
 }
 .abajoIco {
 	flex: auto;

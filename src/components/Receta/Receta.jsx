@@ -54,7 +54,7 @@ function Receta({
 				ingredientes ? null : obtenerReceta()
 			}}>
 			<div className={styles.sliderDiv}>
-				{cerrarReceta && (
+				{cerrarReceta && ingredientes && (
 					<button
 						className={styles.btnCerrar}
 						onClick={cerrarReceta}

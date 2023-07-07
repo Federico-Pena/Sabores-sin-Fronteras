@@ -21,20 +21,19 @@ function PlatoPais() {
 	const sectionRef = useRef(null)
 
 	useEffect(() => {
+		//todas las regiones
+		const fetchRegions = () => {
+			const data = obtenerRegiones()
+			setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
+		}
 		fetchRegions()
 	}, [])
-	//todas las regiones
-	const fetchRegions = () => {
-		const data = obtenerRegiones()
-		setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
-	}
 
 	useEffect(() => {
 		//buscar recetas por una region
 		const fetchRegion = async () => {
 			setLoading(true)
 			setBuscado()
-
 			try {
 				const response = await fetch(
 					`https://www.themealdb.com/api/json/v1/1/filter.php?a=${region}`
@@ -47,20 +46,20 @@ function PlatoPais() {
 			setLoading(false)
 			setBuscado(region)
 		}
-		setTimeout(() => {
-			if (sectionRef.current) {
-				sectionRef.current.scrollIntoView({ behavior: 'smooth' })
-			}
-		}, 500)
+		if (region) {
+			setTimeout(() => {
+				if (sectionRef.current) {
+					sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+				}
+			}, 500)
+		}
 		fetchRegion()
 	}, [region])
 
 	useEffect(() => {
-		//mostrar resultados del filtro Ingrediente al hacer click en el icono
 		const buscarRecetaPorIngrediente = async () => {
 			setLoading(true)
 			setBuscado()
-
 			try {
 				const response = await fetch(
 					`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`
@@ -74,11 +73,13 @@ function PlatoPais() {
 			setPais()
 			setLoading(false)
 			setBuscado(ingrediente)
-			setTimeout(() => {
-				if (sectionRef.current) {
-					sectionRef.current.scrollIntoView({ behavior: 'smooth' })
-				}
-			}, 500)
+			if (ingrediente) {
+				setTimeout(() => {
+					if (sectionRef.current) {
+						sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+					}
+				}, 500)
+			}
 		}
 		buscarRecetaPorIngrediente()
 	}, [ingrediente])
@@ -91,11 +92,13 @@ function PlatoPais() {
 		setReceta(e)
 		setPais()
 		setLoading(false)
-		setTimeout(() => {
-			if (sectionRef.current) {
-				sectionRef.current.scrollIntoView({ behavior: 'smooth' })
-			}
-		}, 500)
+		if (receta) {
+			setTimeout(() => {
+				if (sectionRef.current) {
+					sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+				}
+			}, 500)
+		}
 	}
 
 	//mostrar resultados del filtro Pais al hacer click en el icono
@@ -133,7 +136,7 @@ function PlatoPais() {
 				className={`${styles.divPlatoPais} ${stylesDefault.DflexContainer}`}>
 				<section className={stylesDefault.DsectionRandomRecetas}>
 					<div className={styles.titulos}>
-						<h1 lang='es'>
+						<h1 translate='no'>
 							Encuentra Recetas Exquisitas Según Tus Ingredientes Favoritos O
 							País De Origen
 						</h1>
@@ -157,7 +160,7 @@ function PlatoPais() {
 							{buscado} {recetas.length} Results
 						</h3>
 					) : buscado && !receta ? (
-						<h3 lang='es' className={styles.buscadoH1}>
+						<h3 translate='no' className={styles.buscadoH1}>
 							No Hay Resultados
 						</h3>
 					) : null}
@@ -171,20 +174,20 @@ function PlatoPais() {
 						<ContenedorRecetas>
 							{recetas.map((receta, i) => {
 								return (
-									<div className={styles.divnumeroRecetaPais} key={i}>
-										<small className={styles.numeroRecetaPais}>
-											{i + 1}/{recetas.length}
-										</small>
-										<Receta
-											manejoError={manejoErrorReceta}
-											mostrarReceta={mostrarReceta}
-											receta={receta}
-										/>
-									</div>
+									<Receta
+										key={i}
+										manejoError={manejoErrorReceta}
+										mostrarReceta={mostrarReceta}
+										receta={receta}
+									/>
 								)
 							})}
 						</ContenedorRecetas>
-					) : null}
+					) : (
+						<h1 translate='no' className={styles.H1NadaPais}>
+							Realiza Una Busqueda
+						</h1>
+					)}
 				</section>
 			</main>
 		</>

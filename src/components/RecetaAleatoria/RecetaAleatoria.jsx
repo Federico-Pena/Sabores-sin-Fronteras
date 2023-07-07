@@ -3,7 +3,6 @@ import styles from './RecetaAleatoria.module.css'
 function RecetaAleatoria({ pintarRecetas }) {
 	return (
 		<div className={styles.formAleatoria}>
-			<label htmlFor='selectBuscar'>Random</label>
 			<button
 				title='receta aleatoria'
 				className={styles.btnAleatoria}

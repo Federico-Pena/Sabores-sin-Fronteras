@@ -1,7 +1,5 @@
 import styles from './Ingredientes.module.css'
 
-import { MdReadMore } from 'react-icons/md'
-
 function Ingredientes({ ingredientes, fliping }) {
 	return (
 		<div className={styles.Ingredientes}>
@@ -10,7 +8,8 @@ function Ingredientes({ ingredientes, fliping }) {
 				{ingredientes?.map((entry, i) => {
 					return (
 						<li className={styles.Li} key={entry + i}>
-							<span>{entry}</span>
+							<span className={styles.LiSpan}>{entry.medidas}</span>
+							<span>{entry.ingredientes}</span>
 						</li>
 					)
 				})}

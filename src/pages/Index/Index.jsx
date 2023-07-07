@@ -9,16 +9,20 @@ function Index() {
 				muted
 				loop
 				className={styles.HeroVideo}
-				src='/assets/indexVideo.mp4'></video>
+				src='../assets/indexVideo.mp4'></video>
 			<div
+				translate='no'
 				className={`${styles.divHeroTitulo} ${stylesDefault.fadeInAnimation}`}>
-				<h1>Explora la gastronomía desde tu hogar</h1>
-				<p className={styles.subTitulo}>
+				<h1 translate='no'>Explora la gastronomía desde tu hogar</h1>
+				<p translate='no' className={styles.subTitulo}>
 					¡Descubre nuevos horizontes culinarios!
 				</p>
 			</div>
 			<div className={styles.divHeroBtn}>
-				<Link className={styles.heroPlatoRandomBtn} to='/PlatoRandom'>
+				<Link
+					translate='no'
+					className={styles.heroPlatoRandomBtn}
+					to='/PlatoRandom'>
 					Empieza
 				</Link>
 			</div>

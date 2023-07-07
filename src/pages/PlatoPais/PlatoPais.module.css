@@ -4,8 +4,8 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	min-height: calc(100vh - 52px);
 	color: #eee;
+	min-height: 100vh;
 }
 
 .titulos {
@@ -15,19 +15,17 @@
 	max-width: 1000px;
 	cursor: default;
 	line-height: 2rem;
-	color: rgb(251, 251, 252);
+	color: #eee;
+	font-family: Cascadia Code, sans-serif;
+	padding-top: 2rem;
 	text-align: center;
-	margin: 2rem auto;
 }
 
 .opciones {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
-	flex-grow: 1;
 	width: 100%;
 	max-width: 1000px;
-	margin: 0 auto;
 	border-radius: 0.8rem;
 	transition: all 0.3s ease;
 	animation: fadeIn 1s ease;
@@ -38,11 +36,15 @@
 	top: 3rem;
 	right: 1rem;
 	z-index: 3;
-	background-color: rgba(0, 0, 0, 0.418);
 	align-self: flex-end;
 	padding: 0.5rem;
 	border-radius: 0.3rem;
-	color: #eee;
+	color: var(--colortexto);
+}
+.H1Nada {
+	padding: 0.5rem;
+	border-radius: 0.3rem;
+	color: white;
 }
 .divnumeroRecetaPais {
 	position: relative;
@@ -54,5 +56,17 @@
 	top: 5rem;
 	left: 50%;
 	transform: translate(-50%);
-	color: #eee;
+	color: var(--colortexto);
+	z-index: 3;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0.5;
+		transform: translateY(-50px);
+	}
+	to {
+		opacity: 0.5;
+		transform: translateY(0px);
+	}
 }

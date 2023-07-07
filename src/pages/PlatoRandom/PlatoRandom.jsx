@@ -4,20 +4,14 @@ import { useState, useEffect, useRef } from 'react'
 import Receta from '../../components/Receta/Receta'
 import Modal from '../../components/Modal/Modal'
 import { recetaRandom } from '../../helpers/recetaRandom'
-import { textIngredientFormater } from '../../helpers/textIngredientFormater'
+
 import RecetaAleatoria from '../../components/RecetaAleatoria/RecetaAleatoria'
-import ContenedorRecetas from '../../components/ContenedorRecetas/ContenedorRecetas'
-import { FiChevronsDown } from 'react-icons/fi'
 function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(null)
 	const sectionRandomRef = useRef(null)
-
-	useEffect(() => {
-		pintarReceta()
-	}, [])
 
 	const pintarReceta = async () => {
 		setLoading(true)
@@ -29,23 +23,15 @@ function PlatoRandom() {
 			setError(error)
 		}
 		setLoading(false)
-		setTimeout(() => {
-			if (sectionRandomRef.current) {
+		if (sectionRandomRef.current) {
+			setTimeout(() => {
 				sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
-			}
-		}, 500)
+			}, 500)
+		}
 	}
 
 	function cerrarModal() {
 		setError()
-	}
-
-	function mostrarReceta(e) {
-		setLoading(true)
-		setReceta(e)
-		const ingredientList = textIngredientFormater(e)
-		setLoading(false)
-		setIngredientes(ingredientList)
 	}
 
 	function manejoError() {
@@ -66,12 +52,10 @@ function PlatoRandom() {
 			{loading ? <Modal loading={loading} /> : null}
 			<section className={stylesDefault.DsectionRandomRecetas}>
 				<div className={styles.sectionH1}>
-					<h1>Plato Aleatorio</h1>
+					<h1 translate='no'>Receta Aleatoria</h1>
 				</div>
 				<div className={styles.divInputBuscar}>
-					<div>
-						<RecetaAleatoria pintarRecetas={pintarReceta} />
-					</div>
+					<RecetaAleatoria pintarRecetas={pintarReceta} />
 				</div>
 			</section>
 			<section
@@ -83,7 +67,11 @@ function PlatoRandom() {
 						ingredientes={ingredientes}
 						receta={receta}
 					/>
-				) : null}
+				) : (
+					<h1 translate='no' className={styles.H1NadaRandom}>
+						Prueba Suerte
+					</h1>
+				)}
 			</section>
 		</main>
 	)

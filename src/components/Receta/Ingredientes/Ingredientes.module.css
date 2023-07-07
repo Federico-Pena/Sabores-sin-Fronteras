@@ -18,6 +18,7 @@
 	flex: auto;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
 	margin: 2rem 0;
 	gap: 1rem;
@@ -27,19 +28,26 @@
 
 .Li {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	background-color: #dbdbdb;
-	color: var(--colortexto);
+	background-color: snow;
+	color: rgb(44, 44, 44);
 	border-radius: 0.5rem;
-	padding: 0.5rem;
-	width: 80%;
+	padding: 0.5rem 1rem;
+	width: 100%;
+	max-width: 600px;
 	font-size: 18px;
 	font-weight: bolder;
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
-	text-align: justify;
+	transition: all 0.3s ease-in-out;
 }
-
+.Li:hover {
+	background-color: rgb(216, 216, 216);
+	transform: scale(1.03);
+}
+.LiSpan {
+	color: rgb(139, 139, 139);
+}
 .btnVerIngredientes {
 	width: 90%;
 	padding: 1rem;
