@@ -13,6 +13,8 @@
 	justify-content: flex-end;
 	align-items: center;
 	line-height: 2.5rem;
+	animation: fadeIn 1s ease;
+	transition: all 0.3s ease;
 	font-family: Cascadia Code, sans-serif;
 	flex: auto;
 }
@@ -20,6 +22,8 @@
 	flex: auto;
 	display: flex;
 	justify-content: space-evenly;
+	animation: fadeIn 1s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	align-items: center;
 	width: 100%;
 }
@@ -35,4 +39,17 @@
 }
 .H1NadaLetra {
 	color: #eee;
+	width: 100%;
+	right: 0rem;
+	text-align: center;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0.5;
+		transform: translateY(-50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0px);
+	}
 }

@@ -43,6 +43,8 @@
 	padding: 0.5rem;
 	border-radius: 0.3rem;
 	color: white;
+	width: 100%;
+	text-align: center;
 }
 .divnumeroRecetaPais {
 	position: relative;
@@ -64,7 +66,7 @@
 		transform: translateY(-50px);
 	}
 	to {
-		opacity: 0.5;
+		opacity: 1;
 		transform: translateY(0px);
 	}
 }

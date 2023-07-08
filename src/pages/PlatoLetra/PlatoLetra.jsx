@@ -1,4 +1,6 @@
 import stylesDefault from '../../App.module.css'
+import stylesReceta from '../../components/Receta/Receta.module.css'
+
 import styles from './PlatoLetra.module.css'
 import { useEffect, useRef, useState } from 'react'
 import BuscadorDePalabras from '../../components/BuscadorDeLetras/BuscadorDeLetras'
@@ -15,6 +17,7 @@ function PlatoLetra() {
 	useEffect(() => {
 		mostrarBuscados(buscado)
 	}, [buscado])
+
 	function buscadorRecetas(e) {
 		setRecetas(e)
 		setReceta()
@@ -34,10 +37,15 @@ function PlatoLetra() {
 		const ingredientList = textIngredientFormater(e)
 		setIngredientes(ingredientList)
 	}
-	function cerrarReceta() {
-		setReceta()
-		setIngredientes()
+
+	function cerrarReceta(e) {
+		e.current.classList.add(stylesReceta.recetasContainerCerrar)
+		setTimeout(() => {
+			setReceta()
+			setIngredientes()
+		}, 900)
 	}
+
 	return (
 		<main className={`${stylesDefault.DflexContainer} ${styles.divPLatoLetra}`}>
 			<section className={stylesDefault.DsectionRandomRecetas}>

@@ -13,7 +13,9 @@
 	font-family: sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana;
 	z-index: 3;
 }
-
+.recetasContainerCerrar {
+	animation: recetaAnimate2 1s ease-in-out;
+}
 .sliderDiv {
 	flex: auto;
 	scroll-snap-align: start;
@@ -86,6 +88,15 @@
 	}
 	to {
 		clip-path: circle(1000% at center);
+	}
+}
+@keyframes recetaAnimate2 {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+		opacity: 0;
 	}
 }
 @keyframes btnAbajoAnimate {

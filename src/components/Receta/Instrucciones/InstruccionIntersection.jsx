@@ -30,7 +30,9 @@ function InstruccionIntersection({ root, Instruccion, index }) {
 			<span className={styles.spanContenido} ref={liRef}>
 				{Instruccion}
 			</span>
-			<span className={styles.spanNumero}>{'# ' + (index + 1)}</span>
+			<span translate='no' className={styles.spanNumero}>
+				{'# ' + (index + 1)}
+			</span>
 		</li>
 	)
 }

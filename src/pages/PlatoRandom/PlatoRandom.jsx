@@ -1,4 +1,6 @@
 import styles from './PlatoRandom.module.css'
+import stylesReceta from '../../components/Receta/Receta.module.css'
+
 import stylesDefault from '../../App.module.css'
 import { useState, useEffect, useRef } from 'react'
 import Receta from '../../components/Receta/Receta'
@@ -22,12 +24,10 @@ function PlatoRandom() {
 		} catch (error) {
 			setError(error)
 		}
+		setTimeout(() => {
+			sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
+		}, 500)
 		setLoading(false)
-		if (sectionRandomRef.current) {
-			setTimeout(() => {
-				sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
-			}, 500)
-		}
 	}
 
 	function cerrarModal() {
@@ -37,8 +37,11 @@ function PlatoRandom() {
 	function manejoError() {
 		setError(true)
 	}
-	function cerrarReceta() {
-		setReceta('')
+	function cerrarReceta(e) {
+		e.current.classList.add(stylesReceta.recetasContainerCerrar)
+		setTimeout(() => {
+			setReceta('')
+		}, 900)
 	}
 	return (
 		<main
@@ -60,22 +63,18 @@ function PlatoRandom() {
 					<RecetaAleatoria pintarRecetas={pintarReceta} />
 				</div>
 			</section>
-			<section
-				className={stylesDefault.DsectionRandomRecetas}
-				ref={sectionRandomRef}>
-				{receta ? (
+			{receta && (
+				<section
+					className={stylesDefault.DsectionRandomRecetas}
+					ref={sectionRandomRef}>
 					<Receta
 						manejoError={manejoError}
 						ingredientes={ingredientes}
 						receta={receta}
 						cerrarReceta={cerrarReceta}
 					/>
-				) : (
-					<h1 translate='no' className={styles.H1NadaRandom}>
-						Prueba Suerte
-					</h1>
-				)}
-			</section>
+				</section>
+			)}
 		</main>
 	)
 }

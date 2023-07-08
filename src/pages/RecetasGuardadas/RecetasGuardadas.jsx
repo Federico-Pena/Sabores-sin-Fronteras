@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
 import stylesDefault from '../../App.module.css'
+import stylesReceta from '../../components/Receta/Receta.module.css'
 import styles from './RecetasGuardadas.module.css'
 import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 import Receta from '../../components/Receta/Receta'
+import { useEffect, useRef, useState } from 'react'
 
 function RecetasGuardadas() {
 	const [DbLocal, setDbLocal] = useState()
@@ -10,12 +11,14 @@ function RecetasGuardadas() {
 	const [receta, setReceta] = useState()
 	const [ingredientList, setIngredientList] = useState()
 	const divAgendaRef = useRef()
+
 	useEffect(() => {
 		const DB = JSON.parse(localStorage.getItem('recetas'))
 		setDbLocal(DB)
 	}, [])
 
-	const verReceta = async (id) => {
+	const verReceta = async (id, e) => {
+		e.target.innerHTML = `<div class=${styles.loader}></div>`
 		try {
 			const response = await fetch(
 				`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -32,6 +35,7 @@ function RecetasGuardadas() {
 		} catch (error) {
 			setError(error)
 		}
+		e.target.innerHTML = `Ver`
 	}
 
 	const borrarReceta = (id) => {
@@ -49,8 +53,12 @@ function RecetasGuardadas() {
 			}
 		}
 	}
-	const cerrarReceta = () => {
-		setReceta()
+	const cerrarReceta = (e) => {
+		e.current.classList.add(stylesReceta.recetasContainerCerrar)
+
+		setTimeout(() => {
+			setReceta('')
+		}, 1000)
 	}
 	return (
 		<main
@@ -77,7 +85,9 @@ function RecetasGuardadas() {
 											</p>
 										</div>
 										<div className={styles.guardadasBtns}>
-											<button onClick={() => verReceta(receta.idMeal)}>
+											<button
+												className={styles.BtnVer}
+												onClick={(e) => verReceta(receta.idMeal, e)}>
 												Ver
 											</button>
 											<button onClick={() => borrarReceta(receta.idMeal)}>

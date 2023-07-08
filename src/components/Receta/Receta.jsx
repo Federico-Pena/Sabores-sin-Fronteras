@@ -41,11 +41,6 @@ function Receta({
 			)
 			const data = await response.json()
 			mostrarReceta(data.meals[0])
-			setTimeout(() => {
-				if (divRecetRef.current) {
-					divRecetRef.current.scrollIntoView({ behavior: 'smooth' })
-				}
-			}, 500)
 		} catch (error) {
 			manejoError(error)
 		}
@@ -76,8 +71,9 @@ function Receta({
 	}
 	return (
 		<div
+			translate=''
 			ref={divRecetRef}
-			className={styles.recetasContainer}
+			className={`${styles.recetasContainer} `}
 			onClick={() => {
 				ingredientes ? null : obtenerReceta()
 			}}>
@@ -107,7 +103,7 @@ function Receta({
 						</button>
 						<button
 							className={styles.btnCerrar}
-							onClick={cerrarReceta}
+							onClick={() => cerrarReceta(divRecetRef)}
 							title='Cerrar Receta'>
 							<MdClose className={styles.btnCerrarIco} />
 						</button>

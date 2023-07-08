@@ -7,7 +7,6 @@ const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 	const [inputValue, setInputValue] = useState('')
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
-	const [resultadosLength, setResultadosLength] = useState()
 
 	const fetchRecetasLetra = async (e) => {
 		e.preventDefault()
@@ -19,7 +18,6 @@ const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 				)
 				const data = await result.json()
 				buscadorRecetas(data.meals)
-				setResultadosLength(data.meals.length)
 				setBuscados(inputValue)
 			} catch (error) {
 				setError(error)
@@ -68,7 +66,6 @@ const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 					<option value='W'>W</option>
 					<option value='Y'>Y</option>
 				</select>
-				{resultadosLength ? <small>{resultadosLength} Resultados</small> : null}
 				<button className={styles.btnForm}>
 					<MdSend className={styles.btnFormSvg} />
 				</button>
