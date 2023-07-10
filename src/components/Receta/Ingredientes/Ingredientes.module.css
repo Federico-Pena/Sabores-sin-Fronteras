@@ -3,26 +3,29 @@
 	flex-direction: column;
 	flex: auto;
 	width: 100%;
-	max-width: 1000px;
-	margin: auto;
-	border-radius: 0.5rem;
+	height: 90vh;
 	padding: 1rem 0;
+	background-color: #f2d3bb;
 	overflow-y: hidden;
 }
 
 .titulo {
+	text-decoration: underline;
 	margin: 1rem auto;
+	color: var(--colortexto);
 }
 .Ul {
 	overflow: auto;
 	flex: auto;
 	display: flex;
+	max-width: 1000px;
+	width: 100%;
+	margin: 2rem auto;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	margin: 2rem 0;
 	gap: 1rem;
-	padding: 1rem 0;
+	padding: 1rem 0.5rem;
 	overflow: auto;
 }
 
@@ -30,7 +33,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: snow;
+	text-align: end;
+	background-color: rgb(255, 250, 250);
 	color: rgb(44, 44, 44);
 	border-radius: 0.5rem;
 	padding: 0.5rem 1rem;
@@ -38,15 +42,13 @@
 	max-width: 600px;
 	font-size: 18px;
 	font-weight: bolder;
-	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 	transition: all 0.3s ease-in-out;
 }
-.Li:hover {
-	background-color: rgb(216, 216, 216);
-	transform: scale(1.03);
-}
+
 .LiSpan {
 	color: rgb(139, 139, 139);
+	flex: auto;
+	text-align: start;
 }
 .btnVerIngredientes {
 	width: 90%;
@@ -55,6 +57,7 @@
 	margin: 1rem auto;
 	color: rgb(70, 70, 70);
 	background-color: var(--colorResaltado1);
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
 	font-size: 16px;
 	transition: all 0.3s ease-in-out;
 }

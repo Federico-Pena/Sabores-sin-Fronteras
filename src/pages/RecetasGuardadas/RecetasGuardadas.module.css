@@ -15,9 +15,7 @@
 	align-items: center;
 	gap: 1rem;
 	max-width: 1000px;
-	animation: fadeIn 1s ease;
 	width: 100%;
-	transition: all 0.3s ease;
 }
 .divGuardadasOverflow {
 	max-height: 70vh;
@@ -95,15 +93,5 @@
 	}
 	100% {
 		transform: rotate(360deg);
-	}
-}
-@keyframes fadeIn {
-	from {
-		opacity: 0.5;
-		transform: translateY(-50px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0px);
 	}
 }

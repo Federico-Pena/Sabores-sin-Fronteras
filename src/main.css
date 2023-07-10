@@ -22,7 +22,6 @@ button,
 a,
 a font {
 	cursor: pointer;
-	text-transform: uppercase;
 }
 button {
 	border: none;

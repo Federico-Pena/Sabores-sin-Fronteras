@@ -5,42 +5,21 @@ import stylesDefault from '../../App.module.css'
 import { useEffect, useRef, useState } from 'react'
 import Receta from '../../components/Receta/Receta'
 import Modal from '../../components/Modal/Modal'
-import { obtenerRegiones } from '../../helpers/obtenerRegiones'
 import IngredientesComponent from '../../components/IngredientesComponent/IngredientesComponent'
 import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 import RegionesComponent from '../../components/RegionesComponent/RegionesComponent'
-import ContenedorRecetas from '../../components/ContenedorRecetas/ContenedorRecetas'
 function PlatoPais() {
 	const [region, setRegion] = useState()
-	const [regiones, setRegiones] = useState()
 	const [ingrediente, setIngrediente] = useState()
 	const [ingredientList, setIngredientList] = useState()
 	const [receta, setReceta] = useState()
 	const [recetas, setRecetas] = useState()
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(false)
-	const [buscado, setBuscado] = useState()
 	const sectionRef = useRef(null)
-	const [resultado, setResultado] = useState(null)
-
-	useEffect(() => {
-		//todas las regiones
-		const fetchRegions = () => {
-			const data = obtenerRegiones()
-			setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
-		}
-		fetchRegions()
-	}, [])
-
-	useEffect(() => {
-		if (recetas && buscado) {
-			setResultado(`${buscado} ${recetas.length} Results`)
-		}
-	}, [recetas, buscado])
 
 	useEffect(() => {
 		const fetchRecetaFiltrada = async () => {
-			setBuscado(region ? region : ingrediente)
 			try {
 				const response = await fetch(
 					region
@@ -53,7 +32,7 @@ function PlatoPais() {
 					if (sectionRef.current) {
 						sectionRef.current.scrollIntoView({ behavior: 'smooth' })
 					}
-				}, 500)
+				}, 900)
 			} catch (error) {
 				setError(error)
 			}
@@ -77,30 +56,27 @@ function PlatoPais() {
 
 	//mostrar Receta al hacerle click a la foto
 	const mostrarReceta = (e) => {
+		console.log(e)
 		setLoading(true)
 		const ingredientList = textIngredientFormater(e)
 		setIngredientList(ingredientList)
 		setReceta(e)
+		if (sectionRef.current) {
+			sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+		}
 		setLoading(false)
-		setTimeout(() => {
-			if (sectionRef.current) {
-				sectionRef.current.scrollIntoView({ behavior: 'smooth' })
-			}
-		}, 500)
 	}
 
 	function cerrarModal() {
 		setError(false)
 	}
+
 	function cerrarReceta(e) {
 		e.current.classList.add(stylesReceta.recetasContainerCerrar)
 		setTimeout(() => {
 			setReceta()
 			setIngredientList()
-		}, 900)
-	}
-	function manejoErrorReceta(e) {
-		setError(e)
+		}, 800)
 	}
 
 	return (
@@ -119,15 +95,13 @@ function PlatoPais() {
 				<section className={stylesDefault.DsectionRandomRecetas}>
 					<div className={styles.titulos}>
 						<h1 translate='no'>Descubre Cocinas del Mundo</h1>
+						<h3 className={styles.titulos2}>Ingredientes Y Regiones</h3>
 					</div>
 					<div className={styles.opciones}>
 						<IngredientesComponent
 							buscarRecetaPorIngrediente={setarIngrediente}
 						/>
-						<RegionesComponent
-							regiones={regiones}
-							elegirFiltroPais={elegirFiltroPais}
-						/>
+						<RegionesComponent elegirFiltroPais={elegirFiltroPais} />
 					</div>
 				</section>
 				{(receta || recetas?.length) && (
@@ -141,26 +115,25 @@ function PlatoPais() {
 								receta={receta}
 							/>
 						) : recetas ? (
-							<ContenedorRecetas>
-								{recetas.map((receta, i) => {
-									return (
-										<Receta
-											key={i}
-											manejoError={manejoErrorReceta}
-											mostrarReceta={mostrarReceta}
-											receta={receta}
-										/>
-									)
-								})}
-							</ContenedorRecetas>
+							recetas.map((receta) => {
+								return (
+									<div
+										onClick={() => mostrarReceta(receta.idMeal)}
+										key={receta.idMeal}
+										className={styles.recetaCerrada}>
+										<div className={styles.recetaCerradaFotoNombre}>
+											<img src={receta.strMealThumb} alt={receta.strMeal} />
+											<p>
+												{receta.strMeal} <samp>N° {receta.idMeal}</samp>
+											</p>
+										</div>
+									</div>
+								)
+							})
 						) : null}
 					</section>
 				)}
-				{buscado && !receta && recetas?.length ? (
-					<h3 className={styles.buscadoH1} translate=''>
-						{resultado}
-					</h3>
-				) : buscado && !receta && !recetas?.length ? (
+				{!recetas?.length ? (
 					<section
 						className={stylesDefault.DsectionRandomRecetas}
 						ref={sectionRef}>

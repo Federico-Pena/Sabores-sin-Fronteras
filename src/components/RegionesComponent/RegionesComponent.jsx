@@ -1,5 +1,19 @@
+import { useEffect, useState } from 'react'
+import { obtenerRegiones } from '../../helpers/obtenerRegiones'
+
 import styles from './RegionesComponent.module.css'
-function RegionesComponent({ regiones, elegirFiltroPais }) {
+function RegionesComponent({ elegirFiltroPais }) {
+	const [regiones, setRegiones] = useState()
+
+	useEffect(() => {
+		//todas las regiones
+		const fetchRegions = () => {
+			const data = obtenerRegiones()
+			setRegiones(data.sort((a, b) => (a.strArea < b.strArea ? -1 : 1)))
+		}
+		fetchRegions()
+	}, [])
+
 	return (
 		<ul className={styles.UlRegion}>
 			{regiones?.map((region) => {

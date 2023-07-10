@@ -43,29 +43,28 @@ function CategoriaPais({ receta }) {
 						<small className={styles.liSmall}>{receta.strArea}</small>
 					</li>
 				)}
-
-				<li className={styles.liInfo}>
-					{receta.strYoutube && (
-						<a
-							className={styles.enlaces}
-							href={receta.strYoutube}
-							target='_blanck'>
-							<MdVideocam className={styles.enlaceIcono} />
-							Video
-						</a>
-					)}
-
-					{receta.strSource && (
-						<a
-							className={styles.enlaces}
-							href={receta.strSource}
-							target='_blanck'>
-							<MdOutlineSource className={styles.enlaceIcono} />
-							Source
-						</a>
-					)}
-				</li>
 			</ul>
+			<li className={styles.divEnlaces}>
+				{receta.strYoutube && (
+					<a
+						className={styles.enlaces}
+						href={receta.strYoutube}
+						target='_blanck'>
+						<MdVideocam className={styles.enlaceIcono} />
+						Video
+					</a>
+				)}
+
+				{receta.strSource && (
+					<a
+						className={styles.enlaces}
+						href={receta.strSource}
+						target='_blanck'>
+						<MdOutlineSource className={styles.enlaceIcono} />
+						Source
+					</a>
+				)}
+			</li>
 		</div>
 	)
 }

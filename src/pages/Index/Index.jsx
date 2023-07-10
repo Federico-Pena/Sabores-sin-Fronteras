@@ -22,7 +22,7 @@ function Index() {
 				<Link
 					translate='no'
 					className={styles.heroPlatoRandomBtn}
-					to='/PlatoRandom'>
+					to='/PlatoPais'>
 					Empieza
 				</Link>
 			</div>

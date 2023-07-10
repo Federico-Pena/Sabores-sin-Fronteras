@@ -1,17 +1,15 @@
-import { Link } from 'react-router-dom'
+import styles from './Navegacion.module.css'
 import { BiWorld } from 'react-icons/bi'
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi'
 import { TiSortAlphabeticallyOutline } from 'react-icons/ti'
 import { TfiAgenda } from 'react-icons/tfi'
-import styles from './Navegacion.module.css'
-import { useLocation } from 'react-router-dom'
-
+import { useLocation, Link } from 'react-router-dom'
 function Navegacion() {
-	let location = useLocation()
+	let locationReact = useLocation()
 
 	return (
 		<header>
-			{location.pathname === '/' ? null : (
+			{locationReact.pathname === '/' ? null : (
 				<nav className={styles.Nav} translate='no'>
 					<ul className={styles.UlNav}>
 						<li className={styles.liNavLogo}>
@@ -19,20 +17,18 @@ function Navegacion() {
 							SSF
 						</li>
 						<li className={styles.liNavPag}>
-							<Link to={'/PlatoRandom'}>
-								{location.pathname === '/PlatoRandom' ? (
-									<GiPerspectiveDiceSixFacesRandom
-										className={styles.iconNavActive}
-									/>
+							<Link to={'/PlatoPais'}>
+								{locationReact.pathname === '/PlatoPais' ? (
+									<BiWorld className={styles.iconNavActive} />
 								) : (
-									<GiPerspectiveDiceSixFacesRandom className={styles.iconNav} />
+									<BiWorld className={styles.iconNav} />
 								)}
 							</Link>
-							Random
+							Región
 						</li>
 						<li className={styles.liNavPag}>
 							<Link to={'/PlatoLetra'}>
-								{location.pathname === '/PlatoLetra' ? (
+								{locationReact.pathname === '/PlatoLetra' ? (
 									<TiSortAlphabeticallyOutline
 										className={styles.iconNavActive}
 									/>
@@ -42,19 +38,23 @@ function Navegacion() {
 							</Link>
 							Letra
 						</li>
+
 						<li className={styles.liNavPag}>
-							<Link to={'/PlatoPais'}>
-								{location.pathname === '/PlatoPais' ? (
-									<BiWorld className={styles.iconNavActive} />
+							<Link to={'/PlatoRandom'}>
+								{locationReact.pathname === '/PlatoRandom' ? (
+									<GiPerspectiveDiceSixFacesRandom
+										href='/PlatoRandom'
+										className={styles.iconNavActive}
+									/>
 								) : (
-									<BiWorld className={styles.iconNav} />
+									<GiPerspectiveDiceSixFacesRandom className={styles.iconNav} />
 								)}
 							</Link>
-							Región
+							Random
 						</li>
 						<li className={styles.liNavPag}>
 							<Link to={'/RecetasGuardadas'}>
-								{location.pathname === '/RecetasGuardadas' ? (
+								{locationReact.pathname === '/RecetasGuardadas' ? (
 									<TfiAgenda className={styles.iconNavActive} />
 								) : (
 									<TfiAgenda className={styles.iconNav} />

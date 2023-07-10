@@ -16,7 +16,7 @@ function App() {
 				<Route path='/PlatoLetra' element={<PlatoLetra />} exact />
 				<Route path='/PlatoPais' element={<PlatoPais exact />} />
 				<Route path='/RecetasGuardadas' element={<RecetasGuardadas exact />} />
-				<Route path='*' element={<PlatoRandom />} />
+				<Route path='*' element={<Index />} />
 			</Routes>
 		</>
 	)

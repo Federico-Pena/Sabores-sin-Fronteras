@@ -25,11 +25,9 @@
 	text-align: center;
 	flex: auto;
 	transition: all 0.5s ease-in-out;
-	clip-path: circle(3rem at top);
+	font-size: 12px;
 }
-.liNavPag:hover {
-	clip-path: circle(120% at top);
-}
+
 .liNavLogo {
 	flex: auto;
 	display: flex;
@@ -43,12 +41,13 @@
 	width: 3rem;
 	height: 3rem;
 	border-radius: 100%;
+	padding: 0.5rem;
 }
 
 .iconNav {
 	width: 3rem;
 	padding: 0.5rem;
-	height: 3rem;
+	height: auto;
 	cursor: pointer;
 	transition: all 0.5s ease-in-out;
 	color: var(--color4);

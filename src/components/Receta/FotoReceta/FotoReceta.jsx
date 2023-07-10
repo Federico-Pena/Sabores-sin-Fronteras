@@ -1,10 +1,10 @@
-import styles from './FotoReceta.module.css'
+import styles from '../Receta.module.css'
 
 function FotoReceta({ receta }) {
 	return (
 		<div className={styles.divFoto}>
 			<div className={styles.divH2Foto}>
-				{receta.idMeal && (
+				{receta.idMeal && receta.strIngredient1 && (
 					<small
 						className={styles.SmallFoto}>{`Receta N° ${receta.idMeal}`}</small>
 				)}
