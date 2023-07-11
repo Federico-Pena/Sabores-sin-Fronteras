@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import BuscadorDePalabras from '../../components/BuscadorDeLetras/BuscadorDeLetras'
 import Receta from '../../components/Receta/Receta'
 import { textIngredientFormater } from '../../helpers/textIngredientFormater'
+import RecetaCerrada from '../../components/Receta/RecetaCerrada'
 function PlatoLetra() {
 	const [buscado, setBuscado] = useState()
 	const [receta, setReceta] = useState()
@@ -22,7 +23,7 @@ function PlatoLetra() {
 		if (sectionLetraRef.current) {
 			setTimeout(() => {
 				sectionLetraRef.current.scrollIntoView({ behavior: 'smooth' })
-			}, 500)
+			}, 200)
 		}
 	}
 
@@ -37,11 +38,11 @@ function PlatoLetra() {
 	}
 
 	function cerrarReceta(e) {
-		e.current.classList.add(stylesReceta.recetasContainerCerrar)
+		e.current.classList.add(stylesReceta.recetasCerrar)
 		setTimeout(() => {
 			setReceta()
 			setIngredientes()
-		}, 900)
+		}, 500)
 	}
 
 	return (
@@ -58,7 +59,11 @@ function PlatoLetra() {
 				</div>
 			</section>
 			<section
-				className={`${stylesDefault.DsectionRandomRecetas} ${styles.divPLatoLetraReceta}`}
+				className={
+					ingredientes
+						? stylesDefault.DsectionRandomRecetas
+						: styles.divPLatoLetraReceta
+				}
 				ref={sectionLetraRef}>
 				{receta ? (
 					<Receta
@@ -69,7 +74,11 @@ function PlatoLetra() {
 				) : recetas?.length > 0 ? (
 					recetas.map((receta, i) => {
 						return (
-							<Receta key={i} mostrarReceta={mostrarReceta} receta={receta} />
+							<RecetaCerrada
+								key={receta.idMeal}
+								mostrarReceta={mostrarReceta}
+								receta={receta}
+							/>
 						)
 					})
 				) : null}

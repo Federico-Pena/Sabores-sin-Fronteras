@@ -2,7 +2,7 @@ import styles from './Navegacion.module.css'
 import { BiWorld } from 'react-icons/bi'
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi'
 import { TiSortAlphabeticallyOutline } from 'react-icons/ti'
-import { TfiAgenda } from 'react-icons/tfi'
+import { MdFavorite } from 'react-icons/md'
 import { useLocation, Link } from 'react-router-dom'
 function Navegacion() {
 	let locationReact = useLocation()
@@ -55,12 +55,12 @@ function Navegacion() {
 						<li className={styles.liNavPag}>
 							<Link to={'/RecetasGuardadas'}>
 								{locationReact.pathname === '/RecetasGuardadas' ? (
-									<TfiAgenda className={styles.iconNavActive} />
+									<MdFavorite className={styles.iconNavActive} />
 								) : (
-									<TfiAgenda className={styles.iconNav} />
+									<MdFavorite className={styles.iconNav} />
 								)}
 							</Link>
-							Agenda
+							Fav
 						</li>
 					</ul>
 				</nav>

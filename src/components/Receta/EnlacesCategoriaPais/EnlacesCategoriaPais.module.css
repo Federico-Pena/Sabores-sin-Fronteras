@@ -1,4 +1,5 @@
 .divUl {
+	scroll-snap-align: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -7,7 +8,7 @@
 	flex: auto;
 	width: 100%;
 	background-color: #f3caab;
-	height: 90vh;
+	padding: 1rem 0;
 }
 
 .divUl h2 {

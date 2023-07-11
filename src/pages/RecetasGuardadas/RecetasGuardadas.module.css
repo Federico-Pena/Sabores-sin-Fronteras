@@ -1,5 +1,5 @@
 .divPlatosGuardados {
-	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+	background: linear-gradient(rgba(0, 0, 0, 0.801), rgba(0, 0, 0, 0.822)),
 		url('https://www.themealdb.com/images/media/meals/uuxwvq1483907861.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
@@ -54,6 +54,8 @@
 	align-items: flex-start;
 	gap: 0.5rem;
 	padding: 0.5rem;
+	overflow: auto;
+	max-height: 70px;
 }
 .guardadasBtns {
 	flex: auto;

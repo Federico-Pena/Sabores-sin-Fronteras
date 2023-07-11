@@ -31,7 +31,7 @@ function RecetasGuardadas() {
 				if (divAgendaRef.current) {
 					divAgendaRef.current.scrollIntoView({ behavior: 'smooth' })
 				}
-			}, 500)
+			}, 200)
 		} catch (error) {
 			setError(error)
 		}
@@ -54,52 +54,52 @@ function RecetasGuardadas() {
 		}
 	}
 	const cerrarReceta = (e) => {
-		e.current.classList.add(stylesReceta.recetasContainerCerrar)
-
+		e.current.classList.add(stylesReceta.recetasCerrar)
 		setTimeout(() => {
 			setReceta('')
-		}, 1000)
+			setIngredientList('')
+		}, 500)
 	}
 	return (
 		<main
 			className={`${stylesDefault.DflexContainer} ${styles.divPlatosGuardados}`}>
 			<section className={stylesDefault.DsectionRandomRecetas}>
-				{DbLocal ? (
-					<>
-						<div className={styles.divguardadas}>
-							{DbLocal?.length ? (
-								<h1 translate='no'>Recetas Guardadas</h1>
-							) : (
-								<h1 translate='no'>Guarda Alguna Receta</h1>
-							)}
-						</div>
-						<div
-							className={`${styles.divguardadas} ${styles.divGuardadasOverflow}`}>
-							{DbLocal?.map((receta) => {
-								return (
-									<div key={receta.idMeal} className={styles.guardadas}>
-										<div className={styles.guardadasFotoNombre}>
-											<img src={receta.strMealThumb} alt={receta.strMeal} />
-											<p>
-												{receta.strMeal} <samp>N° {receta.idMeal}</samp>
-											</p>
-										</div>
-										<div className={styles.guardadasBtns}>
-											<button
-												className={styles.BtnVer}
-												onClick={(e) => verReceta(receta.idMeal, e)}>
-												Ver
-											</button>
-											<button onClick={() => borrarReceta(receta.idMeal)}>
-												borrar
-											</button>
-										</div>
+				<>
+					<div className={styles.divguardadas}>
+						{!DbLocal ? (
+							<h1 translate='no'>Guarda Alguna Receta</h1>
+						) : DbLocal?.length ? (
+							<h1 translate='no'>Recetas Guardadas</h1>
+						) : (
+							<h1 translate='no'>Guarda Alguna Receta</h1>
+						)}
+					</div>
+					<div
+						className={`${styles.divguardadas} ${styles.divGuardadasOverflow}`}>
+						{DbLocal?.map((receta) => {
+							return (
+								<div key={receta.idMeal} className={styles.guardadas}>
+									<div className={styles.guardadasFotoNombre}>
+										<img src={receta.strMealThumb} alt={receta.strMeal} />
+										<p>
+											{receta.strMeal} <samp>N° {receta.idMeal}</samp>
+										</p>
 									</div>
-								)
-							})}
-						</div>
-					</>
-				) : null}
+									<div className={styles.guardadasBtns}>
+										<button
+											className={styles.BtnVer}
+											onClick={(e) => verReceta(receta.idMeal, e)}>
+											Ver
+										</button>
+										<button onClick={() => borrarReceta(receta.idMeal)}>
+											borrar
+										</button>
+									</div>
+								</div>
+							)
+						})}
+					</div>
+				</>
 			</section>
 			{receta ? (
 				<section

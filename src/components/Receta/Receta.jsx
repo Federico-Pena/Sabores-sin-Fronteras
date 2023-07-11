@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { IoChevronBackOutline } from 'react-icons/io5'
-import { AiFillSave } from 'react-icons/Ai'
+import { MdFavorite } from 'react-icons/md'
 import styles from './Receta.module.css'
 import FotoReceta from './FotoReceta/FotoReceta'
 import Instrucciones from './Instrucciones/Instrucciones'
@@ -71,26 +71,9 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 	}
 	return (
 		<>
-			{!ingredientes && (
-				<div key={receta.idMeal} className={styles.cerradas}>
-					<div className={styles.cerradasFotoNombre}>
-						<img src={receta.strMealThumb} alt={receta.strMeal} />
-						<p>
-							{receta.strMeal} <samp>N° {receta.idMeal}</samp>
-						</p>
-					</div>
-					<div className={styles.cerradasBtns}>
-						<button
-							className={styles.BtnVer}
-							onClick={(e) => obtenerReceta(receta.idMeal, e)}>
-							Ver
-						</button>
-					</div>
-				</div>
-			)}
 			{ingredientes && (
 				<div
-					translate=''
+					translate='yes'
 					ref={divRecetRef}
 					className={styles.recetasContainer}
 					onClick={() => {
@@ -117,7 +100,7 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 								className={styles.btnGuardar}
 								onClick={guardarReceta}
 								title='Cerrar Receta'>
-								<AiFillSave className={styles.btnGuardarIco} />
+								<MdFavorite className={styles.btnGuardarIco} />
 							</button>
 							<button
 								className={styles.btnCerrar}

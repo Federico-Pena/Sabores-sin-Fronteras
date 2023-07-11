@@ -1,14 +1,16 @@
 .divPLatoLetra {
-	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+	background: linear-gradient(rgba(0, 0, 0, 0.801), rgba(0, 0, 0, 0.822)),
 		url('	https://www.themealdb.com/images/media/meals/7mxnzz1593350801.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	min-height: 100vh;
 	color: #eee;
 	position: relative;
 }
 .divPLatoLetraReceta {
 	padding: 5rem 0;
+	scroll-snap-align: start;
 }
 .tituloPLatoLetra {
 	display: flex;
@@ -27,16 +29,12 @@
 	width: 100%;
 }
 
-.buscadoH1Letra,
 .H1NadaLetra {
 	position: absolute;
 	top: 110vh;
 	right: 1rem;
 	z-index: 3;
 	align-self: flex-end;
-	color: var(--colortexto);
-}
-.H1NadaLetra {
 	color: #eee;
 	width: 100%;
 	right: 0rem;

@@ -2,7 +2,7 @@ import styles from './PlatoRandom.module.css'
 import stylesReceta from '../../components/Receta/Receta.module.css'
 
 import stylesDefault from '../../App.module.css'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Receta from '../../components/Receta/Receta'
 import Modal from '../../components/Modal/Modal'
 import { recetaRandom } from '../../helpers/recetaRandom'
@@ -26,7 +26,8 @@ function PlatoRandom() {
 		}
 		setTimeout(() => {
 			sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
-		}, 500)
+		}, 200)
+
 		setLoading(false)
 	}
 
@@ -38,10 +39,11 @@ function PlatoRandom() {
 		setError(true)
 	}
 	function cerrarReceta(e) {
-		e.current.classList.add(stylesReceta.recetasContainerCerrar)
+		e.current.classList.add(stylesReceta.recetasCerrar)
 		setTimeout(() => {
 			setReceta('')
-		}, 900)
+			setIngredientes('')
+		}, 500)
 	}
 	return (
 		<main

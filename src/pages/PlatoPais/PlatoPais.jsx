@@ -8,6 +8,7 @@ import Modal from '../../components/Modal/Modal'
 import IngredientesComponent from '../../components/IngredientesComponent/IngredientesComponent'
 import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 import RegionesComponent from '../../components/RegionesComponent/RegionesComponent'
+import RecetaCerrada from '../../components/Receta/RecetaCerrada'
 function PlatoPais() {
 	const [region, setRegion] = useState()
 	const [ingrediente, setIngrediente] = useState()
@@ -20,6 +21,7 @@ function PlatoPais() {
 
 	useEffect(() => {
 		const fetchRecetaFiltrada = async () => {
+			setLoading(true)
 			try {
 				const response = await fetch(
 					region
@@ -32,38 +34,40 @@ function PlatoPais() {
 					if (sectionRef.current) {
 						sectionRef.current.scrollIntoView({ behavior: 'smooth' })
 					}
-				}, 900)
+				}, 200)
 			} catch (error) {
 				setError(error)
 			}
+			setLoading(false)
 		}
 		fetchRecetaFiltrada()
 	}, [ingrediente, region])
 
 	//mostrar resultados del filtro Pais al hacer click en el icono
 	const elegirFiltroPais = (e) => {
-		setRegion(e)
 		setIngrediente()
+		setRegion(e)
 		setReceta()
 	}
 
 	//mostrar resultados del filtro Ingrediente al hacer click en el icono
 	function setarIngrediente(e) {
-		setIngrediente(e)
 		setRegion()
+		setIngrediente(e)
 		setReceta()
 	}
 
 	//mostrar Receta al hacerle click a la foto
 	const mostrarReceta = (e) => {
-		console.log(e)
 		setLoading(true)
 		const ingredientList = textIngredientFormater(e)
 		setIngredientList(ingredientList)
 		setReceta(e)
-		if (sectionRef.current) {
-			sectionRef.current.scrollIntoView({ behavior: 'smooth' })
-		}
+		setTimeout(() => {
+			if (sectionRef.current) {
+				sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+			}
+		}, 200)
 		setLoading(false)
 	}
 
@@ -72,11 +76,11 @@ function PlatoPais() {
 	}
 
 	function cerrarReceta(e) {
-		e.current.classList.add(stylesReceta.recetasContainerCerrar)
+		e.current.classList.add(stylesReceta.recetasCerrar)
 		setTimeout(() => {
 			setReceta()
 			setIngredientList()
-		}, 800)
+		}, 500)
 	}
 
 	return (
@@ -106,7 +110,11 @@ function PlatoPais() {
 				</section>
 				{(receta || recetas?.length) && (
 					<section
-						className={stylesDefault.DsectionRandomRecetas}
+						className={
+							ingredientList
+								? stylesDefault.DsectionRandomRecetas
+								: styles.divPlatoPaisRecetas
+						}
 						ref={sectionRef}>
 						{receta ? (
 							<Receta
@@ -117,23 +125,18 @@ function PlatoPais() {
 						) : recetas ? (
 							recetas.map((receta) => {
 								return (
-									<div
-										onClick={() => mostrarReceta(receta.idMeal)}
+									<RecetaCerrada
 										key={receta.idMeal}
-										className={styles.recetaCerrada}>
-										<div className={styles.recetaCerradaFotoNombre}>
-											<img src={receta.strMealThumb} alt={receta.strMeal} />
-											<p>
-												{receta.strMeal} <samp>N° {receta.idMeal}</samp>
-											</p>
-										</div>
-									</div>
+										mostrarReceta={mostrarReceta}
+										receta={receta}
+										setError={setError}
+									/>
 								)
 							})
 						) : null}
 					</section>
 				)}
-				{!recetas?.length ? (
+				{(region || ingrediente) && !recetas?.length ? (
 					<section
 						className={stylesDefault.DsectionRandomRecetas}
 						ref={sectionRef}>
