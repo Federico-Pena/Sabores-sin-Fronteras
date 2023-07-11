@@ -1,13 +1,12 @@
 import styles from './PlatoRandom.module.css'
 import stylesReceta from '../../components/Receta/Receta.module.css'
-
 import stylesDefault from '../../App.module.css'
 import { useState, useRef } from 'react'
+import { recetaRandom } from '../../helpers/recetaRandom'
 import Receta from '../../components/Receta/Receta'
 import Modal from '../../components/Modal/Modal'
-import { recetaRandom } from '../../helpers/recetaRandom'
-
 import RecetaAleatoria from '../../components/RecetaAleatoria/RecetaAleatoria'
+
 function PlatoRandom() {
 	const [receta, setReceta] = useState('')
 	const [ingredientes, setIngredientes] = useState([])
@@ -25,9 +24,8 @@ function PlatoRandom() {
 			setError(error)
 		}
 		setTimeout(() => {
-			sectionRandomRef.current.scrollIntoView({ behavior: 'smooth' })
+			sectionRandomRef.current?.scrollIntoView({ behavior: 'smooth' })
 		}, 200)
-
 		setLoading(false)
 	}
 
@@ -51,7 +49,6 @@ function PlatoRandom() {
 			{error ? (
 				<Modal
 					cerrarModal={cerrarModal}
-					manejoError={error}
 					error={error}
 					titulo={'Ocurrió un Error'}
 				/>

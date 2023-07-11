@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { IoChevronBackOutline } from 'react-icons/io5'
-import { MdFavorite } from 'react-icons/md'
+import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md'
 import styles from './Receta.module.css'
 import FotoReceta from './FotoReceta/FotoReceta'
 import Instrucciones from './Instrucciones/Instrucciones'
@@ -18,27 +18,27 @@ import Modal from '../Modal/Modal'
  * @param {*} mostrarReceta
  * Funcion - Se Obtiene la receta Completa y se la pasa al padre con esta funcion
  */
-function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
+function Receta({ receta, cerrarReceta, ingredientes }) {
 	const divRecetRef = useRef(null)
 	const [flip, setFlip] = useState(false)
 	const [error, setError] = useState(false)
 	const [exito, setExito] = useState(false)
+	const [guardada, setGuardada] = useState(false)
+
+	useEffect(() => {
+		const DB = JSON.parse(localStorage.getItem('recetas'))
+		const coincidencias = DB.filter((rec) => rec.idMeal === receta.idMeal)
+		if (coincidencias.length) {
+			setGuardada(true)
+		} else {
+			setGuardada(false)
+		}
+	}, [receta])
 
 	function fliping() {
 		setFlip(!flip)
 	}
 
-	const obtenerReceta = async () => {
-		try {
-			const response = await fetch(
-				`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${receta.idMeal}`
-			)
-			const data = await response.json()
-			mostrarReceta(data.meals[0])
-		} catch (error) {
-			setError('Error Al Obtener La Receta')
-		}
-	}
 	const guardarReceta = () => {
 		let arrayDB = []
 		try {
@@ -52,6 +52,7 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 					arrayDB.push(receta)
 					localStorage.setItem('recetas', JSON.stringify(arrayDB))
 					setExito(true)
+					setGuardada(true)
 				} else {
 					setError('La Receta Ya Esta Guardada')
 				}
@@ -59,9 +60,10 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 				arrayDB.push(receta)
 				localStorage.setItem('recetas', JSON.stringify(arrayDB))
 				setExito(true)
+				setGuardada(true)
 			}
 		} catch (error) {
-			setError('La Receta Ya Esta Guardada')
+			setError('Ocurrió Un Error')
 		}
 	}
 
@@ -72,12 +74,7 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 	return (
 		<>
 			{ingredientes && (
-				<div
-					ref={divRecetRef}
-					className={styles.recetasContainer}
-					onClick={() => {
-						ingredientes ? null : obtenerReceta()
-					}}>
+				<div ref={divRecetRef} className={styles.recetasContainer}>
 					{exito ? (
 						<Modal
 							titulo={'Receta Guardada'}
@@ -87,7 +84,7 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 					) : null}
 					{error ? (
 						<Modal
-							titulo={'Ocurrió Un Error'}
+							titulo={'Aviso'}
 							descripcion={error}
 							error={error}
 							cerrarModal={cerrarModal}
@@ -99,7 +96,11 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 								className={styles.btnGuardar}
 								onClick={guardarReceta}
 								title='Cerrar Receta'>
-								<MdFavorite className={styles.btnGuardarIco} />
+								{guardada ? (
+									<MdFavorite className={styles.btnGuardarIcoLleno} />
+								) : (
+									<MdOutlineFavoriteBorder className={styles.btnGuardarIco} />
+								)}
 							</button>
 							<button
 								className={styles.btnCerrar}

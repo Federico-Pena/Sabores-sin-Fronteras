@@ -7,7 +7,7 @@ function Instrucciones({ receta, fliping }) {
 	return (
 		<div className={styles.divInstrucciones}>
 			<h2 className={styles.h2Instrucciones}>Instructiones</h2>
-			<ul className={styles.ulIns} ref={ulInstRef} translate=''>
+			<ul className={styles.ulIns} ref={ulInstRef} translate='yes'>
 				{receta?.strInstructions.split('.').map((e, i) => {
 					return e.trim() && e.trim().length >= 2 ? (
 						<InstruccionIntersection

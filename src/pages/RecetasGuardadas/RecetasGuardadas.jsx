@@ -4,6 +4,7 @@ import styles from './RecetasGuardadas.module.css'
 import { textIngredientFormater } from '../../helpers/textIngredientFormater'
 import Receta from '../../components/Receta/Receta'
 import { useEffect, useRef, useState } from 'react'
+import Modal from '../../components/Modal/Modal'
 
 function RecetasGuardadas() {
 	const [DbLocal, setDbLocal] = useState()
@@ -28,9 +29,7 @@ function RecetasGuardadas() {
 			setIngredientList(ingredientList)
 			setReceta(data.meals[0])
 			setTimeout(() => {
-				if (divAgendaRef.current) {
-					divAgendaRef.current.scrollIntoView({ behavior: 'smooth' })
-				}
+				divAgendaRef.current?.scrollIntoView({ behavior: 'smooth' })
 			}, 200)
 		} catch (error) {
 			setError(error)
@@ -60,11 +59,21 @@ function RecetasGuardadas() {
 			setIngredientList('')
 		}, 500)
 	}
+	const cerrarModal = () => {
+		setError()
+	}
 	return (
 		<main
 			className={`${stylesDefault.DflexContainer} ${styles.divPlatosGuardados}`}>
 			<section className={stylesDefault.DsectionRandomRecetas}>
 				<>
+					{error ? (
+						<Modal
+							titulo={'Ocurrió Un Error'}
+							cerrarModal={cerrarModal}
+							error={error}
+						/>
+					) : null}
 					<div className={styles.divguardadas}>
 						{!DbLocal ? (
 							<h1 translate='no'>Guarda Alguna Receta</h1>

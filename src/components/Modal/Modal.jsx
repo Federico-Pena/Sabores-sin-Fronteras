@@ -12,15 +12,7 @@ import styles from './Modal.module.css'
  * @returns
  * JSXElement
  */
-function Modal({
-	loading,
-	exito,
-	error,
-	cerrarModal,
-	titulo,
-	descripcion,
-	contenido,
-}) {
+function Modal({ loading, exito, error, cerrarModal, titulo, descripcion }) {
 	return (
 		<div className={styles.modalContainer}>
 			{loading && (
@@ -49,18 +41,6 @@ function Modal({
 					/>
 					{descripcion ? <p>{descripcion}</p> : null}
 					{cerrarModal && <button onClick={cerrarModal}>Aceptar</button>}
-				</div>
-			)}
-			{contenido && (
-				<div className={styles.exitoContainer}>
-					<div className={styles.divTitulo}>
-						{titulo ? <h2>{titulo}</h2> : null}
-						{descripcion ? <p>{descripcion}</p> : null}
-					</div>
-					{contenido ? <div>{contenido}</div> : null}
-					<div className={styles.divBtnContenido}>
-						{cerrarModal && <button onClick={cerrarModal}>Aceptar</button>}
-					</div>
 				</div>
 			)}
 		</div>

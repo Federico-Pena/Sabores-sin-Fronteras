@@ -17,7 +17,7 @@ export const useIntersectionObserverElement = (
 
 	useEffect(() => {
 		const { current } = elementRef
-		const estaEnPantalla = (entries, observer) => {
+		const estaEnPantalla = (entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					setVisible(entry.isIntersecting)

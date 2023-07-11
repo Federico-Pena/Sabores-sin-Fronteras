@@ -1,6 +1,4 @@
 import styles from './EnlacesCategoriaPais.module.css'
-import stylesGreceta from '../Receta.module.css'
-
 import {
 	MdOutlinePublic,
 	MdOutlineCategory,

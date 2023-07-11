@@ -21,7 +21,7 @@ function PlatoLetra() {
 		setRecetas(e)
 		setReceta()
 		setTimeout(() => {
-			sectionLetraRef.current.scrollIntoView({ behavior: 'smooth' })
+			sectionLetraRef.current?.scrollIntoView({ behavior: 'smooth' })
 		}, 500)
 	}
 

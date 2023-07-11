@@ -20,6 +20,7 @@ const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
 		}, opciones)
 
 		observer.observe(liRef.current)
+
 		return () => {
 			current && observer.unobserve(current)
 		}

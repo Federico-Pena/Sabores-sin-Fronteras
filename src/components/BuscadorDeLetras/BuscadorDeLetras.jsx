@@ -10,6 +10,7 @@ const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 
 	const fetchRecetasLetra = async (e) => {
 		e.preventDefault()
+		setError()
 		setLoading(true)
 		if (inputValue) {
 			try {
@@ -21,9 +22,6 @@ const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 				setBuscados(inputValue)
 			} catch (error) {
 				setError(error)
-				setTimeout(() => {
-					setError()
-				}, 1000)
 			}
 		}
 		setInputValue('')
@@ -73,7 +71,7 @@ const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 					<MdSend className={styles.btnFormSvg} />
 				</button>
 			</form>
-			{error ? <small>Error De Red Intente Nuevamente.</small> : null}
+			{error ? <small>Ocurrió Un Error Intente Nuevamente.</small> : null}
 		</div>
 	)
 }

@@ -64,9 +64,7 @@ function PlatoPais() {
 		setIngredientList(ingredientList)
 		setReceta(e)
 		setTimeout(() => {
-			if (sectionRef.current) {
-				sectionRef.current.scrollIntoView({ behavior: 'smooth' })
-			}
+			sectionRef.current?.scrollIntoView({ behavior: 'smooth' })
 		}, 200)
 		setLoading(false)
 	}
