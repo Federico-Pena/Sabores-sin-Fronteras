@@ -21,6 +21,9 @@ const BuscadorDeLetras = ({ buscadorRecetas, setBuscados }) => {
 				setBuscados(inputValue)
 			} catch (error) {
 				setError(error)
+				setTimeout(() => {
+					setError()
+				}, 1000)
 			}
 		}
 		setInputValue('')

@@ -20,11 +20,9 @@ function PlatoLetra() {
 	function buscadorRecetas(e) {
 		setRecetas(e)
 		setReceta()
-		if (sectionLetraRef.current) {
-			setTimeout(() => {
-				sectionLetraRef.current.scrollIntoView({ behavior: 'smooth' })
-			}, 200)
-		}
+		setTimeout(() => {
+			sectionLetraRef.current.scrollIntoView({ behavior: 'smooth' })
+		}, 500)
 	}
 
 	function mostrarBuscados(e) {
@@ -49,7 +47,7 @@ function PlatoLetra() {
 		<main className={`${stylesDefault.DflexContainer} ${styles.divPLatoLetra}`}>
 			<section className={stylesDefault.DsectionRandomRecetas}>
 				<div className={styles.tituloPLatoLetra}>
-					<h1>Explora por Letra</h1>
+					<h1 translate='no'>Explora por Letra</h1>
 				</div>
 				<div className={styles.BuscadorDePalabrasPLatoLetra}>
 					<BuscadorDePalabras
@@ -58,40 +56,38 @@ function PlatoLetra() {
 					/>
 				</div>
 			</section>
-			<section
-				className={
-					ingredientes
-						? stylesDefault.DsectionRandomRecetas
-						: styles.divPLatoLetraReceta
-				}
-				ref={sectionLetraRef}>
-				{receta ? (
-					<Receta
-						ingredientes={ingredientes}
-						receta={receta}
-						cerrarReceta={cerrarReceta}
-					/>
-				) : recetas?.length > 0 ? (
-					recetas.map((receta, i) => {
-						return (
-							<RecetaCerrada
-								key={receta.idMeal}
-								mostrarReceta={mostrarReceta}
-								receta={receta}
-							/>
-						)
-					})
-				) : null}
-				{buscado && !recetas?.length ? (
-					<h3 translate='no' className={styles.H1NadaLetra}>
-						No Hay Resultados
-					</h3>
-				) : !buscado ? (
-					<h3 translate='no' className={styles.H1NadaLetra}>
-						Realiza una busqueda
-					</h3>
-				) : null}
-			</section>
+			{(recetas.length || receta) && (
+				<section
+					className={
+						ingredientes
+							? stylesDefault.DsectionRandomRecetas
+							: styles.divPLatoLetraReceta
+					}
+					ref={sectionLetraRef}>
+					{receta ? (
+						<Receta
+							ingredientes={ingredientes}
+							receta={receta}
+							cerrarReceta={cerrarReceta}
+						/>
+					) : recetas?.length > 0 ? (
+						recetas.map((receta, i) => {
+							return (
+								<RecetaCerrada
+									key={receta.idMeal}
+									mostrarReceta={mostrarReceta}
+									receta={receta}
+								/>
+							)
+						})
+					) : null}
+					{buscado && !recetas?.length ? (
+						<h3 translate='no' className={styles.H1NadaLetra}>
+							No Hay Resultados
+						</h3>
+					) : null}
+				</section>
+			)}
 		</main>
 	)
 }

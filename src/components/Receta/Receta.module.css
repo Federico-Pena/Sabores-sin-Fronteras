@@ -9,6 +9,8 @@
 	animation-name: backInLeft;
 	animation-duration: 1s;
 	animation-timing-function: ease-out;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .recetasCerrar {
 	display: flex;
@@ -21,6 +23,8 @@
 	animation-name: backOutLeft;
 	animation-duration: 1s;
 	animation-timing-function: ease-out;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .btnCerrarIco {
 	position: absolute;

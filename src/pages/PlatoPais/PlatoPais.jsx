@@ -99,7 +99,6 @@ function PlatoPais() {
 				<section className={stylesDefault.DsectionRandomRecetas}>
 					<div className={styles.titulos}>
 						<h1 translate='no'>Descubre Cocinas del Mundo</h1>
-						<h3 className={styles.titulos2}>Ingredientes Y Regiones</h3>
 					</div>
 					<div className={styles.opciones}>
 						<IngredientesComponent

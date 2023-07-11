@@ -73,7 +73,6 @@ function Receta({ receta, cerrarReceta, ingredientes, mostrarReceta }) {
 		<>
 			{ingredientes && (
 				<div
-					translate='yes'
 					ref={divRecetRef}
 					className={styles.recetasContainer}
 					onClick={() => {
