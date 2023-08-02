@@ -23,12 +23,10 @@
 	background-color: #eee;
 	color: #eee;
 	box-shadow: none;
-	height: 100px;
 }
 .Li:hover .Imagen {
 	position: absolute;
 	left: 40%;
-	transform: scale(2);
 	z-index: 2;
 }
 .Imagen {
@@ -38,7 +36,7 @@
 	transition: 0.5s ease-in-out;
 	view-timeline-name: --revealing-card;
 	view-timeline-axis: block;
-	animation-name: show;
+	animation-name: showIngredient;
 	animation-timing-function: ease;
 	animation-fill-mode: both;
 	animation-timeline: --revealing-card;
@@ -52,7 +50,7 @@
 .nombreIngles {
 	display: none;
 }
-@keyframes show {
+@keyframes showIngredient {
 	from {
 		opacity: 0;
 		transform: scale(0) translateX(-100px);
