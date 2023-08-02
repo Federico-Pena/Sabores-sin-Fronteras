@@ -17,7 +17,7 @@ function Navegacion() {
 							SSF
 						</li>
 						<li className={styles.liNavPag}>
-							<Link to={'/PlatoPais'}>
+							<Link title='PlatoPais' to={'/PlatoPais'}>
 								{locationReact.pathname === '/PlatoPais' ? (
 									<BiWorld className={styles.iconNavActive} />
 								) : (
@@ -27,7 +27,7 @@ function Navegacion() {
 							Región
 						</li>
 						<li className={styles.liNavPag}>
-							<Link to={'/PlatoLetra'}>
+							<Link title='PlatoLetra' to={'/PlatoLetra'}>
 								{locationReact.pathname === '/PlatoLetra' ? (
 									<TiSortAlphabeticallyOutline
 										className={styles.iconNavActive}
@@ -40,7 +40,7 @@ function Navegacion() {
 						</li>
 
 						<li className={styles.liNavPag}>
-							<Link to={'/PlatoRandom'}>
+							<Link title='PlatoRandom' to={'/PlatoRandom'}>
 								{locationReact.pathname === '/PlatoRandom' ? (
 									<GiPerspectiveDiceSixFacesRandom
 										href='/PlatoRandom'
@@ -53,7 +53,7 @@ function Navegacion() {
 							Random
 						</li>
 						<li className={styles.liNavPag}>
-							<Link to={'/RecetasGuardadas'}>
+							<Link title='RecetasGuardadas' to={'/RecetasGuardadas'}>
 								{locationReact.pathname === '/RecetasGuardadas' ? (
 									<MdFavorite className={styles.iconNavActive} />
 								) : (
