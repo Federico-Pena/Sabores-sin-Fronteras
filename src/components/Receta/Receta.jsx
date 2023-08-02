@@ -27,8 +27,8 @@ function Receta({ receta, cerrarReceta, ingredientes }) {
 
 	useEffect(() => {
 		const DB = JSON.parse(localStorage.getItem('recetas'))
-		const coincidencias = DB.filter((rec) => rec.idMeal === receta.idMeal)
-		if (coincidencias.length) {
+		const coincidencias = DB?.filter((rec) => rec.idMeal === receta.idMeal)
+		if (coincidencias?.length) {
 			setGuardada(true)
 		} else {
 			setGuardada(false)
@@ -47,7 +47,7 @@ function Receta({ receta, cerrarReceta, ingredientes }) {
 				let coincidencias = DBLocal.filter(
 					(rec) => rec.idMeal === receta.idMeal
 				)
-				if (coincidencias?.length === 0) {
+				if (!coincidencias?.length) {
 					arrayDB.push(...DBLocal)
 					arrayDB.push(receta)
 					localStorage.setItem('recetas', JSON.stringify(arrayDB))

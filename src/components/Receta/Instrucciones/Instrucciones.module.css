@@ -28,16 +28,20 @@
 	border: 1px solid black;
 	transition: all 0.3s ease-in-out;
 	line-height: 2rem;
-	animation: recetaAnimate 2s ease-in-out;
 	background-color: snow;
 	color: rgb(44, 44, 44);
 	font-size: 18px;
 	font-weight: bold;
 	text-align: justify;
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.452);
-}
-.liintruccionAnimado {
-	animation: recetaAnimate2 1s linear;
+
+	view-timeline-name: --revealing-card;
+	view-timeline-axis: block;
+	animation-name: show;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+	animation-timeline: --revealing-card;
+	animation-range: entry 20% cover 25%;
 }
 
 .spanNumero {
@@ -80,11 +84,13 @@
 	height: 2rem;
 }
 
-@keyframes recetaAnimate2 {
+@keyframes show {
 	from {
-		clip-path: circle(0% at top);
+		opacity: 0;
+		transform: scale(0.25) translateX(500px);
 	}
 	to {
-		clip-path: circle(200% at top);
+		opacity: 1;
+		transform: scale(1) translateX(0);
 	}
 }

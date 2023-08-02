@@ -36,6 +36,13 @@
 	width: 50px;
 	height: auto;
 	transition: 0.5s ease-in-out;
+	view-timeline-name: --revealing-card;
+	view-timeline-axis: block;
+	animation-name: show;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+	animation-timeline: --revealing-card;
+	animation-range: entry 30% cover 55%;
 }
 
 .nombreEspañol {
@@ -44,4 +51,14 @@
 }
 .nombreIngles {
 	display: none;
+}
+@keyframes show {
+	from {
+		opacity: 0;
+		transform: scale(0) translateX(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1) translateX(0);
+	}
 }
