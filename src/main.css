@@ -42,4 +42,5 @@ html,
 @font-face {
 	font-family: Cascadia Code;
 	src: url('./assets/CascadiaFuente.woff2');
+	font-display: swap;
 }
