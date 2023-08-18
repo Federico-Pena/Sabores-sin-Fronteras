@@ -29,14 +29,13 @@ button {
 	background-color: var(--colorResaltado1);
 }
 
-body,
-html,
 #root {
-	scroll-behavior: smooth;
-	overflow: auto;
 	min-height: 100vh;
 	min-width: 100vw;
 	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 @font-face {

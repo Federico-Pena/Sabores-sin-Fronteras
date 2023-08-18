@@ -5,11 +5,12 @@
 	background-position: center;
 	background-size: cover;
 	min-height: 100vh;
-	position: relative;
 }
 .divPlatoPaisRecetas {
-	padding: 5rem 0;
+	padding: 1rem 0;
 	scroll-snap-align: start;
+	scroll-behavior: smooth;
+	min-height: 100vh;
 }
 .titulos {
 	display: flex;

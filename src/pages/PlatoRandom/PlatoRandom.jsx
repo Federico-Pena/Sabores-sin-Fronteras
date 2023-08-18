@@ -24,7 +24,10 @@ function PlatoRandom() {
 			setError(error)
 		}
 		setTimeout(() => {
-			sectionRandomRef.current?.scrollIntoView({ behavior: 'smooth' })
+			sectionRandomRef.current?.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			})
 		}, 200)
 		setLoading(false)
 	}

@@ -16,6 +16,7 @@
 	transition: 0.3s ease-in-out;
 	color: var(--colortexto);
 	box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.418);
+	cursor: pointer;
 }
 
 .Li:hover {

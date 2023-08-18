@@ -11,11 +11,11 @@ function App() {
 		<>
 			<Navegacion />
 			<Routes>
-				<Route index path='/' element={<Index />} exact />
-				<Route path='/PlatoRandom' element={<PlatoRandom />} exact />
-				<Route path='/PlatoLetra' element={<PlatoLetra />} exact />
-				<Route path='/PlatoPais' element={<PlatoPais exact />} />
-				<Route path='/RecetasGuardadas' element={<RecetasGuardadas exact />} />
+				<Route index path='/' element={<Index />} />
+				<Route path='/PlatoRandom' element={<PlatoRandom />} />
+				<Route path='/PlatoLetra' element={<PlatoLetra />} />
+				<Route path='/PlatoPais' element={<PlatoPais />} />
+				<Route path='/RecetasGuardadas' element={<RecetasGuardadas />} />
 				<Route path='*' element={<Index />} />
 			</Routes>
 		</>

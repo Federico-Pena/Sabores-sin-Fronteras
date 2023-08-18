@@ -1,12 +1,17 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import styles from './Instrucciones.module.css'
 function Instrucciones({ receta, fliping }) {
-	const ulInstRef = useRef(null)
-
+	const divInstruccionesRef = useRef(null)
+	useEffect(() => {
+		divInstruccionesRef.current.scrollIntoView({
+			smooth: 'behavior',
+			block: 'start',
+		})
+	}, [])
 	return (
-		<div className={styles.divInstrucciones}>
+		<div className={styles.divInstrucciones} ref={divInstruccionesRef}>
 			<h2 className={styles.h2Instrucciones}>Instructiones</h2>
-			<ul className={styles.ulIns} ref={ulInstRef} translate='yes'>
+			<ul className={styles.ulIns} translate='yes'>
 				{receta?.strInstructions.split('.').map((Instruccion, i) => {
 					return Instruccion.trim() && Instruccion.trim().length >= 2 ? (
 						<li className={styles.liintruccion} key={i}>

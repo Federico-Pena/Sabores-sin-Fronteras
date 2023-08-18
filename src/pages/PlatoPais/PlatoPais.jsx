@@ -32,7 +32,10 @@ function PlatoPais() {
 				setRecetas(data.meals)
 				setTimeout(() => {
 					if (sectionRef.current) {
-						sectionRef.current.scrollIntoView({ behavior: 'smooth' })
+						sectionRef.current.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start',
+						})
 					}
 				}, 200)
 			} catch (error) {

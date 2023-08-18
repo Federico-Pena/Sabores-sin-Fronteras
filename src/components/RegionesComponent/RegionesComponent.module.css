@@ -23,6 +23,7 @@
 	background-position: center;
 	background-size: cover;
 	box-shadow: 0px 0px 10px 1px black;
+	cursor: pointer;
 }
 .LiRegion span {
 	color: var(--colortexto);

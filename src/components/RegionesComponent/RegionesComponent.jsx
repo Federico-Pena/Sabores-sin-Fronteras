@@ -28,7 +28,7 @@ function RegionesComponent({ elegirFiltroPais }) {
 						<span>{region.strArea}</span>
 						<img
 							src={region.foto}
-							alt={region.strArea}
+							alt={`Region ${region.strArea}`}
 							className={styles.ImgRegion}
 						/>
 					</li>
