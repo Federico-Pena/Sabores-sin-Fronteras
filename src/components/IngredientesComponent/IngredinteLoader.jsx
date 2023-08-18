@@ -34,7 +34,7 @@ const IngredinteLoader = ({ ingrediente, buscarRecetaPorIngrediente }) => {
 			<img
 				className={styles.Imagen}
 				src={ingrediente.foto}
-				alt={ingrediente.strIngredient}
+				alt={`Foto de ${ingrediente.strIngredient}`}
 			/>
 			<span className={styles.nombreIngles}>{ingrediente.strIngredient}</span>
 			<span translate='no' className={styles.nombreEspañol}>
